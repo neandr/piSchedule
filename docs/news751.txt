@@ -1,0 +1,27 @@
+                                               2016-08-09
+** Updates (see also on Forum)
+   Calculation of sunrise/sunset could fail due to :60 sec
+   result. (System failure 500)
+
+   piSystem. log
+   Restarting piSchedule with improved date setting
+
+                                               2016-08-08
+** pilight ssdp setup
+   To solve ssdp problems an additional setting was
+   recommended and has been added to the piSchedule
+   installation.
+   See https://forum.pilight.org/Thread-solved-another-pilight-ssdp-missed-connection-on-RPI
+
+                                               2016-02-19
+** Preview piSchedule 0.7.5 -- Timeline
+
+	Timeline is under development, please use
+	with care and report back any issue or 
+	required improvements.
+
+
+===
+__ For 'standard' piSchedule Setup (and update) use
+
+|| cd ~ && wget https://........../piSchedule7/piScheduleSetup.sh -O piScheduleSetup.sh && bash piScheduleSetup.sh
