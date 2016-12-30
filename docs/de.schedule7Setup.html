@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-us">
+   <head>
+      <meta charset="utf-8" />
+
+      <base href="" >
+      <title>piSchedule Setup</title>
+
+      <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+
+    <!-- optional: Einbinden der jQuery-Bibliothek -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+   </head>
+   <body>
+
+      <div class="container container-site">
+         <div style="height: 10px;"></div>
+
+         <div>  <!-- $$$content$$$ -->
+
+      <!-- lang="DE" -->
+
+<!-- title="piSchedule Setup" -->
+
+<!-- doc="piSchedule7Setup.html" -->
+
+<!-- donation -->
+
+<h2><i>piSchedule</i>    &nbsp;&nbsp;&nbsp;&nbsp;Setup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <small><small>vers.0.7.3 &nbsp;&nbsp; 2015-12-18_15</small></small> <p style="text-align: right;"><small><small><a href="../EN/piSchedule7Setup.html">English Version </a> <img title="English" src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/flagUS.png" align="bottum"></small></small> </p><hr></h2>
+
+<p><strong><em>piSchedule</em></strong> ist ein Python Programm. Es läuft auf dem Raspberry mit einer Installation von <strong><em>pilight 6.0 oder 7.0</em></strong>. pilight muss für das  erfolgreiche Einrichten von <em>piSchedule</em> laufen!
+<br><div style="margin-left: 30px;"> <em><strong> Hinweis</strong> &nbsp;&nbsp;&nbsp; Es wird empfohlen das <strong>Raspbian/wheezy</strong> Betriebssystem zu verwenden. Getestet wurde auch mit OSMC, aber es kam bei bestimmten Installationen zu Fehlern, die z.Zt. nicht geklärt sind.</em> 
+</div><br>
+Das Einrichten und ein Update aller Komponenten erfolgt mit zwei Schritten: </p>
+<ol>
+<li>Auf die nachstehende <strong>SETUP</strong> Box klicken und mit <code>[Strg]</code> <code>[C]</code> kopieren
+<br> <div style="margin-left: 45px;"><strong>SETUP</strong> &nbsp;&nbsp;
+<input id="code" type="text" readonly="readonly" title="Select and press [Cntrl] [C] to copy"
+value=' cd ~  &&  wget https://dl.dropboxusercontent.com/u/35444930/piSchedule7/piScheduleSetup.sh -O piScheduleSetup.sh && bash piScheduleSetup.sh'
+style="width: 400px; cursor:pointer; font-weight: bold; color: #3A69A6;" onclick="this.focus();this.select();" />
+</div><br></li>
+<li>Dann am Systemprompt des RaspberryPI einfügen und ausführen mit 
+ <code>[Strg]</code> <code>[Hoch]</code> <code>[v]</code> und <code>[Eingabe]</code>
+<br><br>
+<em><strong> Hinweis</strong> &nbsp;&nbsp;&nbsp; Es werden keine <strong>INI</strong> Dateien geladen/überschrieben.</em> 
+</div>
+Das Setup beginnt mit einer Konsolen Ausgabe wie folgt (Beispiel:)
+<pre><code> ** piSchedule Setup -- Loading [version] list! 
+      1:  piSchedule73
+      2:  piSchedule726
+    0: Python  - Libraries loading/updating only
+    9: pilight - Download and install vers.7
+</code></pre>
+
+<p>Dieses Auswahlmenü bietet unterschiedliche Versionen an, hier</p>
+<ul>
+<li>
+<p><tt> 1:</tt> und <tt> 2:</tt> -- Zwei unterschiedliche Versionen von <strong><em>piSchedule</em></strong>.<br> <small><em>(Das aktuelle Menü kann andere Versionen beinhalten)</em></small></p>
+</li>
+<li>
+<p><tt>0: <strong>Python</strong>  - Libraries loading/updating only</tt> -- Es erfolgt nur die Installation der Python Module, kein <em><strong>piSchedule</strong></em> Setup.</p>
+</li>
+<li>
+<p><tt>9: <strong>pilight</strong> - Download and install vers.7 </tt> -- Hiermit kann direkt 'pilight' vers.7 installiert werden. 'pilight' wird auch automatisch gestartet, so kann auf der pilight web Gui Seite kontrolliert werden ob die Installation erfolgreich war. Dann ist noch die individuelle 'pilight' Konfiguration einzurichten, Anweisung hierzu auf der Konsole.</p>
+</li>
+</ul>
+<p>Hier ein Beispiel Setup mit der Auswahl "1" der o.g. Liste, sie beginnt automatisch und schließt ab mit:</p>
+<pre><code> ** pilight  {server}:{port}=192.168.178.12:5001
+ ** pilight  version=7.0  &gt;&gt;OK&lt;&lt;
+piDiscover pilight ['192.168.178.12', 5001, '7.0', '']
+
+     *** piSchedule - Check Setup ***
+         Only with a valid pilight/piSchedule {server}:{port} notation and
+         'version=xx &gt;&gt;OK&lt;&lt;' the piSchedule setup was successful.
+
+         If failed, check with the following commands:
+            cd ~/piSchedule73
+            sudo service pilight restart
+            sudo service piSchedule restart
+            sudo service piSchedule status
+
+     *** Move over to your browser and start the 'piSchedule' home page
+         using the 'piSchedule {server}:{port}' as prompted above
+
+     *** For more detailed information see also
+         DE:   https://dl.dropboxusercontent.com/u/35444930/piSchedule7/DE/piSchedule7Overview.html
+         EN:   https://dl.dropboxusercontent.com/u/35444930/piSchedule7/EN/piSchedule7Overview.html
+
+[ ok ] /home/pi/piSchedule73/piSchedule.py is running.
+piSchedule  {server}:{port}  &gt;&gt;192.168.178.12:5005&lt;&lt;
+pi@RPI2 ~ $ 
+</code></pre>
+
+<p><br>
+Mit der Eingabe der gezeigten {server}:{port} Adresse in der Adresszeile des Browsers wird <em><strong>piSchedule</strong></em> geöffnet:
+<p><img title="piSchedule Start Page" src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/piSch7_setup.png"   hspace="45" width="450" ><br />
+</p></p>
+<hr />
+<h3 id="pischedule-steuerungsdateien-ini-dateien">piSchedule Steuerungsdateien (INI Dateien)</h3>
+<p>Die Schaltzeiten für die Schalter sind in einfachen Textdateien mit der Endung .ini erfasst. Diese INI.Dateien befinden nach der Erstellung in dem jeweiligen <code>piScheduleXX</code> Verzeichnis. Ein erneutes Setup mit dem selben Verzeichnis löscht diese INI.Dateien nicht. Anderesseits ist es ggf. erforderlich die INI.Dateien bei Versionswechsel (siehe nachstehend) in ein neues Setup zu übernehmen. </p>
+<hr />
+<h3 id="pischedule-versions-wechsel">piSchedule Versions Wechsel</h3>
+<p><em><em>piSchedule</em></em> besteht im wesentlichen aus Python Modulen, die mit dem Setup auf den Raspberry kopiert und mit <code>service piSchedule start|restart</code> gestartet werden. Ein Wechsel zu einer anderen <em><em>piSchedule</em></em> Version erfolgt einfach durch ein erneutes Setup mit einer anderen Auswahl im Setup-Menü.</p>
+<p>Zum nachträglichen Wechsel zwischen verschiedenen Version ist es nur notwendig in das entsprechende Verzeichnis zu wechseln und dann in jedem Fall ein Setup Skript auszuführen:
+<div style="margin-left: 45px;">Wechsel zum entsprechenden Verzeichnis 'piScheduleXX'<br><code>cd ~/piScheduleXX</code></div> 
+<div style="margin-left: 45px;"><code>./setScheduleService.sh</code></div>
+<br><div style="margin-left: 30px;"> <em><strong>Hinweis</strong> &nbsp;&nbsp;&nbsp; Es können ohne Probleme verschiedene piSchedule Versionen vorgehalten werden. Ältere Versionen einfach durch Löschen des Verzeichnisses entfernen.</em></div></p>
+<h5 id="wechsel-zu-alteren-pischedule-versionen">Wechsel zu älteren <em><strong>piSchedule</strong></em> Versionen</h5>
+<p>Das beschriebene Skript <code>setScheduleService.sh</code> existiert dort nicht. Vor der Re-Aktivierung einer älteren piSchedule Version ist das Skript durch einfaches Kopieren mit <code>cp /quelldir/piScheduleSetup.sh ~/alteVersion/piScheduleSetup.sh</code> in das jeweilige Verzeichnis zu übertragen und dann dort auszuführen.</p>
+<hr />
+<h3 id="pischedule-library-programme">piSchedule Library Programme</h3>
+<p>Für <em>piSchedule</em> sind die folgenden Python Module erforderlich und werden mit SETUP installiert:</p>
+<ul>
+<li><strong>PIP</strong> Python Installer </li>
+<li><strong>Date/Time</strong> für die flexible Handhabung dient [dateutil]. Dies beinhaltet einen Praser, so werden einfach formatierte Datum/Zeitangaben zu vollen 'date/time' Objekten gewandelt.  </li>
+<li><strong>Zeitsteuerung</strong> arbeitet mit <strong><a href="https://pypi.python.org/pypi/APScheduler">Advanced Scheduler vers.3</a></strong></li>
+<li><strong>Location/Geolocation/Sunrise/Sunset</strong> - <strong>Location/Geolocation/Sunrise/Sunset</strong> Um den Raspberry Installationsort zu finden wird 'http://ip-api.com/json/' genutzt; ist diese Seite nicht verfügbar oder wird keine gültige Angabe geliefert, erfolgt eine Abfrage mit 'https://maps.googleapis.com/maps/api/geocode/json' statt dessen.
+<br><div style="margin-left: 25px;"><small><em>Hinweis: In vorherigen piSchedule Versionen wurde ephem benutzt. Dies ist ersetzt durch ein lokales Python Module.</em></small></div> </li>
+<li><strong>Web Pages</strong> sind unterstützt mit [bottle] und [bootstrap] <br />
+<end/></li>
+</ul>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+         </div>  <!-- $$$content$$$ -->
+         <hr />
+
+<p align="center" id="freeProjectDE" style="display:block">
+            &copy; gNeandr  &nbsp; &nbsp; --  &nbsp; &nbsp; 
+            <strong><em>piSchedule</em></strong> ist ein freies Open Source Projekt &nbsp; &nbsp; -- &nbsp; &nbsp; Feel free to use it. 
+         </p> 
+
+         <p align='center' id="$$$freeProjectEN" style="display:none">
+            &copy; gNeandr  &nbsp; &nbsp; --  &nbsp; &nbsp; 
+            <strong><em>piSchedule</em></strong> is a free Open Source Project &nbsp; &nbsp; -- &nbsp; &nbsp; Feel free to use it. 
+         </p> 
+
+
+         <p align="center" id="donationDE" style="display:block">
+              <b><a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=N3HLSJP5CVLSS' 
+              title='Danke für ihre Spende an piScheduler und die Benutzung von Paypal'> 
+              <img alt='Donate button' src='https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/Donate-40g.png' />
+              &nbsp; &nbsp; Spende was <i>piSchedule</i> Dir wert ist.</a></b>
+            <br>
+            <a href="https://groups.google.com/forum/#!forum/piSchedule7">Kommentare, Fragen und Rückmeldungen im <i>piSchedule</i>  <strong>Forum</strong></a>
+         </p>
+
+         <p align='center' id="$$$donationEN" style="display:none">
+             <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=N3HLSJP5CVLSS'
+             title='Thanks for your donation for piScheduler and using Paypal'> 
+             <img alt='Donate button' src='https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/Donate-40g.png' />
+             &nbsp; &nbsp; Donate what <i>piSchedule</i> is worth for you. </a></b>
+            <br>
+            <a href="https://groups.google.com/forum/#!forum/piSchedule7">For Comments, Questions and Feedback please use <i>piSchedule</i>  <strong>Forum</strong></a>
+         </p>
+
+
+      </div>
+   </body>
+</html>
+
