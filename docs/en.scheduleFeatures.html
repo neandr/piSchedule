@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-us">
+   <head>
+      <meta charset="utf-8" />
+
+      <base href="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/" >
+      <title>piSchedule Scheduling Features </title>
+
+      <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+
+    <!-- optional: Einbinden der jQuery-Bibliothek -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+   </head>
+   <body>
+
+      <div class="container container-site">
+         <div style="height: 10px;"></div>
+
+         <div>  <!-- $$$content$$$ -->
+
+<!-- lang="EN" -->
+
+<!-- title="piSchedule Scheduling Features " -->
+
+<!-- doc="piScheduleFeatures.html" -->
+
+<!-- base="" -->
+
+<h2 id="pischedule">
+    <em>piSchedule</em> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <small>Scheduling Features&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>vers.0.3 2015-03-06_1700</small>
+    </small></h2>
+
+<hr>
+
+<p>Switching of devices with <em>piSchedule</em> offers the following features:</p>
+<p><strong>Date/Time</strong></p>
+<p>The very flexible date/time handling is achieved with using <a href="http://labix.org/python-dateutil/">python-dateutil</a>. That utility allows <em>piSchedule</em> to support a very brod range of date/time formats. </p>
+<p><strong>Time Delta</strong></p>
+<p>An absolute date/time value can be changed with a delta time, this can be added or subtracted from the absolute time value. Also with an absolute time a random time can be added, that way on/off time points can be varied from day to day.</p>
+<p><strong>Sunrise/Sunset</strong></p>
+<p>To follow sunrise/sunset with switch time values, those are calculated with just the keyword. Also those time values can be varied with add/substract or random add (see Time Delta). The geo coordinates has to be added to piSchedule.prefs.json.</p>
+<h4 id="schedule-plan">Schedule plan</h4>
+<p>To configure which device at what time should be switched on/off is defined in a file which is passed to piScheduler.py.</p>
+<p>That setup file is an easy text (INI) format. See below <strong>Definitions</strong> about the syntax.</p>
+<p><strong>Day Schedule</strong>  <br />
+The schedule is always for one day. With date change the schedule which was passed with a .INI file will be reloaded. That way the sunrise/sunset parameters as well as all random time values are recalculated.</p>
+<p><strong>Text/Comments in Day Schedule</strong>   <br />
+The INI files can hold comments on extra lines.
+Comment lines have as a first non space character an asterisk.
+Empty lines to separate the Job and comment lines are allowed.</p>
+<h3 id="definitions">Definitions</h3>
+<p><br>
+A <strong>'state'</strong> OR <strong>'state_and_time'</strong> is REQUIRED, but both are NOT allowed for one device.</p>
+<pre><code>  state            = "on" | "off"
+
+                     This is direct switching method and will be executed  
+                     as 'piSchedule' is called.
+
+  state_and_time   = switchDef *[;switchDef]
+</code></pre>
+<p><br></p>
+<p><strong>'switchDef'</strong> MUST occur once and CAN occur more than once.</p>
+<pre><code>  switchDef        = ( on|off,absoluteTime )
+                    / ( on|off,[deltaTime][,vTime])
+                     A switch point needs a state 'on' OR 'off'.
+                     Time value can be an 'absolute' date/time or a time delta definition 
+                     'off' definition without vTime follows the previous 'on' time.
+                     'deltaTime' and 'vTime' can be given in any order
+</code></pre>
+<p><br>
+<strong>Time</strong> formats</p>
+<pre><code>absoluteTime     = formats conform to 'dateutil'
+
+deltaTime        = '+|-|~|~-h:min'
+                      A leading control character MUST occur once
+                        leading plus  = add 'h:min' to vTime
+                        leading minus = subtract 'h:min' from vTime
+                        leading ~     = add a random 'h:min' to vTime
+                                        random value is calculated with 'h:min'
+                        leading ~-    = subtracts a random time
+                       Leading character MUST occur
+
+vTime            = OPTIONAL, if NOT defined vTime is assumed the actual date/time
+                     vTime without a date is parsed to actual day
+
+                     vTime CAN be 'sunrise' OR 'sunset' but for that the 'Latitude' and
+                     'Longitude' HAS to be defined in 'piSchedule.prefs.json'
+</code></pre>
+<p><strong>Example</strong></p>
+<p>See <strong><a href="piSchedule.ini">piSchedule.ini</a></strong> </p>
+
+
+
+
+         </div>  <!-- $$$content$$$ -->
+         <hr />
+
+<p align="center" id="$$$freeProjectDE" style="display:none">
+            &copy; gNeandr  &nbsp; &nbsp; --  &nbsp; &nbsp; 
+            <strong><em>piSchedule</em></strong> ist ein freies Open Source Projekt &nbsp; &nbsp; -- &nbsp; &nbsp; Feel free to use it. 
+         </p> 
+
+         <p align='center' id="freeProjectEN" style="display:block">
+            &copy; gNeandr  &nbsp; &nbsp; --  &nbsp; &nbsp; 
+            <strong><em>piSchedule</em></strong> is a free Open Source Project &nbsp; &nbsp; -- &nbsp; &nbsp; Feel free to use it. 
+         </p> 
+
+
+         <p align="center" id="$$$donationDE" style="display:none">
+              <b><a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=N3HLSJP5CVLSS' 
+              title='Danke für ihre Spende an piScheduler und die Benutzung von Paypal'> 
+              <img alt='Donate button' src='https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/Donate-40g.png' />
+              &nbsp; &nbsp; Spende was <i>piSchedule</i> Dir wert ist.</a></b>
+            <br>
+            <a href="https://groups.google.com/forum/#!forum/piSchedule7">Kommentare, Fragen und Rückmeldungen im <i>piSchedule</i>  <strong>Forum</strong></a>
+         </p>
+
+         <p align='center' id="donationEN" style="display:block">
+             <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=N3HLSJP5CVLSS'
+             title='Thanks for your donation for piScheduler and using Paypal'> 
+             <img alt='Donate button' src='https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/Donate-40g.png' />
+             &nbsp; &nbsp; Donate what <i>piSchedule</i> is worth for you. </a></b>
+            <br>
+            <a href="https://groups.google.com/forum/#!forum/piSchedule7">For Comments, Questions and Feedback please use <i>piSchedule</i>  <strong>Forum</strong></a>
+         </p>
+
+
+      </div>
+   </body>
+</html>
+

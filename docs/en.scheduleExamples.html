@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-us">
+   <head>
+      <meta charset="utf-8" />
+
+      <base href="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/" >
+      <title>piSchedule Scheduling Examples</title>
+
+      <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+
+    <!-- optional: Einbinden der jQuery-Bibliothek -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+   </head>
+   <body>
+
+      <div class="container container-site">
+         <div style="height: 10px;"></div>
+
+         <div>  <!-- $$$content$$$ -->
+
+<!-- lang="EN" -->
+
+<!-- title="piSchedule Scheduling Examples" -->
+
+<!-- doc="piScheduleExamples.html" -->
+
+<!-- base="" -->
+
+<h2 id="pischedule">
+    <em>piSchedule</em> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    <small>Scheduling Examples&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>vers.0.7 &nbsp;&nbsp; 2015-08-14_00</small>
+    </small>
+<hr></h2>
+
+<p>The <em>piSchedule</em> control commands follow the notation described on the <a href="http://www.pilight.org/getting-started/configuring/">pilight documentation</a>:</p>
+<blockquote>
+<p>Devices</p>
+<p>The first step is to define the pilight devices.</p>
+<pre><code> "devices": {
+        "Television": {
+            "protocol": [ "relay" ],
+              "id": [{
+              "gpio": 3
+            }],
+            "state": "off",
+            "default": "off"
+        }
+  },
+</code></pre>
+<p>The first JSON key 'Television' is the id used by pilight to identify a specific device, the value of the name (in this case Television with a capital T) setting is the name communicated by pilight.</p>
+</blockquote>
+<p><strong><em>piSchedule</em></strong> uses those config.json details for scheduling the devices. For a complete list of the commands, the usage and grammar have a look at the <a href="https://dl.dropboxusercontent.com/u/35444930/piScheduler/doc_0.3/piScheduleFeatures.md.html"><em>piSchedule</em> Features</a></p>
+<h3 id="pischedule-job-examples">piSchedule Job Examples</h3>
+<p>To show how a dedicated device can be controlled, here are some examples:</p>
+<p>The example device is defined in <strong><em>config.json</em></strong> with:</p>
+<pre><code>    "Haustuer": {
+            "protocol": [ "pollin" ],
+            "id": [{
+                    "systemcode": 21,
+                    "unitcode": 1
+            }],
+            "state": "off"
+    }
+</code></pre>
+<p><strong>Simple and direct switching</strong></p>
+<pre><code>Haustuer; on;
+Haustuer; off;
+</code></pre>
+<p><strong>Time delayed switching</strong></p>
+<pre><code>Haustuer; on,+:01;  off,+:2:00
+</code></pre>
+<p>'on' is delayed by one second; after 2 minutes it will be switched off</p>
+<p><strong>Random Time delay</strong></p>
+<pre><code>Haustuer; on,~01:00;
+</code></pre>
+<p>A random time between 'now' and 'in one hour' will be used to switch on</p>
+<p><strong>Using Sunrise/Sunset</strong></p>
+<pre><code>Haustuer; on, sunrise, +:30:00;
+</code></pre>
+<p>Switch time is 30 minutes after sunrise</p>
+<pre><code>Haustuer; on, sunset, ~-:45:00; off,sunset, +3:15:00;
+</code></pre>
+<p>On/off switch is oriented at sunset, 'on' varies between 0 and 45 minutes <strong><em>before</em></strong> sunset, 'off' will be 3 hours and 15 minutes after sunset</p>
+<p><strong>Multiple switching with one command line</strong></p>
+<pre><code>Haustuer; on, 19:45, ~:10:00; off, 21:05; on, 21:30; off, +2:00:00;
+</code></pre>
+<p>This has two time pairs to define time periods, first switched 'on' at 19:45 (with random time variation) and 'off' at 21:05; the second set is from 21:30 until 23:30</p>
+<h3 id="pischedule-command-testing"><em>piSchedule</em> command testing</h3>
+<p>With <em>piSchedule</em> activ, testing commands for the switches can be send from the browser web-GUI:<br />
+</p>
+<pre><code>  http://{server}:{port}/control?{command}
+</code></pre>
+<p>Example 'command' z.B:     Haustuer;on     (no Anführungszeichen, only ascii characters!)</p>
+<p>On the browser this example will show this response:</p>
+<pre><code>    &gt;&gt;control::Haustuer;on&lt;&lt;
+</code></pre>
+<p>Sending time values with the test command it will be converted and added to the 'Actual Day Schedule, that way it will be processed normally.</p>
+<p><strong>Note</strong>: Adding a command with this testing will not be added to the active .INI file and thus it will be lost with changing the 'Actual Day Schedule'.</p>
+<h3 id="log-files">Log Files</h3>
+<h4 id="day-log-files">Day Log files</h4>
+<p>All executed commands are written to a log-file which is named with actual weekday, f.e. [Friday.log]</p>
+<h4 id="info-and-system-logs">Info and System Logs</h4>
+<p>This files can be found in the piSchedule7/logs directory</p>
+
+
+
+
+         </div>  <!-- $$$content$$$ -->
+         <hr />
+
+<p align="center" id="$$$freeProjectDE" style="display:none">
+            &copy; gNeandr  &nbsp; &nbsp; --  &nbsp; &nbsp; 
+            <strong><em>piSchedule</em></strong> ist ein freies Open Source Projekt &nbsp; &nbsp; -- &nbsp; &nbsp; Feel free to use it. 
+         </p> 
+
+         <p align='center' id="freeProjectEN" style="display:block">
+            &copy; gNeandr  &nbsp; &nbsp; --  &nbsp; &nbsp; 
+            <strong><em>piSchedule</em></strong> is a free Open Source Project &nbsp; &nbsp; -- &nbsp; &nbsp; Feel free to use it. 
+         </p> 
+
+
+         <p align="center" id="$$$donationDE" style="display:none">
+              <b><a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=N3HLSJP5CVLSS' 
+              title='Danke für ihre Spende an piScheduler und die Benutzung von Paypal'> 
+              <img alt='Donate button' src='https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/Donate-40g.png' />
+              &nbsp; &nbsp; Spende was <i>piSchedule</i> Dir wert ist.</a></b>
+            <br>
+            <a href="https://groups.google.com/forum/#!forum/piSchedule7">Kommentare, Fragen und Rückmeldungen im <i>piSchedule</i>  <strong>Forum</strong></a>
+         </p>
+
+         <p align='center' id="donationEN" style="display:block">
+             <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=N3HLSJP5CVLSS'
+             title='Thanks for your donation for piScheduler and using Paypal'> 
+             <img alt='Donate button' src='https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/Donate-40g.png' />
+             &nbsp; &nbsp; Donate what <i>piSchedule</i> is worth for you. </a></b>
+            <br>
+            <a href="https://groups.google.com/forum/#!forum/piSchedule7">For Comments, Questions and Feedback please use <i>piSchedule</i>  <strong>Forum</strong></a>
+         </p>
+
+
+      </div>
+   </body>
+</html>
+
