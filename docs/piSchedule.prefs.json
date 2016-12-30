@@ -1,0 +1,19 @@
+{
+  "status": 200,
+  "pilightVersion": "6.0",
+  "locale": "DE",
+  "pilightPort": 5001,
+  "iniFile": "piSchedule.ini",
+  "longitude": "6.9705",
+  "server": "192.168.178.16",
+  "geo": "ip",
+  "version": "0.7.01",
+  "sunset": "2015-08-07 21:09:57.000004",
+  "switchTime": 0,
+  "latitude": "51.2558",
+  "locationDefault": "Kassel",
+  "pilightExpected": "7.0",
+  "port": 5005,
+  "sunrise": "2015-08-07 06:04:50.000004",
+  "location": "Kassel"
+}

@@ -73,9 +73,9 @@
 <p><strong><em>piSchedule</em></strong> ist eine einfach zu bedienende Browser Anwendung lauffähig auf Smartphones, Tablets oder auf PC's. Mittels Menüsteuerung erfolgen Einstellungen, Betrieb, das Verfolgen von Meldungen oder das Aufrufen der Dokumentation. <strong>pilight</strong> kann direkt aus dem <em>piSchedule</em> Browserbetrieb aufgerufen werden, sodass eine direkte Überwachung oder gezieltes Ein/Aus Schalten möglich ist.   </p>
 <p><em>piSchedule</em> richtet sich an Benutzer, die nach der initialen Installation das zeitgesteuerte Schalten wie auch die Anpassung des Tagesplanes den üblichen Elementen eines Smartphones oder PCs vornehmen möchten.  </p>
 <p><img title="piSchedule Start Page" src="pic.de.startPage7-5.png"   hspace="45" width="450" >  </p>
-<p>Siehe auch <b><a href="DE/piSchedule7Overview.html#pischedule-auf-smartphonetablet-oder-pc"><em>piSchedule</em> auf Smartphone und PC</a></b></p>
+<p>Siehe auch <b><a href="de.overview.html#web"><em>piSchedule</em> auf Smartphone und PC</a></b></p>
 <p><strong><em>piSchedule</em></strong> ist ein Python Programm, basiert auf <strong><a href="http://www.pilight.org/">pilight 6.0 oder 7.0</a></strong> und und ist darauf ausgerichtet die Bedienung über einen <strong>WEB Browser (zB. Firefox)</strong> vorzunehmen. <br />
-Die Einrichtung/Setup erfolgt über die Raspberry Terminalkonsole <strong>(<a href="../de.piSchedule7Setup.html">Beschreibung des Setups</a>)</strong>.  Danach ist die Benutzung der Terminal Konsole typischerweise nicht mehr erforderlich. Die Konsole kann zur Anzeige von Log Meldungen genutzt werden.</p>
+Die Einrichtung/Setup erfolgt über die Raspberry Terminalkonsole <strong>(<a href="de.piSchedule7Setup.html">Beschreibung des Setups</a>)</strong>.  Danach ist die Benutzung der Terminal Konsole typischerweise nicht mehr erforderlich. Die Konsole kann zur Anzeige von Log Meldungen genutzt werden.</p>
 <hr />
 <h3 id="timeSwitching"> pilight Schalten mit Zeitplan -- <em>Überblick</em></h3>
 <p><em>piSchedule</em> bietet ein einfaches menügesteuertes Konzept für die Bedienung. </p>
@@ -86,7 +86,7 @@ Die Einrichtung/Setup erfolgt über die Raspberry Terminalkonsole <strong>(<a hr
 <p>Obwohl <em>piSchedule</em>  menügesteuert arbeitet, kann andererseits der kundige Anwender für die Erstellung von Jobs seinen bekannten Text Editor (vi, nano etc) verwenden und dadurch ggf. schneller seine Tagespläne erstellen.</p>
 <p>Aus den erstellten und gespeicherten Tagesplänen wählt der Anwender einen  gewünschten Plan  aus und aktiviert ihn dadurch. Mit dieser Aktivierung berechnet <em>piSchedule</em> die tagesaktuellen Schaltzeiten mit Berücksichtigung der Angaben, die sich auf den Sonnenauf-/untergang und Zufallszeiten beziehen.</p>
 <p>Bei der Aktivierung eines Jobs erfolgt eine Konsistenz Prüfung der resultierenden Zeitangabe. Wird eine bereits vergangene Zeit für einen Job errechnet, wird dieser ignoriert, aber in einer <em>piSchedule</em> Log-Datei protokolliert.</p>
-<p><em>(Detaillierte Beispiele und zusätzliche technische Aspekte der 'piSchedule Jobs' sind beschrieben in <a href="DE/piScheduleExamples.html"><em>Zeitsteuerung - Beispiele</em></a>)</em></p>
+<p><em>(Detaillierte Beispiele und zusätzliche technische Aspekte der 'piSchedule Jobs' sind beschrieben in <a href="de.examples.html"><em>Zeitsteuerung - Beispiele</em></a>)</em></p>
 <h4 id="weekPlan">Wochenplan</h4>
 <p>Der Wochenplan definiert für jeden Wochentag unterschiedliche Tagespläne. Ist für einen Wochentag kein Tagesplan definiert (oder ist er nicht verfügbar), wird der Plan des vorherigen Tages weiterverwendet. So lässt sich mit zwei Angaben für die Tage Montag .. Freitag ein Plan und für das Wochenende ein anderer Plan aktivieren.</p>
 <p>Die Einstellungen erfolgen auf der Seite "Haupt Menü". </p>
@@ -166,10 +166,10 @@ Ein Link "<em>piSchedule</em> <strong>News</strong>" öffnete aktuelle Hinweise 
 <br> &#9656;  &nbsp;Icon <strong>Aktualisieren</strong>  &nbsp; &nbsp;  Damit wird der  Tagesplan mit den noch anstehenden Job/Schaltvorgängen angezeigt ohne die Zeiten neu zu rechnen, bereits erfolgte Schaltvorgänge werden nicht mehr  angezeigt.
 <br> &#9656;  &nbsp; Icon <strong>Timeline Icon</strong>  &nbsp; &nbsp;  Der aktuelle Tagesplan wird als Balkendiagramm dargestellt, eine Änderung der einzelnen Jobs/Schaltvorgänge ist interaktiv am Bildschirm möglich.  <br />
 Einzelheiten und Bedienung siehe hier: 
-<a href="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/DE/piSchedule7timeline.html">&#9656; <em>piSchedule <strong>Timeline</strong></em></a>
+<a href="de.timeline.html">&#9656; <em>piSchedule <strong>Timeline</strong></em></a>
 <br> &#9656;  &nbsp; <strong>[Tages-Logs]</strong>  &nbsp; &nbsp;  Zeigt eine Seite mit den am Tag bereits ausgeführten Jobs/Schaltvorgängen (siehe unten).
 <br> &#9656;  &nbsp; Icon <strong>pilight</strong>  &nbsp; &nbsp;  Direkter Aufruf von <strong>pilight</strong> mit seiner WEB-GUI Oberfläche 
-<br> &#9656;  &nbsp; Mit der rechten Schaltfläche <img title="plus" src="pic.plus.png" width="24"> können zusätzlich Jobs definiert werden, sie gelten aber nur für den laufenden Tag. Ein erneutes Laden der INI Datei entfernt diese hinzugefügten Jobs. Zum permanenten Hinzufügen von Jobs zu einem Tagesplan siehe  <a href="DE/piScheduleEdit.html"><strong>Tagesplan/Jobs Editieren</strong></a>. <br />
+<br> &#9656;  &nbsp; Mit der rechten Schaltfläche <img title="plus" src="pic.plus.png" width="24"> können zusätzlich Jobs definiert werden, sie gelten aber nur für den laufenden Tag. Ein erneutes Laden der INI Datei entfernt diese hinzugefügten Jobs. Zum permanenten Hinzufügen von Jobs zu einem Tagesplan siehe  <a href="de.scheduleEdit.html"><strong>Tagesplan/Jobs Editieren</strong></a>. <br />
 <br>
 Mit dem Info-Symbol <img title="info" src="pic.ginfo.png" width="24">  öffnet sich eine Hilfe zu diesem Bereich. 
 <br><br></li>
@@ -189,18 +189,18 @@ Der Aufruf dieser Seite lädt automatisch eine Liste der <strong>[Heute]</strong
 <p>Zur Erstellung oder Bearbeitung von Joblisten / Tagesplänen wird über das Hauptmenü eine Editor-Dialogseite aufgerufen.</p>
 <img title="Edit Job Lists" src="pic.de.jobListSelect.png" hspace="40"  vspace="15" width="451" align="bottum"><br><br>
 Die Menüschaltfläche <strong>[Job Listen]</strong> bietet alle vorhandenen Tagespläne (INI/Text-Dateien) zur Auswahl für die Bearbeitung der <em>Jobs</em>. Die geöffnete Seite ermöglicht es interaktiv <em>Jobs</em> zu definieren und die <em>Tagespläne</em> zu bearbeiten, abzuspeichern (als INI/Text Datei) wie auch neue Tagespläne anzulegen.
-<br>Diese Funktion ist ausführlich beschrieben unter <a href="DE/piScheduleEdit.html"><strong>Tagesplan/Jobs Editieren</strong></a>
+<br>Diese Funktion ist ausführlich beschrieben unter <a href="de.scheduleEdit.html"><strong>Tagesplan/Jobs Editieren</strong></a>
 <br></p>
 <hr />
 <h3 id="examples"> Beispiele für INI/Text und Prefs Dateien</h3>
 <ul>
-<li><a href="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/piSchedule.ini">piSchedule.ini</a></li>
-<li><a href="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/piSchedule.prefs.json">piSchedule.prefs.json</a></li>
+<li><a href="piSchedule.ini">piSchedule.ini</a></li>
+<li><a href="piSchedule.prefs.json">piSchedule.prefs.json</a></li>
 </ul>
 <hr />
 <h3 id="setup"><em>piSchedule</em> Setup</h3>
 <p><strong><em>piSchedule</em></strong> ist ein Python Programm, es läuft auf dem Raspberry mit einer Installation von <strong><em>pilight 6.0 oder 7.0</em></strong>, dies  muss für den Betrieb von <em>piSchedule</em> laufen.    </p>
-<p>Die Einrichtung/Setup aller <strong><em>piSchedule</em></strong> Komponenten ist ausführlich beschrieben auf der Seite <a href="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/DE/piSchedule7Setup.html">&#9656; <em>piSchedule <strong>Setup</strong></em></a></p>
+<p>Die Einrichtung/Setup aller <strong><em>piSchedule</em></strong> Komponenten ist ausführlich beschrieben auf der Seite <a href="de.schedule7Setup.html">&#9656; <em>piSchedule <strong>Setup</strong></em></a></p>
 <hr />
 <h3 id="appendix"> Anhang</h3>
 <h4 id="service">Start/Stop mit 'service'</h4>
