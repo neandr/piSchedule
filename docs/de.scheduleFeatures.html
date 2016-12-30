@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-us">
+   <head>
+      <meta charset="utf-8" />
+
+      <base href="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/" >
+      <title>piSchedule Job Eigenschaften</title>
+
+      <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+
+    <!-- optional: Einbinden der jQuery-Bibliothek -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+   </head>
+   <body>
+
+      <div class="container container-site">
+         <div style="height: 10px;"></div>
+
+         <div>  <!-- $$$content$$$ -->
+
+<!-- lang="DE" -->
+
+<!-- title="piSchedule Job Eigenschaften" -->
+
+<!-- doc="piScheduleFeatures.html" -->
+
+<!-- base="" -->
+
+<h2 id="pischedule">
+    <em>piSchedule</em> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <small>Job Eigenschaften&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>vers.0.3 2015-03-10_1000</small>
+    </small></h2>
+
+<hr>
+
+<p>Schalten von Geräten mit <em>piSchedule</em> erfolgt mittels Kommandos -- genannt 'Jobs' -- die mit pilight zur Ausführung kommen, d.h. es wird bestimmt wann welches Gerät wie geschaltet wird. Für die 'Jobs' bieten sich die folgenden Einstellmöglichkeiten:</p>
+<p><strong>Datum/Zeit</strong></p>
+<p>Eine sehr flexible Handhabung von Datum/Zeit wird erreicht durch den Einsatz von <a href="http://labix.org/python-dateutil/">python-dateutil</a>. Hierdurch erlaubt <em>piSchedule</em> die Unterstützung verschiedenster Formate für Datum/Zeit.</p>
+<p><strong>Zeitdifferenz</strong></p>
+<p>Eine absolute Zeitangabe lässt sich durch eine Zeitdifferenz ändern. Die Zeitdifferenz kann zu der absoluten Zeitangabe addiert oder substrahiert werden. Außerdam kann ein Zufallszeitwert verwendet werden, hierdurch variiert der Ein/Aus Schaltzeitpukt von Tag zu Tag.</p>
+<p><strong>Sonnenauf-/untergang</strong></p>
+<p>Um eine Schaltzeit nach dem Sonnenauf- oder untergang zu variieren, wird lediglich das Schlüsselwort 'sunrise' bzw 'sunset' angegeben. Zusätzlich lassen sich auch diese Angaben wieder mit einer Zufallszeitdifferenz versehen. Hierzu müssen die Geo-Koordinaten vor dem Start gesetzt sein.</p>
+<h4 id="zeitplan">Zeitplan</h4>
+<p>Um anzugeben welche Geräte zu welchen Zeit Ein/Aus geschaltet werden sollen, werden die 'Jobs' in einer Einstellungsdatei (INI) zusammengefasst und beim Starten von piSchedule.py übergeben. Diese Einstellungsdatei ist ein einfaches Textformat.</p>
+<p>Siehe unten <strong>Definitionen</strong> bzgl. der Syntax.</p>
+<p><strong>Tagesplan</strong>  <br />
+Der Plan gilt jeweils für einen Tag. Beim Tageswechsel wird die INI Datei, die beim Starten übergeben wurde neu geladen. Zeiten, die vom Sonnenauf-/untergang abhängen und Zufallszeiten werden dabei neu berechnet.</p>
+<p><strong>Text/Kommentare im Tagesplan</strong>   <br />
+Die INI Datei kann Kommentare in separaten Zeilen enthalten.
+Kommentarzeilen haben als erstes Nicht-Leerzeichen ein Sternchen.
+Leerzeilen sind erlaubt.</p>
+<h3 id="definitionen-eines-jobs">Definitionen eines Jobs</h3>
+<p><br>
+Ein <strong>'state'</strong> ODER <strong>'state_and_time'</strong> ist ERFORDERLICH, aber beide sind NICHT erlaubt für einen Gerätejob.</p>
+<pre><code>  state            = "on" | "off"
+
+                     Dies führt ein unmittelbares Schalten aus in dem Moment, wenn 'piSchedule' aufgerufen wird.
+
+  state_and_time   = switchDef *[;switchDef]
+</code></pre>
+<p><br></p>
+<p><strong>'switchDef'</strong> MUSS einmal und KANN mehrmals vorhanden sein.</p>
+<pre><code>  switchDef        = ( on|off,absoluteTime )
+                    / ( on|off,[deltaTime][,vTime])
+                     Ein Schaltzeitpunkt benötigt die Angabe 'on' ODER 'off'.
+                     Zeitwerte können 'absolute' Datum/Zeitangaben oder eine Zeitdifferenz sein 
+                     'off' Definitionen ohne Angabe von 'vTime' folgen einer vorherigen 'on' Zeit.
+                     'deltaTime' und 'vTime' können in beliebiger Reihnfolge angegeben werden.
+</code></pre>
+<p><br>
+<strong>Zeit</strong> Formate</p>
+<pre><code>absoluteTime     = Formate entsprechen 'dateutil'
+
+deltaTime        = '+|-|~|~-h:min'
+                     Ein führendes Kontrollzeichen MUSS einmal angegeben werden.
+                        führendes Plus  = addiere 'h:min' zu 'vTime'
+                        führendes Minus = substrahiere 'h:min' von 'vTime'
+                        führendes ~     = addiere eine Zufallszeit im Bereich von 'h:min' zu 'vTime' 
+                        führende  ~-    = substrahiere eine Zufallszeit im Bereich von 'h:min' von 'vTime'
+
+vTime            = OPTIONAL, wenn NICHT definiert wird 'vTime' als aktuelles Datum/Zeit angenommen
+                     'vTime' ohne Datum wird für den aktuellen Tag bearbeitet
+
+                     'vTime' KANN sein 'sunrise' ODER 'sunset' aber die Werte für 'Latitude' und
+                     'Longitude' MÜSSEN in 'piSchedule.prefs.json' definiert sein
+</code></pre>
+<p><strong>Beispiel</strong></p>
+<p>Siehe <strong><a href="piSchedule.ini">piSchedule.ini</a></strong> </p>
+
+
+
+
+         </div>  <!-- $$$content$$$ -->
+         <hr />
+
+<p align="center" id="freeProjectDE" style="display:block">
+            &copy; gNeandr  &nbsp; &nbsp; --  &nbsp; &nbsp; 
+            <strong><em>piSchedule</em></strong> ist ein freies Open Source Projekt &nbsp; &nbsp; -- &nbsp; &nbsp; Feel free to use it. 
+         </p> 
+
+         <p align='center' id="$$$freeProjectEN" style="display:none">
+            &copy; gNeandr  &nbsp; &nbsp; --  &nbsp; &nbsp; 
+            <strong><em>piSchedule</em></strong> is a free Open Source Project &nbsp; &nbsp; -- &nbsp; &nbsp; Feel free to use it. 
+         </p> 
+
+
+         <p align="center" id="donationDE" style="display:block">
+              <b><a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=N3HLSJP5CVLSS' 
+              title='Danke für ihre Spende an piScheduler und die Benutzung von Paypal'> 
+              <img alt='Donate button' src='https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/Donate-40g.png' />
+              &nbsp; &nbsp; Spende was <i>piSchedule</i> Dir wert ist.</a></b>
+            <br>
+            <a href="https://groups.google.com/forum/#!forum/piSchedule7">Kommentare, Fragen und Rückmeldungen im <i>piSchedule</i>  <strong>Forum</strong></a>
+         </p>
+
+         <p align='center' id="$$$donationEN" style="display:none">
+             <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=N3HLSJP5CVLSS'
+             title='Thanks for your donation for piScheduler and using Paypal'> 
+             <img alt='Donate button' src='https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/Donate-40g.png' />
+             &nbsp; &nbsp; Donate what <i>piSchedule</i> is worth for you. </a></b>
+            <br>
+            <a href="https://groups.google.com/forum/#!forum/piSchedule7">For Comments, Questions and Feedback please use <i>piSchedule</i>  <strong>Forum</strong></a>
+         </p>
+
+
+
+      </div>
+   </body>
+</html>
+
