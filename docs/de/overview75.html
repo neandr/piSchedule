@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-us">
+   <head>
+      <meta charset="utf-8" />
+
+      <base href="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/" >
+      <title>piSchedule Überblick</title>
+
+      <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+
+    <!-- optional: Einbinden der jQuery-Bibliothek -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+   </head>
+   <body>
+
+      <div class="container container-site">
+         <div style="height: 10px;"></div>
+
+         <div>  <!-- $$$content$$$ -->
+
+      <!-- lang="DE" -->
+
+<!-- title="piSchedule Überblick" -->
+
+<!-- doc="piSchedule7Overview75.html" -->
+
+<!-- donation -->
+
+<!-- base="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/" -->
+
+<!-- keys 
+ key: timeSwitching
+ key: jobDefinition
+ key: dayPlanDefinition
+ key: weekPlan
+ key: service
+ key: web
+ key: webGUI
+ key: mainMenu
+ key: dayPlan
+ key: dayLogs
+ key: jobLists
+ key: examples
+ key: setup
+ key: appendix
+ key: service
+ key: preferences
+ key: geoLocation
+ key: locatization
+ key: logging
+ key: contribution
+ -->
+
+<h2><i>piSchedule</i>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <small>Eine Erweiterung für pilight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>vers.0.7.5 &nbsp;&nbsp; 2016-02_21_11</small></small>
+<p style="text-align: right;"><small><small><a href="EN/piSchedule7Overview75.html">English Version </a></small></small> <img title="English" src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/flagUS.png" align="bottum"> </p><hr></h2>
+
+<p><strong><em>piSchedule</em></strong> erweitert die Anwendung <strong>pilight</strong> zum zeitgesteuerten Schalten von Geräten nach definierbaren Tagesplänen, die mit Sonnenauf-/untergang sowie durch Zufallszeiten variieren können. Mit der Hausbeleuchtung eingesetzt wird so Anwesenheit und Aktivität simuliert.   </p>
+<p><strong><em>piSchedule</em></strong> ist eine einfach zu bedienende Browser Anwendung lauffähig auf Smartphones, Tablets oder auf PC's. Mittels Menüsteuerung erfolgen Einstellungen, Betrieb, das Verfolgen von Meldungen oder das Aufrufen der Dokumentation. <strong>pilight</strong> kann direkt aus dem <em>piSchedule</em> Browserbetrieb aufgerufen werden, sodass eine direkte Überwachung oder gezieltes Ein/Aus Schalten möglich ist.   </p>
+<p><em>piSchedule</em> richtet sich an Benutzer, die nach der initialen Installation das zeitgesteuerte Schalten wie auch die Anpassung des Tagesplanes den üblichen Elementen eines Smartphones oder PCs vornehmen möchten.  </p>
+<p><img title="piSchedule Start Page" src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/startPage7-5_DE.png"   hspace="45" width="450" >  </p>
+<p>Siehe auch <b><a href="DE/piSchedule7Overview.html#pischedule-auf-smartphonetablet-oder-pc"><em>piSchedule</em> auf Smartphone und PC</a></b></p>
+<p><strong><em>piSchedule</em></strong> ist ein Python Programm, basiert auf <strong><a href="http://www.pilight.org/">pilight 6.0 oder 7.0</a></strong> und und ist darauf ausgerichtet die Bedienung über einen <strong>WEB Browser (zB. Firefox)</strong> vorzunehmen. <br />
+Die Einrichtung/Setup erfolgt über die Raspberry Terminalkonsole <strong>(<a href="DE/piSchedule7Setup.html">Beschreibung des Setups</a>)</strong>.  Danach ist die Benutzung der Terminal Konsole typischerweise nicht mehr erforderlich. Die Konsole kann zur Anzeige von Log Meldungen genutzt werden.</p>
+<hr />
+<h3 id="timeSwitching"> pilight Schalten mit Zeitplan -- <em>Überblick</em></h3>
+<p><em>piSchedule</em> bietet ein einfaches menügesteuertes Konzept für die Bedienung. </p>
+<h4 id="jobDefinition">Job  Definition</h4>
+<p>Mit <strong><em>piSchedule</em></strong>  definiert der Nutzer zu welcher <code>Zeit</code> welches <code>Gerät</code> <code>ein/aus</code> geschaltet werden soll -- dies wird als <strong>Job</strong> bezeichnet. Für die <code>Zeit</code> Definition eines 'Jobs' stehen eine Reihe von Methoden zur Verfügung: absolute Zeitangabe, relativ zu einer vorher definierten Zeit (z.B. um ein Gerät nach einer bestimmten Zeit auszuschalten), oder die Zeitangabe ist relativ zu <code>Sonnenaufgang/-untergang</code>. Alle Zeitangaben lassen sich mit einer Zufallszeit variieren. Mehrere Aktionen für dasselbe Gerät können als ein Job definiert werden.</p>
+<h4 id="dayPlanDefinition">Tagesplan</h4>
+<p>Ein Tagesplan besteht aus einer Reihe von Jobs die zu einem Tagesplan zusammengefasst werden. Die Tagesplan Definition bezieht sich jeweils auf einen Tagesablauf und wird unter einem beliebigen Namen als Text Datei (mit Erweiterung '.ini')  abgespeichert -- z.B. <code>piSchedule.ini</code>.</p>
+<p>Obwohl <em>piSchedule</em>  menügesteuert arbeitet, kann andererseits der kundige Anwender für die Erstellung von Jobs seinen bekannten Text Editor (vi, nano etc) verwenden und dadurch ggf. schneller seine Tagespläne erstellen.</p>
+<p>Aus den erstellten und gespeicherten Tagesplänen wählt der Anwender einen  gewünschten Plan  aus und aktiviert ihn dadurch. Mit dieser Aktivierung berechnet <em>piSchedule</em> die tagesaktuellen Schaltzeiten mit Berücksichtigung der Angaben, die sich auf den Sonnenauf-/untergang und Zufallszeiten beziehen.</p>
+<p>Bei der Aktivierung eines Jobs erfolgt eine Konsistenz Prüfung der resultierenden Zeitangabe. Wird eine bereits vergangene Zeit für einen Job errechnet, wird dieser ignoriert, aber in einer <em>piSchedule</em> Log-Datei protokolliert.</p>
+<p><em>(Detaillierte Beispiele und zusätzliche technische Aspekte der 'piSchedule Jobs' sind beschrieben in <a href="DE/piScheduleExamples.html"><em>Zeitsteuerung - Beispiele</em></a>)</em></p>
+<h4 id="weekPlan">Wochenplan</h4>
+<p>Der Wochenplan definiert für jeden Wochentag unterschiedliche Tagespläne. Ist für einen Wochentag kein Tagesplan definiert (oder ist er nicht verfügbar), wird der Plan des vorherigen Tages weiterverwendet. So lässt sich mit zwei Angaben für die Tage Montag .. Freitag ein Plan und für das Wochenende ein anderer Plan aktivieren.</p>
+<p>Die Einstellungen erfolgen auf der Seite "Haupt Menü". </p>
+<p><img title="piSchedule Start Page" src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/weekSchedule7DE.png"   hspace="45" width="450" > </p>
+<p>Für jeden Wochentag wird in dem Menüfenster ein 'Tagesplan' aus den vorhandenen Tagesplänen ausgewählt. Die Auswahl '--' entfernt einen vorher ausgewählten Tagesplan, damit wird der Tagesplan des vorherigen Wochentages verwendet. </p>
+<hr />
+<h3 id="service"> <em>piSchedule</em> -- Start/Stop</h3>
+<p>Beim Starten von <em>piSchedule</em> werden individuelle Parameter -- die Präferenzen ermittelt:</p>
+<ul>
+<li><strong>Ort</strong> an dem <em>piSchedule</em> betrieben wird. Dies dient der täglichen Neuberechnung von <em>Sonnenauf-/untergang</em>.</li>
+<li><strong>Sprache</strong> (locale) Sprachcode/-version. Die Sprachversion kann über die Browser Oberfläche (Web-GUI) geändert werden.<br>Die derzeit unterstützen <em>piSchedule</em> Sprachversionen  sind DE für Deutsch, EN für Englisch. <br><small> Eine Anpassung für weitere Sprachen ist mittels einer JSON Datei möglich</small>. Eine derartige Sprach-/Datei-Erweiterung wird mit einem Neustart von <em>piSchedule</em> direkt unterstützt.</li>
+<li><strong>Server/Port</strong> Automatische Ermittelung der Netzwerkdetails.</li>
+</ul>
+<div style="margin-left: 20px;"> 
+<b>Hinweis</b>
+<br><i>Alle Parameter/Präferenzen werden in der Datei  `piSchedule.prefs.json` gespeichert. Mit einem WEB-Seiten Aufruf ('/prefs') lassen sich diese Daten anzeigen.</i>
+</div>
+
+<h3 id="starten-als-service">Starten  <small> -- als Service  </small></h3>
+<p><em>piSchedule</em>   wird auf der Konsole gestartet mit<br />
+<br> &nbsp; &nbsp; &nbsp; &nbsp; <code>sudo service piSchedule start</code>   </p>
+<div style="margin-left: 30px;"><b>Wichtige Hinweise:</b></div>
+
+<div style="margin-left: 45px;"><ul><li><i>piSchedule</i> startet im Hintergrund, das Abschalten der Konsole bedeutet nicht den Abbruch von <i>piSchedule</i>.</li> 
+<li>Mittels des Starten mit "service" wird  <i>piSchedule</i> auch mit dem Einschalten / nach Stromausfall und Wiederanlauf des Raspberry automatisch gestartet. Wurde vorher ein Tagesplan ausgewählt und aktiviert, wird dieser wieder geladen und dann die Jobs dieses Tagesplanes ausgeführt.</li></ul>
+</div>
+
+<p>Der erfolgreiche Start von <em>piSchedule</em> zeigt auf der Konsole eine Meldung    </p>
+<pre><code>   pi@raspberrypi / $ sudo service piSchedule start
+   [....] Starting system piSchedule daemon:Starting /home/pi/piSchedule7/piSchedule.py...
+   Detaching to start /home/pi/piSchedule7/piSchedule.py...done.
+   . ok 
+   [ ok ] /home/pi/piSchedule7/piSchedule.py is running.
+   piSchedule  {server}:{port}  &gt;&gt;192.168.178.80:5005&lt;&lt; 
+</code></pre>
+
+<p>Die weitere Bedienung erfolgt über den Browser (Web-GUI). Hierzu ist die Startadresse erforderlich.<br>Die durch den Startbefehl erfolgte Ausgabe zeigt auf der Konsole in der letzten Zeile auch die erforderliche Startadresse, im vorstehenden Beispiel ist dies <code>192.168.178.80:5005</code>. 
+<br> <img title="piSchedule Start Page" src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/startPage-2_DE.png"   hspace="45" width="450" ><br />
+<br> Mit  dieser Eingabe in der Adresszeile des Browsers startet  <i><b>piSchedule</b></i>.</p>
+<h3 id="Stoppen-als-Service">Stoppen  <small> -- als Service  </small></h3>
+
+<p><em>piSchedule</em> wird abgebrochen mit:
+<br> &nbsp; &nbsp; &nbsp; &nbsp; <code>sudo service piSchedule stop</code>  </p>
+<hr />
+<h2 id="web"><em>piSchedule</em> auf Smartphone/Tablet oder PC</h2>
+<p>Nach dem Starten von <strong><em>piSchedule</em></strong> auf der Konsole erfolgt der Betrieb von <em>piSchedule</em> mittels des Browsers. Die Konsole ist nur in Ausnahmefällen notwendig, zB. zur Betrachtung von Log Dateien.
+<br> <br />
+Die  <em>piSchedule</em> Startadresse http://{server}:{port} im Adressfeld des Browser eingegeben öffnet die <em>piSchedule</em> Web-Seite mit dem <strong>'Aktuellen Tagesplan'</strong> <em>(siehe auch oben)</em>. 
+<br>
+<br>
+Auf den Browser Seiten und Dialogen helfen Info-Symbole <img title="info" src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/ginfo.png" width="24"> Dokumentationen und Erläuterungen zu den jeweiligen Bereichen zu öffnen. 
+<br><br></p>
+<h2 id="webGUI"> Übersicht Web Seiten</h2>
+<h4 id="mainMenu">Haupt Menü / Home Page</h4>
+<p><img title="Home Page" src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/homePage-1_DE.png"  hspace="15" vspace="15" width="450">  <br />
+<em><strong>Hinweis</strong></em>  &nbsp;&nbsp; Die <em>piSchedule</em> Kopfzeile dient immer als Schaltfläche um zum Hauptmenü zurückzukehren.          <br />
+<br>Das <strong>Hauptmenü</strong> gestattet den Zugriff auf die verschiedenen  <em>piSchedule</em> Funktionen, hat einen direkten Aufruf von  <strong>[pilight]</strong> und ein Menü mit  <strong>[Hilfe]</strong> für Aufrufe der Beschreibungen von  <em>piSchedule</em>.  <br />
+<br>Unter  <strong>[Hilfe]</strong>  lässt sich auch die Sprachversion für das WEB-GUI und für die Dokumentation auswählen.
+<br><br><b>[Über <i>piSchedule</i>]</b><br>
+<table border="0" cellpadding="0" cellspacing="0" width="80%"><tr>
+<td valign="top"><a href="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/about_piSchedule_DE.png"><img
+src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/about_piSchedule_DE.th.png" alt="" style="margin:10px" ></a></td>
+<td valign="top">Dieser Menüpunkt öffnet einen Dialog zur
+Anzeige der Installationsdetails, Aufrufe zum <a href="https://groups.google.com/forum/#!forum/piSchedule7"><i>piSchedule</i>  <strong>Forum</strong></a> und um ein E-Mail an den Entwickler zu senden.</td>
+</tr></table></p>
+<h4 id="dayPlan"> [Tagesplan] Übersicht &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><em>(Ortsangabe, Sonnenauf-/untergang, Geo-Koordinaten)</em></small></h4>
+<p>Die Seite <strong>'Aktueller Tagesplan'</strong> zeigt den aktuellen Zustand von <em>piSchedule</em>.<br> Diese Seite öffnet sich <ul><li>automatisch beim ersten Aufrufen der Web-GUI. </li><li>mit der entsprechenden blauen Schaltfläche auf der Homepage</li></ul>  <br />
+<img title="Dayplan Selection" src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/selectDayplan7-5_DE.png"  hspace="40" width="451" >
+<br><p style="margin-left: 45px;">(siehe auch oben erstes Bild).</p><br>
+Die Seite präsentiert in drei Abschnitten: 
+<br> <ol><li> <strong>Tabelle mit Ortsangabe</strong> und die Werte für die GeoKordinaten sowie Tageszeiten für Sonnenauf-/untergang<br>
+Zusätzlich ist in der Tabelle die aktuelle piSchedule Versions, die aktuelle Spracheinstellung und die Methode der Standortermittelung (ip/gmaps - siehe Setup) angegeben.
+<br>
+Ein Link "<em>piSchedule</em> <strong>News</strong>" öffnete aktuelle Hinweise zu der Verwendung von <em>piSchedule</em> und bietet eine direkte Verbindung zum <a href="https://groups.google.com/forum/#!forum/pischedule7"><em>piSchedule</em> <strong>Forum</strong></a><br><br>
+</li>
+<li> <strong>Menüleiste mit Schaltflächen</strong>   <br> &#9656;  &nbsp; Die <b>blaue  Schaltfläche</b> zeigt, sofern vorher ein Tagesplan ausgewählt wurde dessen Namen (im Bild <code>piSchedule.ini</code>), hat aber auch eine Menüfunktion zur Auswahl und zum Laden eines der gespeicherten Tagespläne. Mit dem Laden erfogt eine Neu-Berechnung aller Zeiten.
+<br> &#9656;  &nbsp;Icon <strong>Aktualisieren</strong>  &nbsp; &nbsp;  Damit wird der  Tagesplan mit den noch anstehenden Job/Schaltvorgängen angezeigt ohne die Zeiten neu zu rechnen, bereits erfolgte Schaltvorgänge werden nicht mehr  angezeigt.
+<br> &#9656;  &nbsp; Icon <strong>Timeline Icon</strong>  &nbsp; &nbsp;  Der aktuelle Tagesplan wird als Balkendiagramm dargestellt, eine Änderung der einzelnen Jobs/Schaltvorgänge ist interaktiv am Bildschirm möglich.  <br />
+Einzelheiten und Bedienung siehe hier: 
+<a href="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/DE/piSchedule7timeline.html">&#9656; <em>piSchedule <strong>Timeline</strong></em></a>
+<br> &#9656;  &nbsp; <strong>[Tages-Logs]</strong>  &nbsp; &nbsp;  Zeigt eine Seite mit den am Tag bereits ausgeführten Jobs/Schaltvorgängen (siehe unten).
+<br> &#9656;  &nbsp; Icon <strong>pilight</strong>  &nbsp; &nbsp;  Direkter Aufruf von <strong>pilight</strong> mit seiner WEB-GUI Oberfläche 
+<br> &#9656;  &nbsp; Mit der rechten Schaltfläche <img title="plus" src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/plus.png" width="24"> können zusätzlich Jobs definiert werden, sie gelten aber nur für den laufenden Tag. Ein erneutes Laden der INI Datei entfernt diese hinzugefügten Jobs. Zum permanenten Hinzufügen von Jobs zu einem Tagesplan siehe  <a href="DE/piScheduleEdit.html"><strong>Tagesplan/Jobs Editieren</strong></a>. <br />
+<br>
+Mit dem Info-Symbol <img title="info" src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/ginfo.png" width="24">  öffnet sich eine Hilfe zu diesem Bereich. 
+<br><br></li>
+<li> <strong>Aktuelle Schaltvorgänge</strong> des Tages
+<br>Diese Tabelle zeigt alle für den Tag noch anstehenden Schaltvorgänge. Die Tabellenzeilen resultieren aus der Auflösung der Einträge in der ausgewählten INI Datei (siehe blaues Menüfeld oberhalb). 
+<br>Neben den Schaltzeiten ist die EIN- oder AUS-Anweisung zu sehen. Bei AUS-Anweisungen zeigt ein Klammerausdruck die zugehörige EIN-Anweisung.
+<br> Mit der Schaltfläche <img title="minus" src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/minus.png" width="24"> rechts in den Tabellenzeilen lässt sich der Schaltvorgang löschen, auch hier wieder ist dies nur gültig solange die INI Datei nicht neu geladen wird. <br />
+</li>
+</ol></p>
+<h4 id="dayLogs">[Tages-Logs] anzeigen</h4>
+<p><img title="Day Logs" src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/dayLogs_DE.png" hspace="40" vspace="15" width="451">   <br />
+<br>
+Der Aufruf dieser Seite lädt automatisch eine Liste der <strong>[Heute]</strong> bereits ausgeführten Schaltaktionen.
+<br> <strong>[Tag wählen]</strong> -- Zeigt ein Menü mit den Wochentagen, um alternativ  die Liste eines anderen Wochentages aufzurufen.<br><em>piSchedule</em> schreibt diese Log Dateien jeden Tag im Wochenrhythmus neu.
+<br><strong>[&lt;&lt; Zurück]</strong> -- Zeigt wieder den <em>'Aktuellen Tagesplan'</em></p>
+<h4 id="jobLists">[Job Listen] Bearbeiten</h4>
+<p>Zur Erstellung oder Bearbeitung von Joblisten / Tagesplänen wird über das Hauptmenü eine Editor-Dialogseite aufgerufen.</p>
+<img title="Edit Job Lists" src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/jobListSelect_DE.png" hspace="40"  vspace="15" width="451" align="bottum"><br><br>
+Die Menüschaltfläche <strong>[Job Listen]</strong> bietet alle vorhandenen Tagespläne (INI/Text-Dateien) zur Auswahl für die Bearbeitung der <em>Jobs</em>. Die geöffnete Seite ermöglicht es interaktiv <em>Jobs</em> zu definieren und die <em>Tagespläne</em> zu bearbeiten, abzuspeichern (als INI/Text Datei) wie auch neue Tagespläne anzulegen.
+<br>Diese Funktion ist ausführlich beschrieben unter <a href="DE/piScheduleEdit.html"><strong>Tagesplan/Jobs Editieren</strong></a>
+<br></p>
+<hr />
+<h3 id="examples"> Beispiele für INI/Text und Prefs Dateien</h3>
+<ul>
+<li><a href="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/piSchedule.ini">piSchedule.ini</a></li>
+<li><a href="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/piSchedule.prefs.json">piSchedule.prefs.json</a></li>
+</ul>
+<hr />
+<h3 id="setup"><em>piSchedule</em> Setup</h3>
+<p><strong><em>piSchedule</em></strong> ist ein Python Programm, es läuft auf dem Raspberry mit einer Installation von <strong><em>pilight 6.0 oder 7.0</em></strong>, dies  muss für den Betrieb von <em>piSchedule</em> laufen.    </p>
+<p>Die Einrichtung/Setup aller <strong><em>piSchedule</em></strong> Komponenten ist ausführlich beschrieben auf der Seite <a href="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/DE/piSchedule7Setup.html">&#9656; <em>piSchedule <strong>Setup</strong></em></a></p>
+<hr />
+<h3 id="appendix"> Anhang</h3>
+<h4 id="service">Start/Stop mit 'service'</h4>
+<p>Der <em>piSchedule</em> Startbefehl <code>sudo service piSchedule start</code> startet eine Instanz von <em>piSchedule</em>. Damit wird <em>piSchedule</em> im Hintergrund ausgeführt.   </p>
+<p>Mit 'service' Befehlen ist der Betrieb von <em>piSchedule</em> zu kontrollieren, siehe auch:</p>
+<pre><code>    pi@raspberrypi ~ $ sudo service piSchedule
+    Usage: /etc/init.d/piSchedule {start|stop|restart|status}
+    pi@raspberrypi ~ $
+</code></pre>
+
+<h4 id="preferences"><em>piSchedule</em> Präferenzen</h4>
+<p><em>piSchedule</em> speichert wichtige Parameter in der Datei "piSchedule.prefs.json" und ließt mit Starten jeweils die zuletzt genutzten Werte aus dieser Datei ein. Ist diese Datei nicht vorhanden, werden die Werte ermittelt und zur weiteren Nutzung abgespeichert.</p>
+<p>Die Präferenzdatei "piSchedule.prefs.json" kann am Raspberry System Prompt zurückgesetzt werden mit
+<br> &nbsp; &nbsp; &nbsp; &nbsp; <code>sudo echo "[]" &gt; ~/piSchedule7X/piSchedule.prefs.json</code>
+<p style="margin-left: 45px;"><small><em> <code>piSchedule7X</code> durch das aktuell verwendete Verzeichnis ersetzen!</em></small></p> </p>
+<p>Die aktuellen Präferenzen auf der WEB Seite anzeigen mit:  <code>http://{server}:{port}/prefs</code></p>
+<h4 id="geoLocation">  Ortsdaten - Sonnenauf-/untergang</h4>
+<p>Die täglichen Zeiten für Sonnenaufgang und -untergang berechnet <em>piSchedule</em> aus dem Installationsort des Raspberry mittels der GeoCoordinaten (Longitude/Latitude).</p>
+<p>Die GeoCoordinaten werden mit einer der folgenden Methoden zur Verfügung gestellt:</p>
+<ul>
+<li>Internetdienst  <code>http://ip-api.com/json/</code> </li>
+<li>Google Abfrage  <code>https://maps.googleapis.com/maps/api/geocode/json</code></li>
+<li>manuelle Eingabe in der Präferenzdatei <code>~/piSchedule7X/piSchedule.prefs.json</code> </li>
+</ul>
+<p>Die Standard Installation nutzt den erst genannten Dienst, steht dieser nicht zur Verfügung erfolgt automatisch eine Anfrage bei dem Google Dienst, hierzu muss der Installationsort in der Präferenzdatei angegeben sein. </p>
+<p>Sollten die GeoCoordinaten nur ungenau ermittelt worden sein, steht die manuelle Eingabe von Longitude/Latitude zur Verfügung. Dabei wird die Methode als <code>fix</code> angegeben.</p>
+<p>Ausschnitt aus der Präferenzdatei für die Ermittelung von Sonnenaufgang und -untergang</p>
+<pre><code>&quot;location&quot;: &quot;Mettmann&quot;,
+&quot;longitude&quot;: &quot;6.9705&quot;,
+&quot;geo&quot;: &quot;fix&quot;,
+&quot;latitude&quot;: &quot;51.2558&quot;,
+</code></pre>
+
+<p>"geo" kann sein <tt>ip</tt>, <tt>gmap</tt> oder <tt>fix</tt>  <br />
+<em><strong>Hinweis</strong></em>  <br />
+Die angewandte Methode zur Ermittlung der GeoCoordinaten ist auch in den Kopfzeilen des 'Aktuellen Tagesplanes'  angezeigt. </p>
+<p>Den Kopfzeilen des 'Aktuellen Tagesplanes' ist die angewandte Methode zur Ermittlung der GeoCoordinaten, ebenso auch die Version von <em>piSchedule</em> und die Sprachanpassung, z.B.
+<small><tt>Version 0.7.3.1 (DE / ip)</tt></small></p>
+<h4 id="locatization"> Sprachanpassung</h4>
+<p><em>piSchedule</em> unterstützt die Sprachen Deutsch (DE) und Englisch (EN) für die Browser Web-GUI und die Dokumentation. Durch die Erweiterung der Datei <em>~/piSchedule7/piStrings.json</em> lassen sich weitere Sprachen für die Web-GUI hinzufügen.  <br />
+<em><strong>Hinweis</strong></em>  <br />
+Die Dokumentation kann auch für andere Sprachen angepasst werden, dies muss jedoch in die Downloadstruktur eingebunden werden (Kontakt zum Autor erbeten).    </p>
+<h4 id="setPrefs">  Präferenzen setzen</h4>
+<p>Bestimmte <em>piSchedule</em> Präferenzwerte können über das webGUI direkt geändert werden mittels  <code>http://{server}:{port}/{prefs}?{wert}</code>:
+<ul>
+<li>Sprachversion - <code>/locale?DE|EN</code></li>
+<li>Geo Modus - <code>/geo?ip|gmaps|fix</code></li>
+<li>Ortsangabe (für 'gmaps') - <code>/location?{ort}</code>  </li>
+<li>GeoLocation (für 'fix') - <code>/longitude|latitude?{wert}</code> </li>
+<li>Grundeinstellung für Schedule INI.File - <code>/iniFile?{fileName}</code></li>
+</ul>
+<em>Hinweise</em>  <br />
+Das Zeichen | steht für alternative Angabe, also z.B. DE oder EN   <br />
+Es sind keine Umlaute zulässig (nur ASCII Zeichen)! Ortsangaben ggf. mit 'ue' statt 'ü' etc.</p>
+<h3 id="logging"> <em>piSchedule</em> Logging</h3>
+<p>Neben den Wochentagsdateien (Montag.log ... Sonntag.log) die die Schaltvorgänge festhalten (siehe https://{server}:{port}/logs), schreibt <em>piSchedule</em> Log Dateien im Verzeichnis  <code>~/piSchedule7X/logs/</code> die auf der Raspberry Konsole ausgegeben werden mit:</p>
+<ul>
+<li><code>cat ~/piSchedule7X/logs/piInfo.log</code> -- Meldungen bzgl. der Tagesplan/Job Berechnung     </li>
+<li><code>cat ~/piSchedule7X/logs/piSystem.log</code> -- System relevante Meldungen, Fehlermeldungen und Browserablauf
+<p style="margin-left: 45px;"><small><em> <code>piSchedule7X</code> durch das aktuell verwendete Verzeichnis ersetzen!   <br />
+Siehe auch log-Dateien mit '.log.1' und '.log.2' </em></small></p></li>
+</ul>
+<hr />
+<h3 id="contribution"> Beiträge</h3>
+<p>Dank geht an <a href="http://www.linux-tips-and-tricks.de/en">framp</a>! Sein Feedback und Testen sowie seine Linux Erfahrung haben zu Verbesserungen von Programm und Dokumentation beigetragen.</p>
+
+
+
+
+
+         </div>  <!-- $$$content$$$ -->
+         <hr />
+
+<p align="center" id="freeProjectDE" style="display:block">
+            &copy; gNeandr  &nbsp; &nbsp; --  &nbsp; &nbsp; 
+            <strong><em>piSchedule</em></strong> ist ein freies Open Source Projekt &nbsp; &nbsp; -- &nbsp; &nbsp; Feel free to use it. 
+         </p> 
+
+         <p align='center' id="$$$freeProjectEN" style="display:none">
+            &copy; gNeandr  &nbsp; &nbsp; --  &nbsp; &nbsp; 
+            <strong><em>piSchedule</em></strong> is a free Open Source Project &nbsp; &nbsp; -- &nbsp; &nbsp; Feel free to use it. 
+         </p> 
+
+
+         <p align="center" id="donationDE" style="display:block">
+              <b><a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=N3HLSJP5CVLSS' 
+              title='Danke für ihre Spende an piScheduler und die Benutzung von Paypal'> 
+              <img alt='Donate button' src='https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/Donate-40g.png' />
+              &nbsp; &nbsp; Spende was <i>piSchedule</i> Dir wert ist.</a></b>
+            <br>
+            <a href="https://groups.google.com/forum/#!forum/piSchedule7">Kommentare, Fragen und Rückmeldungen im <i>piSchedule</i>  <strong>Forum</strong></a>
+         </p>
+
+         <p align='center' id="$$$donationEN" style="display:none">
+             <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=N3HLSJP5CVLSS'
+             title='Thanks for your donation for piScheduler and using Paypal'> 
+             <img alt='Donate button' src='https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/Donate-40g.png' />
+             &nbsp; &nbsp; Donate what <i>piSchedule</i> is worth for you. </a></b>
+            <br>
+            <a href="https://groups.google.com/forum/#!forum/piSchedule7">For Comments, Questions and Feedback please use <i>piSchedule</i>  <strong>Forum</strong></a>
+         </p>
+
+
+
+      </div>
+   </body>
+</html>
