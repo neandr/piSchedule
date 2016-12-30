@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-us">
+   <head>
+      <meta charset="utf-8" />
+
+      <base href="https://neandr.github.io/piSchedule/" >
+
+      <title>piSchedule - Job Editor</title>
+
+      <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+
+    <!-- optional: Einbinden der jQuery-Bibliothek -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+   </head>
+   <body>
+
+      <div class="container container-site">
+         <div style="height: 10px;"></div>
+
+         <div>  <!-- $$$content$$$ -->
+
+<!-- lang="DE" -->
+
+<!-- title="piSchedule - Job Editor" -->
+
+<!-- doc="piScheduleEdit.html" -->
+
+<!-- base="" -->
+
+<h2 id="pischedule-wzxhzdk8wzxhzdk9wzxhzdk10wzxhzdk11wzxhzdk12-wzxhzdk4job-job-listen-editor-wzxhzdk13-wzxhzdk14-wzxhzdk15-wzxhzdk16-wzxhzdk17-wzxhzdk5-vers072-wzxhzdk18-wzxhzdk19-2015_09-05_14wzxhzdk6wzxhzdk7"><em>piSchedule</em>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <small>Job / Job Listen Editor &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <small> vers.0.7.2 &nbsp; &nbsp; 2015_09-05_14</small></small></h2>
+<hr/>
+
+<p>Geräte, die in <strong>pilight</strong> definiert sind, können zeitgesteuert mit Hilfe von <em>piSchedule</em> geschaltet werden. Diese Definitionen, bezeichnet als 'Job', werden für die automatische Abarbeitung in einer 'Tagesplan' Datei (.INI/Text Format) gespeichert. </p>
+<p>Obwohl sich die .INI/Text Datei auf dem Raspberry mit einem üblichen Editor bearbeiten lässt, ist es vor allem für den IT-ungeübten Benutzer einfacher den <em>Job / Job Listen Editor</em> zu nutzen. Er wird aufgerufen vom <em>piSchedule</em> Hauptmenü:</p>
+<p><img title="piSchedule on Console" src="pic.de.gotoEditJobList.png"   hspace="14" width="551" ></p>
+<p>Dabei wird mit dem Menü <strong>[Job Listen]</strong> die gewünschte Job Liste ausgewählt und dann zur Bearbeitung dargestellt:</p>
+<p><img title="piSchedule on Console" src="pic.de.editJobSchedule7.png"   hspace="14" width="551" ></p>
+<p>Der Dialog hat drei Teile</p>
+<ul>
+<li><strong>Präferenzen</strong> -- die aktuellen Präferenzwerte für Sonnenauf-/untergang basierend auf der Geolocation (Ortsbestimmung) und von Datum/Zeit</li>
+<li><strong>Job Definition</strong> -- hiermit wird ein einzelner 'Job' bearbeitet</li>
+<li><strong>Job Liste</strong>  -- dieser zeigt die 'Jobs' der geöffneten 'Job Listen Datei' - einer .INI-Datei.  <br />
+</li>
+</ul>
+<h3 id="jobDefinition">Job Definition</h3>
+<p><div style="margin-left: 30px;">Ein <strong>Job</strong>  muss in Übereinstimmung mit der pilight Konfiguration erfolgen und beinhaltet: <code>Gerät</code>, den Schaltzustand <code>EIN</code> oder  <code>AUS</code> und die Schaltzeit <code>Zeit</code> Werte.
+<br><br>
+Der Bereich 'Job Definition' unterstützt die Erstellung eines 'Jobs' mit Hilfe von sechs Schaltflächen und einer Textzeile.
+<br><br>
+Die erste Schaltfläche öffnet ein Menü mit den verfügbaren 'Geräten' (diese werden aus der pilight config.json gelesen). Die Schaltzeiten für 'EIN' oder 'AUS' und mögliche Variationen (Offset) mit festen oder zufälligen Zeiten sowie die Auswahl von Sonnenauf-/untergang (sunset/sunrise) werden mit den anderen Schaltflächen konfiguriert.
+</div></p>
+<h5 id="ein-und-aus-zeiten"><em>'EIN' und 'AUS' Zeiten</em></h5>
+<p><div style="margin-left: 30px;">Mit den Schaltflächen [EIN] und [AUS] öffnet sich ein Menü zur Auswahl einer bestimmten Schaltzeit oder der jeweiligen Zeit des Sonnenaufgangs oder Sonnenuntergangs. 
+<br><br>
+<img title="piSchedule on Console" src="pic.de.jobOffTime.png"   hspace="14" width="551" >
+<br><br>
+Der Menüpunkt [ + ] des 'AUS' Menüs gestattet die Definition einer Zeitdifferenz zu der gesetzten bzw. errechneten 'EIN' Schaltzeit.
+<br><br>
+Mit dem Menüpunkt [ Zeit ] wird die ggf. gesetzte Zeit (im Beispiel 22:30) -- oder falls noch keine Zeit gesetzt war die aktuelle Zeit -- als Vorgabe im nächsten Dialog voreingestellt:
+<br><br>
+<img title="piSchedule clockPicker" src="pic.de.clockPicker.png"   hspace="14" width="360" >
+<br><br>
+Nach Auswahl der Stunden- bzw. Minutenanzeige läßt sich der "Zeiger" auf den gewünscht Zeitwert setzen und mit [ Setzen ] die Zeit nehmen.
+</div></p>
+<h5 id="einaus-offset-zeiten-absolut-oder-zufallig"><em>EIN/AUS Offset Zeiten -- absolut oder zufällig</em></h5>
+<p><div style="margin-left: 30px;">Die 'EIN' oder 'AUS' Zeiten lassen sich um einen zufälligen Wert verschieben. Hierzu das <strong>[EIN Offset]</strong> bzw. <strong>[AUS Offset]</strong> Menü öffnen. Auch hier wird mit dem Dialog der Zeitwert eingestellt.
+<br><br>
+Die [ + ] und [ - ] Tasten setzen einen festen Wert, [ zufällig ] und [ zufällig minus ] generieren einen zufälligen Offset Wert. Dabei gibt der Wert die Spanne an, in der der Zufallswert liegen wird. [ zufällig minus ] verschiebt den Zeitpunkt vor den gesetzten [ EIN ] oder [ Aus ] Wert.
+<br><br><em>Hinweis:  Der resultierende Zeitpunkt wird mit Aktivierung der Job List als 'Aktueller Tagesplan' errechnet.</em>
+</div></p>
+<h5 id="schaltflache-hinzufugen"><em>Schaltfläche [Hinzufügen]</em></h5>
+<p><div style="margin-left: 30px;">Die angezeigte 'Job'-Definition wird zur "Job Liste" hinzugefügt und zwar <em>vor</em> die angegebene Zeile in der "Job Liste"
+</div> </p>
+<h5 id="schaltflache-loschen"><em>Schaltfläche [Löschen]</em></h5>
+<p><div style="margin-left: 30px;">Setzt die Textzeile und alle Schaltflächen zurück.
+</div></p>
+<h5 id="textzeile-unter-den-schaltflachen"><em>Textzeile unter den Schaltflächen</em></h5>
+<p><div style="margin-left: 30px;">Diese Zeile enthält die 'Job' Notierung wie sie aus den Einstellungen resultiert und in die 'Job Liste' eingetragen/hinzugefügt wird. Die führende Nummer zeigt die Position in der 'Job Liste'
+</div></p>
+<h3 id="job-liste">Job Liste</h3>
+<p><div style="margin-left: 30px;">Mit Öffnen der Seite "Editieren der 'Job Liste'" aus dem Hauptmenü  wird eine 'Job Liste' (.INI-Textdatei) oder eine Grundeinstellungen einer Job Liste übergeben und dargestellt. 
+<br><br>
+Der Bereich für die 'Job Liste' hat die folgenden Bereiche:  <br />
+</p>
+<ul>
+<li>Angabe der geöffneten "Job Listen Datei" für dem Textdatei Namen  und zwei Schaltflächen zum Speichern und Löschen</li>
+<li>Eine Textbox in der alle Jobs der Datei angezeigt werden</li>
+<li>Über der Textbox rechts ein Menü (Bleistift Symbol) um mit dem in der 'Job Liste' gewählten Job zu arbeiten
+</div></li>
+</ul>
+<h4 id="job-liste-bearbeiten"><em>"Job Liste" bearbeiten</em></h4>
+<p><div style="margin-left: 30px;"><img title="Tagesplan Funktionen" src="pic.de.dayScheduleEdit7.png"   hspace="14" width="551" >
+<br><br>Zur Bearbeitung einer Job Zeile wird diese ausgewählt, dann das Menü (Bleistift Symbol) geöffnet
+<ul><li>  <strong>[Bearbeiten]</strong> übergibt den ausgewählten 'Job' nach oben an den Bereich 'Job Definition'. Dort erscheint dieser Job auf den Schaltflächen und in der Textzeile darunter, somit lässt er sich bearbeiten.
+<br>Wie oben gezeigt schreibt dann der Menüpunkt ['Hinzufügen'] den bearbeiteten Job zurück in die Job Liste und zwar als Job/Zeile vor dem ausgewählten Job. Dadurch wird das Original nicht überschrieben, es kann aber mit dem Menü gelöscht werden.</li>
+<li> <strong>[Löschen]</strong> entfernt einen gewählten Job aus der Job Liste</li>
+<li> Zwei Menüpunkte dienen zur Verschiebung einzelner Jobs in der Job Liste</li>
+<li> <strong>[Zeile editieren]</strong> bietet die Möglichkeit die ausgewählte Zeile direkt zu bearbeiten; so lassen sich auch Leerzeilen oder Kommentare einfügen. (Kommentar beginnt mit einem Sternchenzeichen * )
+</ul><br>
+</div></p>
+
+
+
+
+         </div>  <!-- $$$content$$$ -->
+         <hr />
+
+<p align="center" id="freeProjectDE" style="display:block">
+            &copy; neandr  &nbsp; &nbsp; --  &nbsp; &nbsp; 
+            <strong><em>piSchedule</em></strong> ist ein freies Open Source Projekt &nbsp; &nbsp; -- &nbsp; &nbsp; Feel free to use it. 
+         </p> 
+
+         <p align='center' id="$$$freeProjectEN" style="display:none">
+            &copy; neandr  &nbsp; &nbsp; --  &nbsp; &nbsp; 
+            <strong><em>piSchedule</em></strong> is a free Open Source Project &nbsp; &nbsp; -- &nbsp; &nbsp; Feel free to use it. 
+         </p> 
+
+
+         <p align="center" id="donationDE" style="display:block">
+              <b><a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=N3HLSJP5CVLSS' 
+              title='Danke für ihre Spende an piScheduler und die Benutzung von Paypal'> 
+              <img alt='Donate button' src='https://neandr.github.io/piSchedule/pic.Donate-40g.png' />
+              &nbsp; &nbsp; Spende was <i>piSchedule</i> Dir wert ist.</a></b>
+            <br>
+            <a href="https://groups.google.com/forum/#!forum/piSchedule7">Kommentare, Fragen und Rückmeldungen im <i>piSchedule</i>  <strong>Forum</strong></a>
+         </p>
+
+         <p align='center' id="$$$donationEN" style="display:none">
+             <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=N3HLSJP5CVLSS'
+             title='Thanks for your donation for piScheduler and using Paypal'> 
+             <img alt='Donate button' src='https://neandr.github.io/piSchedule/pic.Donate-40g.png' />
+             &nbsp; &nbsp; Donate what <i>piSchedule</i> is worth for you. </a></b>
+            <br>
+            <a href="https://groups.google.com/forum/#!forum/piSchedule7">For Comments, Questions and Feedback please use <i>piSchedule</i>  <strong>Forum</strong></a>
+         </p>
+
+
+      </div>
+   </body>
+</html>
+
