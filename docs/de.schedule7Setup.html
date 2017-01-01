@@ -3,7 +3,8 @@
    <head>
       <meta charset="utf-8" />
 
-      <base href="" >
+      <base href="https://neandr.github.io/piSchedule/" >
+
       <title>piSchedule Setup</title>
 
       <!-- HTML5 shim, for IE6-8 support of HTML elements -->
@@ -39,7 +40,7 @@
 
 <!-- donation -->
 
-<h2><i>piSchedule</i>    &nbsp;&nbsp;&nbsp;&nbsp;Setup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <small><small>vers.0.7.3 &nbsp;&nbsp; 2015-12-18_15</small></small> <p style="text-align: right;"><small><small><a href="../EN/piSchedule7Setup.html">English Version </a> <img title="English" src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/flagUS.png" align="bottum"></small></small> </p><hr></h2>
+<h2><i>piSchedule</i>    &nbsp;&nbsp;&nbsp;&nbsp;Setup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <small><small>vers.0.7.3 &nbsp;&nbsp; 2017-01</small></small> <p style="text-align: right;"><small><small><a href="en.schedule7Setup.html">English Version </a> <img title="English" src="pic.flagUS.png" align="bottum"></small></small> </p><hr></h2>
 
 <p><strong><em>piSchedule</em></strong> ist ein Python Programm. Es läuft auf dem Raspberry mit einer Installation von <strong><em>pilight 6.0 oder 7.0</em></strong>. pilight muss für das  erfolgreiche Einrichten von <em>piSchedule</em> laufen!
 <br><div style="margin-left: 30px;"> <em><strong> Hinweis</strong> &nbsp;&nbsp;&nbsp; Es wird empfohlen das <strong>Raspbian/wheezy</strong> Betriebssystem zu verwenden. Getestet wurde auch mit OSMC, aber es kam bei bestimmten Installationen zu Fehlern, die z.Zt. nicht geklärt sind.</em> 
@@ -49,7 +50,7 @@ Das Einrichten und ein Update aller Komponenten erfolgt mit zwei Schritten: </p>
 <li>Auf die nachstehende <strong>SETUP</strong> Box klicken und mit <code>[Strg]</code> <code>[C]</code> kopieren
 <br> <div style="margin-left: 45px;"><strong>SETUP</strong> &nbsp;&nbsp;
 <input id="code" type="text" readonly="readonly" title="Select and press [Cntrl] [C] to copy"
-value=' cd ~  &&  wget https://dl.dropboxusercontent.com/u/35444930/piSchedule7/piScheduleSetup.sh -O piScheduleSetup.sh && bash piScheduleSetup.sh'
+value=' cd ~  &&  wget https://neandr.github.io/piSchedule/piScheduleSetup.sh -O piScheduleSetup.sh && bash piScheduleSetup.sh'
 style="width: 400px; cursor:pointer; font-weight: bold; color: #3A69A6;" onclick="this.focus();this.select();" />
 </div><br></li>
 <li>Dann am Systemprompt des RaspberryPI einfügen und ausführen mit 
@@ -96,8 +97,8 @@ piDiscover pilight ['192.168.178.12', 5001, '7.0', '']
          using the 'piSchedule {server}:{port}' as prompted above
 
      *** For more detailed information see also
-         DE:   https://dl.dropboxusercontent.com/u/35444930/piSchedule7/DE/piSchedule7Overview.html
-         EN:   https://dl.dropboxusercontent.com/u/35444930/piSchedule7/EN/piSchedule7Overview.html
+         DE:   https://neandr.github.io/piSchedule/de.overview75.html
+         EN:   https://neandr.github.io/piSchedule/en.overview75.html
 
 [ ok ] /home/pi/piSchedule73/piSchedule.py is running.
 piSchedule  {server}:{port}  &gt;&gt;192.168.178.12:5005&lt;&lt;
@@ -106,7 +107,7 @@ pi@RPI2 ~ $
 
 <p><br>
 Mit der Eingabe der gezeigten {server}:{port} Adresse in der Adresszeile des Browsers wird <em><strong>piSchedule</strong></em> geöffnet:
-<p><img title="piSchedule Start Page" src="https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/piSch7_setup.png"   hspace="45" width="450" ><br />
+<p><img title="piSchedule Start Page" src="de.sch7_setup.png"   hspace="45" width="450" ><br />
 </p></p>
 <hr />
 <h3 id="pischedule-steuerungsdateien-ini-dateien">piSchedule Steuerungsdateien (INI Dateien)</h3>
@@ -158,7 +159,7 @@ Mit der Eingabe der gezeigten {server}:{port} Adresse in der Adresszeile des Bro
          <p align="center" id="donationDE" style="display:block">
               <b><a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=N3HLSJP5CVLSS' 
               title='Danke für ihre Spende an piScheduler und die Benutzung von Paypal'> 
-              <img alt='Donate button' src='https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/Donate-40g.png' />
+              <img alt='Donate button' src='pic.Donate-40g.png' />
               &nbsp; &nbsp; Spende was <i>piSchedule</i> Dir wert ist.</a></b>
             <br>
             <a href="https://groups.google.com/forum/#!forum/piSchedule7">Kommentare, Fragen und Rückmeldungen im <i>piSchedule</i>  <strong>Forum</strong></a>
@@ -167,7 +168,7 @@ Mit der Eingabe der gezeigten {server}:{port} Adresse in der Adresszeile des Bro
          <p align='center' id="$$$donationEN" style="display:none">
              <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=N3HLSJP5CVLSS'
              title='Thanks for your donation for piScheduler and using Paypal'> 
-             <img alt='Donate button' src='https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/Donate-40g.png' />
+             <img alt='Donate button' src='pic.Donate-40g.png' />
              &nbsp; &nbsp; Donate what <i>piSchedule</i> is worth for you. </a></b>
             <br>
             <a href="https://groups.google.com/forum/#!forum/piSchedule7">For Comments, Questions and Feedback please use <i>piSchedule</i>  <strong>Forum</strong></a>
