@@ -1,9 +1,9 @@
 #!/bin/bash
 cd ~
-T=" ___piSchedule Setup        vers.2016-12   __  "
+T=" ___piSchedule Setup        vers.2017-01   __  "
 H="
     SYNOPSIS 
-       piScheduleSetup.gh.sh [ARGUMENT] 
+       piScheduleSetup.sh [ARGUMENT] 
 
     DESCRIPTION
        The 'piSchedule' code is stored on a Dropbox account. 
@@ -11,7 +11,7 @@ H="
        it on a Raspberry/pilight installation.
 
        Copy the following string and execute it at the RPI prompt:
-          cd ~  &&  wget https://dl.dropboxusercontent.com/u/35444930/piSchedule7/piScheduleSetup.sh -O piScheduleSetup.sh && bash piScheduleSetup.sh
+          cd ~  &&  wget https://neandr.github.io/piSchedule/piScheduleSetup.sh -O piScheduleSetup.sh && bash piScheduleSetup.sh
 
     ARGUMENT
           no argument   will prompt with available versions.
@@ -26,7 +26,7 @@ H="
 "
 echo "$T"
 
-ghURL='https://neandr.github.io/piSchedule'
+DBOXurl='https://neandr.github.io/piSchedule/'
 versions='versions.zip.dir'
 
 #set -e
@@ -111,10 +111,10 @@ load_pilight ()
 {
    echo  " ** pilight  Installing."
 
-    echo -e "    1: pilight Stable (The actual version)" 
+   echo -e "    1: pilight Stable (The actual version)" 
    #echo -e "    5: pilight Nightly -- For advance use; Maybe NOT fully supported with piSchedule!"
    #echo -e "    8: pilight Nightly/Development -- For testing only!\n"
-    echo -e "    0: pilight REMOVE from system!  \n"
+   echo -e "    0: pilight REMOVE from system!  \n"
 
    read -n 1 -p "    Select 'pilight' version to install: " No ; 
    echo -e "\n"
@@ -187,9 +187,9 @@ if  [ "$1" == --update ] ; then
 fi
 
 if [ -z "$1" ] ; then
-   xurl=$ghURL/$versions
+   xurl=$DBOXurl/$versions
 
-   echo -e " ** piSchedule Setup -- Loading [version] list! "  $xurl
+   echo -e " ** piSchedule Setup -- Loading [version] list! " #\n   "$xurl
    sudo wget --output-file=wget.log $xurl -O $versions
    if  grep '404 Not Found'  wget.log ; then
       echo "                     - Missing [version] argument OR '$versions' from remote system !"
@@ -259,7 +259,7 @@ fi
 cd $SCHEDULE7/
 
 
-DBOXzip=$ghURL/$VERSION'.zip -O piScheduleX.zip'
+DBOXzip=$DBOXurl/$VERSION'.zip -O piScheduleX.zip'
 
 echo " ** piSchedule Setup -- Get ZIP >>"$DBOXzip"<<" 
 
@@ -317,8 +317,8 @@ echo "
          using the 'piSchedule {server}:{port}' as prompted above
 
      *** For more detailed information see also
-         DE:   $ghURL/DE/piScheduleOverview.html
-         EN:   $ghURL/EN/piScheduleOverview.html
+         DE:   $DBOXurl/DE/piScheduleOverview.html
+         EN:   $DBOXurl/EN/piScheduleOverview.html
      "
 sudo service piSchedule status
 exit 0
