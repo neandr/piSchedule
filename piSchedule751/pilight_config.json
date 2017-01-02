@@ -1,0 +1,130 @@
+{
+	"devices": {
+		"Haustuer": {
+			"protocol": [ "pollin" ],
+			"id": [{
+				"systemcode": 21,
+				"unitcode": 1
+			}],
+			"state": "off"
+		},
+		"Bad": {
+			"protocol": [ "pollin" ],
+			"id": [{
+				"systemcode": 21,
+				"unitcode": 2
+			}],
+			"state": "off"
+		},
+		"FlurDecke": {
+			"protocol": [ "pollin" ],
+			"id": [{
+				"systemcode": 17,
+				"unitcode": 1
+			}],
+			"state": "off"
+		},
+		"Stehlampe": {
+			"protocol": [ "pollin" ],
+			"id": [{
+				"systemcode": 17,
+				"unitcode": 2
+			}],
+			"state": "off"
+		},
+		"Kueche": {
+			"protocol": [ "pollin" ],
+			"id": [{
+				"systemcode": 17,
+				"unitcode": 4
+			}],
+			"state": "off"
+		},
+		"SteckerC": {
+			"protocol": [ "pollin" ],
+			"id": [{
+				"systemcode": 21,
+				"unitcode": 4
+			}],
+			"state": "on"
+		},
+		"SteckerD": {
+			"protocol": [ "pollin" ],
+			"id": [{
+				"systemcode": 21,
+				"unitcode": 8
+			}],
+			"state": "off"
+		}
+	},
+	"rules": {},
+	"gui": {
+		"Haustuer": {
+			"name": "Haustuer (5.A)",
+			"group": [ "Hausbeleuchtung" ],
+			"media": [ "all" ],
+			"readonly": 0
+		},
+		"Bad": {
+			"name": "Bad (5.B)",
+			"group": [ "Hausbeleuchtung" ],
+			"media": [ "all" ],
+			"readonly": 0
+		},
+		"FlurDecke": {
+			"name": "Flur Decke (1.A)",
+			"group": [ "Zwischengeschoss" ],
+			"media": [ "all" ],
+			"readonly": 0
+		},
+		"Stehlampe": {
+			"name": "Stehlampe WZ (1.B)",
+			"group": [ "Erdgeschoss" ],
+			"media": [ "all" ],
+			"readonly": 0
+		},
+		"Kueche": {
+			"name": "Kueche Schrankleuchte (1.C)",
+			"group": [ "Erdgeschoss" ],
+			"media": [ "all" ],
+			"readonly": 0
+		},
+		"SteckerC": {
+			"name": "Stecker (5.C)",
+			"group": [ "Stecker" ],
+			"media": [ "all" ],
+			"readonly": 0
+		},
+		"SteckerD": {
+			"name": "Stecker (5.D)",
+			"group": [ "Stecker" ],
+			"media": [ "all" ],
+			"readonly": 0
+		}
+	},
+	"settings": {
+		"log-level": 6,
+		"pid-file": "/var/run/pilight.pid",
+		"log-file": "/var/log/pilight.log",
+		"webserver-enable": 1,
+		"webserver-root": "/usr/local/share/pilight/",
+		"webserver-http-port": 5001,
+		"webserver-cache": 1
+	},
+	"hardware": {
+		"433gpio": {
+			"sender": 0,
+			"receiver": 1
+		}
+	},
+	"registry": {
+		"webgui": {
+			"tabs": 0
+		},
+		"pilight": {
+			"version": {
+				"current": "7.0"
+			}
+		}
+	}
+}

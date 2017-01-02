@@ -1,0 +1,340 @@
+{
+  "locales": "EN,English;DE,Deutsch",
+
+  "piSchedule": {
+    "EN": {
+      "prefJobs": "Actual Day Schedule",
+      "dateTime": "Date / actual time",
+      "gotoMain": "Go to Main Menu",
+      "Sunrise": "Sunrise",
+      "Sunset": "Sunset",
+      "nopilight": "pilight not answering! Make sure pilight is started!",
+      "noconfigFile": "No configure file or missing access rights!",
+      "noGeoloaction": "pilight/piSchedule prefs: GeoCoordinates not supported!",
+      "noState": "ERROR: no on/off",
+      "unknownString": "unknown string",
+      "beforeTime": "Before current time",
+      "prefsFile": "pilight/piSchedule `prefs` file",
+      "notFound": "not found!",
+      "noGeoCordinates": "GeoCoordinates not supported!",
+      "scheduleList": "Schedule Listing",
+      "daySchedule": "Day Schedule",
+      "terminated": "Terminated!",
+      "dayLogs": "Day Logs",
+      "reload": "Reload",
+      "refresh": "Refresh",
+      "refreshText":"Show Schedule List with only upcoming events",
+      "addJob": "Add Job",
+      "removeJob": "Remove Job",
+      "close":"Close",
+      "iniLoading":"Select Day Plan and load",
+      "on": "ON",
+      "off": "OFF"
+    },
+
+    "DE": {
+      "prefJobs": "Aktueller Tagesplan",
+      "dateTime": "Datum / aktuelle Zeit",
+      "gotoMain": "Zum Haupt Menü",
+      "Sunrise": "Sonnenaufgang",
+      "Sunset": "Sonnenuntergang",
+      "nopilight": "pilight antwortet nicht! pilight muss gestartet sein!",
+      "noconfigFile": "Keine `configure` Datei oder falsche Zugriffsrechte!",
+      "noGeoloaction": "",
+      "noState": "Fehler: kein on/off",
+      "unknownString": "Unbekannte Eingabe",
+      "beforeTime": "Vor der aktuellen Zeit",
+      "prefsFile": "pilight/piSchedule `prefs` Datei",
+      "notFound": "nicht gefunden!",
+      "noGeoCordinates": "GeoCoordinates nicht unterstützt!",
+      "scheduleList": "Tagesplan Liste",
+      "daySchedule": "Tagesplan",
+      "terminated": "Abbruch!",
+      "dayLogs": "Tages-Logs",
+      "reload": "Aktualisieren",
+      "refresh": "Aktualisieren",
+      "refreshText":"Zeige Tagesplan mit anstehenden Ereignissen",
+      "addJob": "Neuer Job",
+      "removeJob": "Job Entfernen",
+      "close":"Schließen",
+      "iniLoading":"Tagesplan auswählen und laden",
+      "on": "AN",
+      "off": "AUS"
+     }
+  },
+
+
+  "piPrefs": {
+    "EN": {
+      "prefJobs": "`Actual Day Schedule` and Preferences",
+      "dateTime": "Date / actual time",
+      "gotoMain": "Go to Main Menu",
+      "Sunrise": "Sunrise",
+      "Sunset": "Sunset"
+    },
+
+    "DE": {
+      "prefJobs": "`Aktueller Tagesplan` und Präferenzen",
+      "dateTime": "Datum / aktuelle Zeit",
+      "gotoMain": "Zum Haupt Menü",
+      "Sunrise": "Sonnenaufgang",
+      "Sunset": "Sonnenuntergang"
+    }
+  },
+
+
+  "piMain": {
+    "EN": {
+      "mainMenu": "Main Menu",
+      "mainMenuText": "Select function",
+      "mainTitle": "Show current Day Schedule",
+      "mainText": "Day Schedule",
+      "jobLists": "Job Lists",
+      "editTitle": "Edit `Jobs` List",
+      "dayLogs": "Day Logs",
+      "docOverview": "Overview",
+      "docEdit": "Edit `Job List`",
+      "docExamples": "Job Lists/Job Examples",
+      "docFeatures": "Job Features",
+      "terminate": "Terminate piSchedule",
+      "editSchedule": "Edit Job List",
+      "newSchedule": "New Job List",
+      "addJob": "Add Job to `Job List`",
+      "piLogFile": "pilight `log` file ",
+      "notFound": " not found! (Check access rights!)",
+      
+      "weekdaySchedules": "Weekday Schedules",
+      "weekday": "Weekday",
+      "schedule": "Day Schedule",
+
+      "selectTitle": "Select Schedule for Day",
+      "select": "Select",
+      "set": "Set",
+      "close": "Close",
+      "cancel": "Cancel",
+      "about": "About piSchedule",
+
+      "help": "Help",
+      "toggleHelp": "Toggle for the Help details.",
+      "weekScheduleHelp": "Select a 'Day Schedule' for the calling weekday and use it on the list with [Set]. Selecting '--' will remove a previous chosen day schedule for the day. {P} [Cancel] will not alter the list."
+   },
+
+    "DE": {
+      "mainMenu": "Haupt Menü",
+      "mainMenuText": "Funktion wählen",
+      "mainTitle": "Aktuellen Tagesplan anzeigen",
+      "mainText": "Aktueller Tagesplan",
+      "jobLists": "Job Listen",
+      "editTitle": "`Job Liste` editieren",
+      "dayLogs": "Tages-Logs",
+      "docOverview": "Überblick",
+      "docEdit": "Jobliste/Jobs editieren",
+      "docExamples": "Job Liste/Jobs Beispiele",
+      "docFeatures": "Job Eigenschaften",
+      "terminate": "piSchedule beenden!",
+      "editSchedule": "Job Liste editieren",
+      "newSchedule": "Neuer Job Liste",
+      "addJob": "Job zur `Job Liste` hinzuf&uuml;gen",
+      "piLogFile": "pilight `log` Datei ",
+      "notFound": " nicht gefunden! (Zugriffsrechte richtig?)",
+
+      "weekdaySchedules": "Tagespläne der Wochentage",
+      "weekday": "Wochentag",
+      "schedule": "Tagesplan",
+
+      "selectTitle": "Tagesplan für den Tag wählen",
+      "select": "Auswählen",
+      "set": "Setzen",
+      "close": "Schließen",
+      "cancel": "Abbrechen",
+      "about": "Über piSchedule",
+
+      "help": "Hilfe",
+      "toggleHelp": "Umschalten für Hilfe Details.",
+      "weekScheduleHelp": "Für den Wochentag wird hier ein `Tagesplan` ausgewählt und mit [Setzen] in die Liste übergeben. Die Auswahl '--' entfernt einen vorher ausgewählten Tagesplan. {P} [Abbrechen] lässt die Liste unverändert."
+    }
+  },
+
+
+  "piEdit": {
+    "EN": {
+      "prefJobs": "Edit Job List File",
+      "dateTime": "Date / actual time",
+      "gotoMain": "Go to Main Menu",
+      "Sunrise": "Sunrise",
+      "Sunset": "Sunset",
+      "jobDef": "Job Definition",
+      "createSchedule": "Create/Add/Delete `Jobs` for `Job List`",
+      "createJob": "Create and edit `Job`",
+      "Device": "Device",
+      "ON": "ON",
+      "Time": "Time",
+      "ONoffset": "ONoffset",
+      "random": "random",
+      "randomMinus": "random minus",
+      "OFF": "OFF",
+      "OFFoffset": "OFFoffset",
+      "editJob": "Edit Job Definition",
+      "editJobList": "Job List create and edit",
+
+      "addJob": "Add Job to `Job List`",
+      "exJob": "Execute Job",
+      "helpDocu": "Help/Docu",
+      "helpJob": "Edit Job List/Jobs",
+      "SetTime": "Set",
+
+      "scheduleFile": "Job List File",
+      "editJobandList": "Edit selected `Job` of Job List",
+      "selectedJob": "Selected Job",
+
+      "edit": "Edit",
+      "save": "Save",
+      "erase": "Erase",
+      "delete": "Delete",
+      "change": "Change",
+      "insert": "Insert",
+      "close": "Close",
+      "back": "Back",
+      "reset": "Reset",
+      "add": "Add",
+      "help": "Help",
+
+      "shiftUp": "Shift up the selected `Job`",
+      "shiftDown": "Shift down the selected `Job`",
+      "editJobHelp": "`Edit Job List/Jobs` Help/Docu",
+      "errJob": "Job definition Error: No Device",
+      "selectRow": "Select a row on `Job List`",
+      "selectRow1": "new `Job` will be inserted before that row!",
+      "selectJobRow": "First select a `Job` on `Job List` for Edit / Delete!",
+      "deviceNotDefined": "`Device` not defined!",
+      "deviceNotSelected": "No device selected!",
+      "defineTime": "Define `ON` or `OFF` time!",
+      "leavePage": "This page is asking you to confirm that you want to leave - data you have entered may not be saved.",
+      "unsavedStuff": "You have unsaved stuff. Save before leaving the page?",
+      "jobList": "Job List",
+
+      "saveJobList": "Save Job Liste to Day Schedule INI File",
+      "deleteJobList": "Delete Job List (INI File)",
+      "editJobRow": "Edit/Add a `Job List` row",
+      "editJob": "Edit `Job`",
+      "editJobs": "`Job` Editing for ",
+      "toggleHelp": "Toggle for the Help details.",
+
+      "changeRow": "Change the activated row.",
+      "insertRow": "Insert before the activated row.",
+
+      "advanceEditRow": "Advance Edit Row",
+      "advanceEditHelp": "This `Advanced` edit mode allows direct editing of any `Job List` row on the displayed `Job List`.{P} In the textbox 'Job' edit or enter a {i}piSchedule{/i} command. Clearing the textbox will add an empty line, a free text with a leading asterik will be taken as a comment line. {P}{P}Use the button [Edit] or [Insert] to write to the `Job List`.{P}{P}For {i}piSchedule{/i} command details refer also to",
+
+       "legend" : "Legend",
+       "timelineEditHelp": "This edit mode allows direct editing of the selected `Job`.{P} In the textbox 'Job' edit or enter a {i}piSchedule{/i} command. {P}Use [Edit] to write the `Job` back or use [Insert] to add a new one.{P}[Delete] will remove the selected `Job` from the Timeline.{P}{P}For {i}piSchedule{/i} command details refer also to "
+    },
+
+    "DE": {
+      "prefJobs": "Editieren der `Job Liste`",
+      "dateTime": "Datum / aktuelle Zeit",
+      "gotoMain": "Zum Haupt Menue",
+      "Sunrise": "Sonnenaufgang",
+      "Sunset": "Sonnenuntergang",
+      "jobDef": "Job Definition",
+      "createSchedule": "`Jobs` für `Job Liste` erstellen",
+      "createJob": "`Job` erstellen und ausführen",
+
+      "Device": "Gerät",
+      "ON": "EIN",
+      "Time": "Zeit",
+      "ONoffset": "EIN Offset",
+      "random": "zufällig",
+      "randomMinus": "zufällig minus",
+      "OFF": "AUS",
+      "OFFoffset": "AUS Offset",
+      "editJob": "Job Definition editieren",
+      "editJobList": "Job Liste erstellen und bearbeiten",
+
+      "addJob": "Job zur `Job Liste` hinzufügen",
+      "exJob": "Job ausführen",
+      "helpDocu": "Help/Doku",
+      "helpJob": "Job Liste / Jobs editieren",
+      "SetTime": "Setzen",
+
+      "scheduleFile": "Job Listen Datei",
+      "editJobandList": "Gewählten Job der `Job Liste` bearbeiten.",
+      "selectedJob": "Gewählter Job",
+
+      "edit": "Bearbeiten",
+      "save": "Speichern",
+      "erase": "Löschen",
+      "delete": "Löschen",
+      "insert": "Einfügen",
+      "change": "Ändern",
+      "close": "Schließen",
+      "back": "Zurück",
+      "reset": "Löschen",
+      "add": "Hinzufügen",
+      "help": "Hilfe",
+
+      "shiftUp": "Job nach oben verschieben",
+      "shiftDown": "Job nach unten verschieben",
+      "editJobHelp": "Hilfe/Doku zum Editieren `Job Liste/Jobs`",
+      "errJob": "Fehler Job Definition: Kein Gerät",
+      "selectRow": "`Job`/Zeile de `Job Liste` auswählen",
+      "selectRow1": "Neuer `Job` wird vor dieser Zeile eingefügt!",
+      "selectJobRow": "Zum Editieren/Löschen zunächst einen `Job` auf der `Job Liste` wählen",
+      "deviceNotDefined": "`Gerät` nicht definiert!",
+      "deviceNotSelected": "Kein `Gerät` ausgewählt!",
+      "defineTime": "Zeit für `EIN` oder `AUS` definieren!",
+      "leavePage": "Diese Seite verlangt eine Bestätigung zum Verlassen -- eingegebene Daten können nicht gesichert sein!",
+      "unsavedStuff": "Es gibt ungesicherte Eingaben. Soll vor verlassen der Seite gespeichert werden?",
+      "jobList": "Job Liste",
+
+      "saveJobList": "Speichere `Job Liste` als INI Datei",
+      "deleteJobList": "Entferne `Job Liste` (INI Datei)",
+      "editJobRow": "`Job List` Zeile ändern/hinzufügen",
+      "editJob": "`Job` ändern",
+      "editJobs": "`Job` Bearbeiten für ",
+      "toggleHelp": "Umschalten für Hilfe Details.",
+
+      "changeRow": "Aktive Zeile ändern",
+      "insertRow": "Vor der aktiven Zeile einfügen",
+
+      "advanceEditRow": "Zeile editieren ",
+      "advanceEditHelp": "Dieses `Advanced` Editieren erlaubt ein direktes Bearbeiten der Zeilen in der `Job List`. {P} In die Textbox 'Job' wird direkt der erforderliche {i}piSchedule{/i} Befehl eingegeben oder bearbeitet. Eine leere/gelöschte Eingabe in der Textbox fügt eine eine leere Zeile in die `Job Liste` ein, Text beginnend mit einen Stern (*) wird als Kommentarzeile behandelt. {P}{P}Die Schaltflächen [Einfügen] und [Bearbeiten] schreiben die Zeile in die `Job Liste`.{P}{P}Details zu den {i}piSchedule{/i} Befehlen siehe auch",
+
+      "legend" : "Legende",
+      "timelineEditHelp": "Dieses Editieren gestattet den ausgewählten `Job` direkt zu bearbeiten.{P} In dem Textfeld wird der `JOB` direkt geändert, oder ein {i}piSchedule{/i} Kommando eingegeben.{P}Mit [Ändern] wird der `Job` direkt in der Darstellung angezeigt, mit [Einfügen] wird ein neuer `Job` angelegt. {P}[Löschen] entfernt den ausgewählten `Job` aus der Timeline Darstellung.{P}{P}{i}piSchedule{/i} Kommando Syntax, siehe auch "    }
+  },
+
+
+
+  "piLogs": {
+    "EN": {
+      "dayList": "Day List of Jobs",
+      "Today": "Today",
+      "selectDay": "Select a day",
+      "Monday": "Monday",
+      "Tuesday": "Tuesday",
+      "Wednesday": "Wednesday",
+      "Thursday": "Thursday",
+      "Friday": "Friday",
+      "Saturday": "Saturday",
+      "Sunday": "Sunday",
+      "selectedDay": "selectedDay",
+      "back": "Back"
+    },
+
+    "DE": {
+      "dayList": "Liste der ausgeführten Jobs",
+      "Today": "Heute",
+      "selectDay": "Tag wählen",
+      "Monday": "Montag",
+      "Tuesday": "Dienstag",
+      "Wednesday": "Mittwoch",
+      "Thursday": "Donnerstag",
+      "Friday": "Freitag",
+      "Saturday": "Samstag",
+      "Sunday": "Sonntag",
+      "selectedDay": "Gewählter Tag",
+      "back": "Zurück"
+    }
+  }
+}
