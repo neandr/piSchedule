@@ -2,7 +2,7 @@
 
 <base href="https://neandr.github.io/piSchedule/" >
 
-<a href="de.README.md">[Deutsche Beschreibung]</a></small></h2>
+<a href="index.html">[Deutsche Beschreibung]</a></small></h2>
 
 Time scheduled switching of devices made easy with a menu driven approach on a web interface using your smartphone, tablet or PC. 
 
@@ -14,7 +14,7 @@ Only running a browser is required for setup, operation, logging and documentati
 For detailed *Use and Installation* see the documentation, please visit     
 
  * [Overview / Use and Installation](https://neandr.github.io/piSchedule/en.overview75.html)
- * [Scheduling Examples](https://neandr.github.io/piSchedule/en.examples.html)
+ * [Scheduling Examples](https://neandr.github.io/piSchedule/en.scheduleExamples.html)
  * [Scheduling Features](https://neandr.github.io/piSchedule/en.scheduleFeatures.html)
 
 To start installing *piSchedule* just follow [this step](https://neandr.github.io/piSchedule/en.schedule7Setup.html)
