@@ -7,19 +7,18 @@
 
 	var docs = {
 	// ***** Customize lines for individual use ***********
-		DBox: "https://dl.dropboxusercontent.com/u/35444930/",
-		Schedule:  "piSchedule7/",
-
 		forum: "https://groups.google.com/forum/#!forum/pischedule7",
 
-		news: 'news75.txt',
 
+		DBox: "https://neandr.github.io/piSchedule/",
 
-		Overview: "piSchedule7Overview75.html",
-		Edit: "piScheduleEdit.html",
-		timeline: "piSchedule7timeline.html",
-		Examples: "piScheduleExamples.html",
-		Features: "piScheduleFeatures.html",
+		news: 'news751.txt',
+
+		Overview: "overview75.html",
+		timeline: "timeline.html",
+		Edit: "scheduleEdit.html",
+		Examples: "scheduleExamples.html",
+		Features: "scheduleFeatures.html",
 
 
 	// ***** DO NOT  change lines below ****
@@ -27,7 +26,7 @@
 		// open a new window to show a docu page, if the page isn't define
 		// open the main docu page with a bookmark
 		open : function(name) {
-			_link = this.DBox + this.Schedule + language + "/";
+			_link = this.DBox + language.toLowerCase() +'.';
 
 		console.log(" *** piSchedule - pi.docs.open     name: " + name
 			+ " link:: " + _link);
@@ -52,7 +51,7 @@
 		//   -- open the docu on a separte window
 		set :  function (xThis, sDoc) {
 			var info = xThis.id;
-			_link = this.DBox + this.Schedule + language + "/";
+			_link = this.DBox + language.toLowerCase() + ".";
 
 		console.log(" *** piSchedule - pi.docs.set     info: " + info  + "  sDoc:: " + _sDoc);
 

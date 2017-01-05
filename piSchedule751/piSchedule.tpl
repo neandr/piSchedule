@@ -49,7 +49,8 @@
 					<td><b>{{Sunset}} </b> {{sunset[10:16]}}</td>
 
 					<td align="right"><small>
-						<a role="menuitem" id="piScheduleNews" style="cursor:pointer;{{newsDisplay}}" ><i>piSchedule</i> <b>News </b> &&newsDate&&</a>
+				<!--		<a role="menuitem" id="piScheduleNews" style="cursor:pointer;{ {newsDisplay} }" ><i>piSchedule</i> <b>News </b> &&newsDate&&</a>   -->
+						<a role="menuitem" id="piScheduleNews" style="cursor:pointer;" ><i>piSchedule</i> <b>News </b> &&newsDate&&</a>
 					</small></td>
 
 				</tr>
@@ -177,7 +178,7 @@
 
 	<script language="javascript" type="text/javascript">
 		var language = "{{locale}}";
-		var docAddress = docs.DBox + docs.Schedule + language + "/"
+		var docAddress = docs.DBox + language.toLowerCase() +'.'
 
 		console.log(" *** piSchedule - piSchedule : " + docAddress)
 

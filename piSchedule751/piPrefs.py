@@ -33,7 +33,7 @@ prefs['port'] = ''
 prefs['piDBox'] = "https://neandr.github.io/piSchedule/"
 prefs['piScheduleDoc'] = ""
 
-prefs['piDocs'] = prefs['piDBox'] + prefs['piScheduleDoc']   # + '/'
+prefs['piDocs'] = prefs['piDBox']
 
 prefs['news'] = prefs['piDocs'] + 'news751.txt'
 

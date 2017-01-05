@@ -221,10 +221,9 @@
 
 	<script language="javascript" type="text/javascript">
 		var language = "{{locale}}";
-		var docAddress = docs.DBox + docs.Schedule + language + "/"
+		var docAddress = docs.DBox + language.toLowerCase() +'.'
 
 		console.log(" *** piSchedule - piTimeLine : " + docAddress)
-
 
 		var piScheduleValues= {}
 		piScheduleValues.jobLines = "&&jobLines&&"
@@ -273,7 +272,7 @@
 
 
 		$("#timelineDoc").click(function () {
-			window.open(docAddress + "piSchedule7timeline.html","docu");
+			window.open(docAddress + "timeline.html","docu");
 		});
 
 

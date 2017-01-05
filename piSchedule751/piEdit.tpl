@@ -201,7 +201,7 @@
 
 <!-- ......	Collection and Storage of Job Definitions	..... -->
 			<h4><b>{{jobList}}</b>
-				<a id='Edit' onclick="docs.open(this)" style="cursor:pointer"><small><i>{{editJobList}}</i>
+				<a id='Edit' onclick="docs.open(this.id)" style="cursor:pointer"><small><i>{{editJobList}}</i>
 					<img title="" src="/static/ginfo.png" style="width:24px; margin-left:18px;">
 				</a>
 			</h4>
@@ -373,7 +373,7 @@
 
 	<script language="javascript" type="text/javascript">
 		var language = "{{locale}}";
-		var docAddress = docs.DBox + docs.Schedule + language + "/"
+		var docAddress = docs.DBox + language.toLowerCase() +'.'
 
 	console.log(" *** piSchedule - piEdit : " + docAddress)
 

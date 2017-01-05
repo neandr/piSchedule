@@ -428,7 +428,7 @@ def refreshSchedule():
     return page.replace('&&news&&', newsSchedule)
 
 
-@app.route('/edit')
+ 
 def edit():
     caller = request.fullpath[1:]
     qString = request.query_string.strip()
@@ -836,10 +836,15 @@ def templateSetup(templ, rv):
 
 def getNews(xpPrefs):
 # ---------------------------
+    global xP
+    response = ""
+    newsStatus = ""
+    newsDate = ""
+
+    try:
+
         global xP
-        #try:
-        url = 'https://' + xpPrefs['news']
-        print("xpPrefs news: " + xpPrefs['news'])
+        url = xpPrefs['news']
 
         request = urllib2.Request(url)
         response = urllib2.urlopen(request).read()
@@ -894,10 +899,11 @@ def getNews(xpPrefs):
             nLine = nLine +1
     
         response = "<br>".join(lines)
-        #except:
-        #response = []
-    #logSys("  getNews\n" + str(response))
-        return  response, newsStatus, newsDate
+    except:
+        logSys ("--- getNews failed from: " + url)
+        response = []
+
+    return  response, newsStatus, newsDate
 
 
 def pilightConfig(typ):

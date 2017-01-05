@@ -352,7 +352,7 @@
 
 	<script language="javascript" type="text/javascript">
 		var language = "{{locale}}";
-		var docAddress = docs.DBox + docs.Schedule + language + "/"
+		var docAddress = docs.DBox + language.toLowerCase() +'.'
 
 	console.log(" *** piSchedule - piMain : " + docAddress)
 

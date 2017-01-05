@@ -1,3 +1,12 @@
+                                               2017-01-05
+** Change from DBox to gitdoc
+   New location of piSchedule for code and documentation
+   is   https://neandr.github.io/piSchedule/
+   Please make sure to select 'piSchedule751' for updating
+   the piSchedule installation!
+   See also more details on 
+   [Forum](https://groups.google.com/forum/#!forum/pischedule7)
+
                                                2016-08-09
 ** Updates (see also on Forum)
    Calculation of sunrise/sunset could fail due to :60 sec
@@ -24,4 +33,4 @@
 ===
 __ For 'standard' piSchedule Setup (and update) use
 
-|| cd ~ && wget https://........../piSchedule7/piScheduleSetup.sh -O piScheduleSetup.sh && bash piScheduleSetup.sh
+|| cd ~ && wget https://neandr.github.io/piSchedule/piScheduleSetup.sh -O piScheduleSetup.sh && bash piScheduleSetup.sh
