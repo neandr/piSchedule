@@ -1,5 +1,5 @@
                                                2017-01-05
-** Change from DBox to gitdoc
+** Change from DBox to gitdoc 
    New location of piSchedule for code and documentation
    is   https://neandr.github.io/piSchedule/
    Please make sure to select 'piSchedule751' for updating
