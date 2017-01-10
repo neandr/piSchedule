@@ -428,7 +428,7 @@ def refreshSchedule():
     return page.replace('&&news&&', newsSchedule)
 
 
- 
+@app.route('/edit')
 def edit():
     caller = request.fullpath[1:]
     qString = request.query_string.strip()
