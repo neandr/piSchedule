@@ -123,15 +123,17 @@
 							<input style="width:250px" class="form-control" 
 								id="fileName" placeholder="&&FILE&&" type="text">
 
-							<a class="btn btn-default btn-sm" style="margin-left:20px" id="saveJobs" title="*** Save current jobs setting to INI file." role="button"> 
+							<a class="btn btn-default btn-sm" style="margin-left:20px" id="saveJobs" 
+								title="*** Save current jobs setting to INI file." role="button"> 
 								<img id="savebutton" src="/static/gsavegray.png" width="14">
 							</a>
 					</td>
 
 					<td>
 						<div class="pull-right">
-							<a class="btn btn-default btn-sm" style="margin-left:20px" id="addJobs" title="*** Add a new job." role="button"> 
-								<img src="/static/gplus.png" width="14">
+							<a class="btn btn-default btn-sm" style="margin-left:20px" id="addNewJob" 
+								title="*** Add a new job." role="button"> 
+								<img id="addbutton" src="/static/gplus.png" width="14">
 							</a>
 						</div>
 					</td>
@@ -143,7 +145,7 @@
 		</div>
 
 
-		<!-- modal Dialog for Day Schedule edit line -->
+		<!-- modal Dialog for Day Schedule edit line, also add line -->
 		<div id="editPlan" class="modal fade" tabindex="-1" role="dialog"
 			aria-labelledby="editPlanLine" aria-hidden="true">
 			<div class="modal-dialog">
@@ -202,7 +204,7 @@
 
 					<div class="modal-footer" style="text-align:left">
 
-						<a class="btn btn-default btn-sm pull-right" id="addJob"
+						<a class="btn btn-default btn-sm pull-right" id="insertJob"
 							title="{{insert}}" role="button" style="font-weight: bold">
 							{{insert}}</a>
 
@@ -235,15 +237,21 @@
 		piScheduleValues.endTime = "&&endTime&&";
 
 
+		$("#addNewJob").click(function () {
+			Timeline("#timeline")
+			.work({addNewJob: '&&fileName&&'})
+		});
+
+
 		$("#saveJobs").click(function () {
 			Timeline("#timeline")
 			.saveJobs('&&fileName&&')
 		});
 
-		$("#addJob").click(function () {
+		$("#insertJob").click(function () {
 			var jobPicked = $('#pickJob')
 			Timeline("#timeline")
-			.work({addJob: (jobPicked[0].attributes.jobno.value + "||" + jobPicked[0].value)})
+			.work({insertJob: (jobPicked[0].attributes.jobno.value + "||" + jobPicked[0].value)})
 		});
 
 		$("#deleteJob").click(function () {

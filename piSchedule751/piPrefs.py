@@ -30,6 +30,7 @@ prefs['ssdp'] = ''
 prefs['server'] = ''
 prefs['port'] = ''
 
+# point to GITHUB --------------
 prefs['piDBox'] = "https://neandr.github.io/piSchedule/"
 prefs['piScheduleDoc'] = ""
 
@@ -37,13 +38,16 @@ prefs['piDocs'] = prefs['piDBox']
 
 prefs['news'] = prefs['piDocs'] + 'news751.txt'
 
-prefs['piScheduleHome'] = str(os.getcwd())
+
+# point to local installation of  piSchedule ------------
+prefs['piScheduleHome'] = str(os.getcwd())          #  "/home/pi/piSchedule751",
 
 logInfoName = prefs['piScheduleHome'] + "/logs/piInfo.log"
 logSysName =  prefs['piScheduleHome'] + "/logs/piSystem.log"
 prefsJSONfile =  prefs['piScheduleHome'] + '/piSchedule.prefs.json'
 
 
+# users data ---------------------
 prefs['locale'] = 'EN'
 prefs['location'] = 'Kassel'
 prefs['latitude'] = '51.2558'

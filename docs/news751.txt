@@ -33,4 +33,4 @@
 ===
 __ For 'standard' piSchedule Setup (and update) use
 
-|| cd ~ && wget https://neandr.github.io/piSchedule/piScheduleSetup.sh -O piScheduleSetup.sh && bash piScheduleSetup.sh
+||  cd ~  &&  wget https://neandr.github.io/piSchedule/piScheduleSetup.sh -O piScheduleSetup.sh && bash piScheduleSetup.sh
