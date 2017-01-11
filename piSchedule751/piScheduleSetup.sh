@@ -247,6 +247,11 @@ if [ $LIBload = 1 ] ; then
     load_piSchedule_Libs
 fi
 
+# only use first part to identify 'version'
+set junk $VERSION
+shift
+VERSION=$1
+
 SCHEDULE7=$HOME/$VERSION
 
 if [ -d $SCHEDULE7/ ] ;  then
