@@ -33,9 +33,7 @@
 			style="cursor:pointer; padding: 5px 0px; margin-bottom: 15px; margin-top: 10px;">
 			<div class="container" id="goBack" title="Go back">
 				<big><b><i> piSchedule </i> Timeline</b></big>
-				<button class="btn btn-default btn-sm dropdown-toggle pull-right" type="button">
-					<img title='help details' src='/static/ghome.png' width='14'>
-				</button>
+				<img title='Go Home' src='/static/ghome.png' width='14'>
 			</div>
 		</div>
 
@@ -280,21 +278,10 @@
 
 
 		$("#timelineDoc").click(function () {
+		//	console.log("  timelineDoc  " + docAddress + "timeline.html")
 			window.open(docAddress + "timeline.html","docu");
 		});
 
-
-		function toggleOn() {
-			$('#toggleDevice').bootstrapToggle('on')
-
-		console.log("  loggle device   ON")
-		}
-
-		function toggleOff() {
-			$('#toggleDevice').bootstrapToggle('off')  
-
-			console.log("  loggle device   OFF")
-		}
 
 		$('#toggleDevice').change(function() {
 			var currentDevice = stripAll($("#device")[0].textContent)
