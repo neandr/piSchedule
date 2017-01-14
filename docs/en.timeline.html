@@ -38,76 +38,130 @@
 <!-- doc="en.timeline.html" -->
 
 <!-- donation -->
-
-<h2>Actual Day Plan as a <i>Timeline</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <small><small>vers.0.7.5  &nbsp;&nbsp; 2016-02-22_19</small></small> <p style="text-align: right;"><small><small><a href="de.timeline.html">Deutsche Version </a> <img title="Deutsch" src="pic.flagDE.png" align="bottum"></small></small> </p><hr></h2>
-
-<p><strong><em>*** Sorry, translation not completed at the moment. *** </em></strong></p>
+<h2>Actual Day Plan as a <i>Timeline</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <small><small>vers.0.7.5  &nbsp;&nbsp; 2017-01-14_18</small></small> <p style="text-align: right;"><small><small><a href="de.timeline.html">Deutsche Version </a> <img title="Deutsch" src="pic.flagDE.png" align="bottum"></small></small> </p><hr></h2>
 
 <p><img src="pic.timelineOV.png" alt=""  width="501"></p>
-<p><strong><em>Timeline</em></strong> is an alternative method to show,add and change the jobs -- the ON/OFF switching time and also the random offsets -- for a selected device.   <br />
-</p>
-<h4>Handling and Functions</h4>
-
-<p>Timeline supports     </p>
-<ul>
-<li>die Darstellung aller Job Definitionen eines Gerätes als Balkendiagramm     </li>
-<li>der dargestellte Zeitbereich ist definiert durch Startparameter; 'prefs' Aufrufe auf der Browser Seite zum Ändern stehen zur Verfügung: <code>/startTime?hh:mm</code> und <code>/endTime?hh:mm</code>  </li>
-<li>Tasten für Timeline Zoom In/Out, Verschieben, Rücksetzen, Geräteauswahl durch Menü    </li>
-<li>ein Umschalter zeigt den aktuellen Geräte Status an, damit ist auch direktes EIN/AUS Schalten des ausgewählten Gerätes möglich     </li>
-<li>ein roter Cursor zeigt die aktuelle Zeit des letzten Aufrufes bzw. Bedienung     </li>
-<li>ein blauer Cursor dient als Pointer; Einschalten durch anklicken, er kann dann auf eine andere Position gezogen werden    </li>
-<li>Taste [Legende] änderte die Position der Legende der Jobdefinitionen bzw. schaltet sie aus     </li>
-<li>Klick auf die Kopfzeile führt zurück auf die vorherige Seite</li>
-</ul>
-<h4>Job-Balken - Darstellung und Funktionen</h4>
-
-<p>Für alle Geräte in der gewählten INI Datei lassen sich die definierten Jobs grafisch als Balken darstellen, wobei das jeweilige Gerät mit einem Menü ausgewählt wird.   <br />
-Für die Balken gilt:</p>
-<ul>
-<li>eine Balkengruppe zeigt jeweils einen definierten EIN/AUS Schaltvorgang und ggf. die Zufallswerte an mit:    </li>
-<li>gelber Balken: EIN bis AUS Zeitpunkt     </li>
-<li>grüner Balken: Zufallszeit/Zeitverschiebung zum Einschalten    </li>
-<li>blauer Balken: Zufallszeit/Zeitverschiebung zum Ausschalten    </li>
-<li>gelber Punkt: Zeitpunkt des Einschaltens, keine AUS Zeit definitiert</li>
-<li>schwarzer Punkt: Zeitpunkt des Ausschaltens, keine EIN Zeit definitiert    </li>
-<li>
-<p>Balken antippen/auswählen zeigt die EIN/AUS Zeiten als Cursor mit Zeiten  <br />
-        --&gt; Verschieben der EIN/AUS Zeiten mit Cursor/am Bildschirm und ändern dieser Job Zeiten   <br />
-        --&gt; Cursor/Funktionen ebenfalls für Zufallszeiten</p>
-</li>
-<li>
-<p>Die 'Legenden' an den Balken können mit dem Cursor angewählt werden. Dabei öffnet sich eine Textbox, die den Job anzeigt. Hier ist ebenfalls eine Änderung des Jobs möglich.    <br />
-Dies versteht sich als "Experten" Modus ...   <strong>Achtung:</strong>  <br />
-<em>Fehlerhafte Syntax wird im Moment nicht abgefangen!</em>  </p>
-</li>
-</ul>
-<p><u><i>Speichern der Änderungen</i></u>  <br />
-Die Elementegruppe unter der Timeline Anzeige gestattet die Änderungen in der angegebenen Job Datei (INI Datei) zu speichern. Aktiviert werden die Änderungen durch erneutes Laden auf der Seite "Aktueller Tagesplan".        </p>
-<p><u><i>Timeline Aufruf</i></u>    <br />
-Auf der Seite "<strong><em>piSchedule</em> -- Aktueller Tagesplan</strong>" erscheint ein neuer Menüpunkt zum Öffnen von Timeline</p>
-<p><img src="pic.timeline0.png" alt=""  height="56" width="559"></p>
-<p><br>
-<h4>Setup</h4>
-Die Timeline Funktionen werden mit der Verion 0.7.5 automatisch geladen. Für das Setup siehe hier:
-<strong>(<a href="de.schedule7Setup.html">Beschreibung des Setups</a>)</strong>    </p>
-<p><br>
-<h4>Timeline Diskussion --&gt; piSchedule Forum</h4>
- <em>piSchedule</em> Timeline befindet sich in der Entwicklung, kann aber auch bereits im Alltagseinsatz verwendet werden. <br />
-Rückmeldungen bzgl. Funktionalität, Form, Farben etc gerne über das <strong><em>piSchedule</em> Forum</strong>.</p>
-<p>Dies ist am besten erreichbar aus dem laufenden <em>piSchedule</em> auf der Seite "/home" unter dem
-Menüpunkt [Hilfe] --&gt; [Über piSchedule] und dort [Neuer Forumsbeitrag]</p>
-<p>Ein direkter Weg ist auch -- allerdings ohne Installationsdetails --  https://groups.google.com/forum/#!forum/piSchedule7</p>
-<h4>Bekannte Probleme der Timeline Version 0.7.5</h4>
-
-<ul>
-<li>ist die Bildschirmanzeige normal über den Browser gezoomt, ermittelt der blaue Cursor falsche Positionen/Zeiten   </li>
-<li>die <em>piSchedule</em> Timeline Anzeige skaliert nicht mit Ändern der Größe des Browserfensters, ein Neuladen der Seite ist erforderlich. Gilt auch für das Drehen eines mobilen Gerätes.  </li>
-</ul>
-    </div>
-  </div>
-</body>
-</html>
-
+<br>
+<p><strong><em>Timeline</em></strong> is an alternative method to
+      show,add and change the jobs -- the ON/OFF switching time and also
+      the random offsets -- for a selected device. <br>
+    </p>
+    <ul>
+      <li>Show all Job definitions of a selected device with interactive
+        Job-bars and legend&nbsp;</li>
+      <li>Displayed time schedule is defined with start parameters:<br>
+        &nbsp; 'prefs' calls on the browser page allow changing them: <code>/startTime?hh:mm</code>
+        and <code>/endTime?hh:mm</code></li>
+      <li>Navigation with buttons for Timline zoom in/out, move, reset,
+        device selection</li>
+      <li>Button [Legend] changes the legend position (right or left of
+        the bar) or hides it</li>
+      <li>On/Off switch shows the actual status of the selected device
+        and also allows to toggle the device<br>
+      </li>
+      <li>A red cursor shows the actual time and is updated with each
+        call / any function</li>
+      <li>A blue cursor is used as a pointer, it is switched on with a
+        mouse click. If shown, it can be moved to another position. That
+        way for any situation on the bar diagram the time can be shown</li>
+      <li>Click on the window header calls the previous page<br>
+      </li>
+    </ul>
+<br>
+    <h4>Job-Bars - Outline and Functions</h4>
+    <p>For each device with the selected Job-List (INI) file the defined
+      jobs are graphically displayed in form of a job-bars with a
+      legends. The device selection is made with a pull-down menu.<br>
+    </p>
+    One job-bar shows the defined On/Off switching and also if
+    appropriated the random delays with the following details<br>
+    <ul>
+      <li>orange bar: from On to Off time</li>
+      <li>green bar: random time shift for On time</li>
+      <li>blue bar: random time shift for Off time</li>
+      <li>orange point: On time without a related Off time<br>
+      </li>
+      <li>black point: Off time without a related On time<br>
+        <br>
+      </li>
+      <li>click on the bar will show the On/Off time with cursors and
+        time values<br>
+        <b> &rArr;</b> Moving the On/Off time with cursor/mouse click will
+        change the job time values <br>
+        <b> &rArr;</b> These cursor/mouse clicks are also available for random
+        time shifts <br>
+        <b> </b></li>
+    </ul>
+<br>
+    <h4>Legends beside the Job-Bars</h4>
+<p><img src="pic.timelineEdit.png" alt=""  width="501"></p>
+    <ul>
+      <li>Mouse click on the 'legend' beside the jab-bars will open a
+        text Box. This shows the selected job with some additional
+        handles:<br>
+      </li>
+      <li>Job 'Change'<br>
+        Changes are made within the textbox. This is an <u>Expert</u>
+        Mode!<br>
+        &nbsp;&nbsp;&nbsp; <i>Note:&nbsp;&nbsp; Wrong syntax will not be resolved at the moment!</i><br>
+      </li>
+      <li>
+        <p>Job 'Insert'<br>
+          The displayed job will be duplicated and inserted in the
+          Job-List before the actual job</p>
+      </li>
+      <li>Job 'Delete'<br>
+        The displayed job will be removed from the Job-List<br>
+      </li>
+    </ul>
+<br>
+    <h4>Box for Saving / Defining a new Job</h4>
+    <ul>
+      <li>Save the Changes<br>
+        The changes to the Timeline display are temporary as long as
+        they are not saved to the displayed Job-List (INI) file.<br>
+        The activation of the changes to the Job-List are only done with
+        a reload of the Job-List on the page "Actual Dayplan" <br>
+        <br>
+      </li>
+      <li>A button with [ + ] is used to add a new, predefined job for
+        the selected device. That new job will be added at the top of
+        the Job-List.<br>
+      </li>
+    </ul>
+    <br>
+    <h4>Timeline Activation<br>
+    </h4>
+    <p>To open Timeline on the page "<strong><em>piSchedule</em> -- Actual
+        Day Plan</strong>" has an additional menu item:</p>
+ <p><img src="pic.timeline1a.png" alt=""  width="501"></p>
+    <br>
+    <h4>Timeline -- General Notes<br>
+    </h4>
+    <ul>
+      <li>Timeline is usable also on mobile devices with touchscreens.
+        Instead of using cursor/mouse using a fingertip or a pointer
+        device will do the job</li>
+      <li>Timeline is ready to use in a day-to-day usage. As a new
+        functionality and to met user acceptance feedback is very much
+        welcomed, for functionality, forms, colors etc .. please use the
+        <b><i>piSchedule</i> Forum.</b><br>
+        This can be opened easily while running <i>piSchedule</i> on
+        the page "/home" with the menu [Help] or open the page "/about"
+        and follow the Forum <br>
+        <br>
+      </li>
+    </ul>
+<br>
+    <h4>Known Problems with Timeline</h4>
+    <ul>
+      <li>
+        With the screen zoomed using the browser functions, the blue
+        cursor gives wrong position/time value</li>
+      <li>The <i>piSchedule</i> Timline display scales not with the size of the
+        browser window. Use the reload of Timeline. Same is true with
+        rotation the screen.</li>
+    </ul>
 
 
 
