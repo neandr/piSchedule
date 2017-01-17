@@ -14,7 +14,7 @@
 
 		news: 'news751.txt',
 
-		Overview: "overview75.html",
+		Overview: "scheduleOverview.html",
 		timeline: "timeline.html",
 		Edit: "scheduleEdit.html",
 		Examples: "scheduleExamples.html",
@@ -28,8 +28,8 @@
 		open : function(name) {
 			_link = this.DBox + language.toLowerCase() +'.';
 
-		console.log(" *** piSchedule - pi.docs.open     name: " + name
-			+ " link:: " + _link);
+		//console.log(" *** piSchedule - pi.docs.open     name: " + name
+		//	+ " link:: " + _link);
 
 			if (_page != null) {_page.close()}
 			switch (name) {
@@ -53,7 +53,7 @@
 			var info = xThis.id;
 			_link = this.DBox + language.toLowerCase() + ".";
 
-		console.log(" *** piSchedule - pi.docs.set     info: " + info  + "  sDoc:: " + _sDoc);
+		//console.log(" *** piSchedule - pi.docs.set     info: " + info  + "  sDoc:: " + _sDoc);
 
 			switch (info) {
 
@@ -66,7 +66,7 @@
 
 				case 'doRepeat':
 					var doc = _link + _sDoc + "#" + _lastInfo;
-		console.log(" *** piSchedule - pi.docs.set     doRepeat: " + "  doc:: " + doc)
+		//console.log(" *** piSchedule - pi.docs.set     doRepeat: " + "  doc:: " + doc)
 
 					$('#frameHelp')[0].setAttribute('src', "");
 					setTimeout(function() 
@@ -75,7 +75,7 @@
 
 				case 'goBook': 
 					var doc = _link + _sDoc + "#" + _lastInfo;
-		console.log(" *** piSchedule - pi.docs.set     goBook: " + "  lastInfo:: " + _lastInfo + "  doc:: " + doc)
+		//console.log(" *** piSchedule - pi.docs.set     goBook: " + "  lastInfo:: " + _lastInfo + "  doc:: " + doc)
 
 					window.open(doc, 'docu');break;
 					break;
@@ -84,7 +84,7 @@
 					_lastInfo = info;
 					_sDoc = (sDoc == null) ? this.Overview : this[sDoc]
 					var doc = _link + _sDoc + "#" + info;
-		console.log(" *** piSchedule - pi.docs.set     default: " + doc  + "  lastInfo:: " + _lastInfo)
+		//console.log(" *** piSchedule - pi.docs.set     default: " + doc  + "  lastInfo:: " + _lastInfo)
 
 
 					$('#frameHelp')[0].setAttribute('src', "");
