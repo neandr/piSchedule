@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en-us">
+   <head>
+      <meta charset="utf-8" />
+
+      <base href="https://neandr.github.io/piSchedule/" >
+      <title>piSchedule - Job Editor</title>
+
+      <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+
+    <!-- optional: Einbinden der jQuery-Bibliothek -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+   </head>
+   <body>
+
+      <div class="container container-site">
+         <div style="height: 10px;"></div>
+
+         <div>  <!-- $$$content$$$ -->
+
+<!-- lang="EN" -->
+
+<!-- title="piSchedule - Job Editor" -->
+
+<!-- doc="piScheduleEdit.html" -->
+
+<!-- base="" -->
+
+<h2><a href="index.html" title="Go to Index"><i>piSchedule</i></a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    <small>Edit Day Schedule / Job &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+    <small>vers.0.7.2 &nbsp;&nbsp; 2017-01-17_21</small></small></h2>
+<hr/>
+
+			<p>
+				Devices defined with <strong>pilight</strong> can be time switched
+				using <em>piSchedule</em>. Defining a switch time for a device is
+				called a 'Job'. A collection of 'Jobs' are stored to a 'Day
+				Schedule' files (.INI/Text format) and are processed by <em>piSchedule</em>.
+			</p>
+			<p>
+				Also the .INI/Text file can be edited on the Raspberry with a normal
+				editor (e.g. 'nano' or 'vi'), a more convientient methode is the use
+				of the <em>Day Schedule/Job Editor</em>. It's called from the <em>piSchedule</em>
+				main menu:
+			</p>
+			<p>
+				<img title="Day Schedule and Jobs" src="pic.en.editJobSchedule7.png"
+					hspace="14" vspace="15" width="551">
+			</p>
+			<p>The menu button [Job Lists] also has a list of all available
+				Job Lists (.ini text/files), select the list for opening/editing the
+				containing 'Jobs':</p>
+			<p>
+				<img title="piSchedule on Console" src="pic.en.gotoEditJobList.png"
+					hspace="14" width="551">
+			</p>
+			<p>The dialog has three parts</p>
+			<br />
+			<ul>
+				<li>Current <strong>'Preference'</strong> values for
+					sunrise/sunset based on the geolocation, the version number and
+					locale indicator, and the current day/time
+				</li>
+				<li><strong>Job Definition</strong> -- buttons and menus used
+					to compose or edit a single Job and add it to the 'Job List'</li>
+				<li><strong>Job List</strong> -- holds the 'Jobs' on the
+					opened/edited .INI-file. <br /></li>
+			</ul>
+
+			<h3 id="jobDefinition">Job Definition</h3>
+
+			<p>
+			<div style="margin-left: 30px;">
+				A <strong>Job</strong> has to be build in consistence with the
+				pilight configuration and has to hold a
+				<code>device</code>
+				, it's switch state
+				<code>ON/OFF</code>
+				and switch
+				<code>Time</code>
+				values. <br>
+				<br> The 'Job Definition' supports the creation of 'Jobs' with
+				six buttons and a text line. <br>
+				<br> The buttons are pull-down menus to select a 'Device' to be
+				switched (the device are read from pilight config.json), the switch
+				time for 'ON' and/or 'OFF' and possible time 'Offset' with fixed or
+				random values. 'ON'/'OFF' can be based on sunrise or sunset. Time
+				values can have a random modifier.
+			</div>
+			</p>
+
+			<h5 id="onoff-time"> <em>ON/OFF Time</em> </h5>
+			<p>
+			<div style="margin-left: 30px;">
+				Using the buttons [ON] and [OFF] opens a dialog to set a specific
+				switch time or the time of sunrise or sunset. <br>
+				<br> <img title="piSchedule on Console"
+					src="pic.en.jobOffTime.png" hspace="14" width="551"> <br><br>
+					The menu item [ + ] of the 'OFF' menu makes it possible to define a
+					time difference between the resulting 'ON' time and the 'OFF'
+					time. <br>
+				<br> With the menu item [ Time ] the already defined time value
+					(see example 23:30) -- or if not set already the actual time -- is
+					used to preset the time value with the next dialog part: <br>
+				<br> <img title="piSchedule on Console"
+					src="pic.en.clockPicker_piSchedule.png" hspace="14" width="551">
+					<br>
+				<br> After hour or minutes slection at the top the pointer can
+					be moved to the required time value. Use [ Set ] to close and take
+					the time for the button. 
+			</div>
+			</p>
+			<h5 id="onoff-offset-time-absolute-or-random">
+				<em>ON/OFF Offset time -- absolute or random</em>
+			</h5>
+			<p>
+			
+			<div style="margin-left: 30px;">
+				The 'ON' and 'OFF' time can be changed with a random value. For that
+				the buttons <strong>[ON Offset]</strong> or <strong>[OFF
+					Offset]</strong> open the dialog for setting the time value. <br>
+				<br> The buttons [ + ] and [ - ] set a defined value, [ random
+				] and [ random minus ] generate a random offset value. The value
+				defines a span and the random value will be in that span. With [
+				random minus ] the point of time will be before the time defined
+				with [ ON ] or [ OFF ]. <br>
+				<br>
+				<em>Note: The resulting point of time will be calculated at the
+					moment the 'Job' is activated as part of the 'Job List' </em>
+			</div>
+			</p>
+			<h5 id="button-add">
+				<em>Button [ Add ]</em>
+			</h5>
+			<p>
+			
+			<div style="margin-left: 30px;">
+				The displayed 'Job'-definition will be added to the "Job List" <em>before</em>
+				the activated row on the "Job List"
+			</div>
+			</p>
+			<h5 id="button-reset">
+				<em>Button [Reset]</em>
+			</h5>
+			<p>
+			
+			<div style="margin-left: 30px;">This will remove all settings
+				on the textline and the buttons.</div>
+			</p>
+			<h5 id="textline-below-the-buttons">
+				<em>Textline below the buttons</em>
+			</h5>
+			<p>
+			
+			<div style="margin-left: 30px;">This line shows the "actual"
+				job notation. This line is copied from the Job List with the 'Edit'
+				call or it was resetted with the [Reset] button. With editing using
+				the buttons above the textline the resulting 'Job' notation will be
+				shown and [Add] will send it to the 'Job List'. The leading number
+				shows the position on that list.</div>
+			</p>
+			<h3 id="job-list">Job List</h3>
+			<p>
+			
+			<div style="margin-left: 30px;">
+				On the main menu with the button "Job Lists" a menu list with the
+				available 'Job Lists' (.INI-Text file) and a default list are
+				presented. Selecting one of those will open the page "Edit Job List
+				File" and the jobs contained on the selected Job List are filled
+				into the textbox. <br>
+				<br> The part of the page for "Job List" has the following
+				sections:
+				</p>
+				<ul>
+					<li>Show the name of the opened "Job List File" with two
+						buttons to store and delete the named file.</li>
+					<li>A textbox which holds all Jobs of the file and the
+						configured changes</li>
+					<li>Right above the textbox a menu button (pencil symbol)
+						offers some methods to work with the selected 'Job'
+			</div>
+			</li>
+			</ul>
+			<h4 id="working-with-the-job-list">
+				<em>Working with the "Job List"</em>
+			</h4>
+			<p>
+			
+			<div style="margin-left: 30px;">
+				<img title="Job List functions" src="pic.en.dayScheduleEdit7.png"
+					hspace="14" width="551"> <br>
+				<br>To work with a row of the Job List activate it and open the
+				menu (pencil symbol)
+				<ul>
+					<li><strong>[Edit]</strong> writes the selected row/job to the
+						'Job Definition'. That way the selected job definition will be
+						used to preset the buttons for job configuration and writes it
+						also to the textrow. Thhat done, the job can be edited. <br>As
+						mentioned above the menu button [ Add ] will write back the
+						changed job before the selected row/job. The original will not be
+						overwritten, but it can be removed the menu.</li>
+					<li><strong>[Erase]</strong> removes the selected job from the
+						Job List</li>
+					<li>There are two button to shift a job up/down the Job List</li>
+					<li><strong>[Advance Edit Row]</strong> used to add/edit
+						comments or empty rows for better readability or to edit directly
+						the selected row/job. (A 'comment' always starts with a star *)
+						</p>
+			</div>
+
+	<!-- $$$content$$$ -->
+
+<hr />
+<p align="center" id="$$$freeProjectDE" style="display:none">
+            &copy; gNeandr  &nbsp; &nbsp; --  &nbsp; &nbsp; 
+            <strong><em>piSchedule</em></strong> ist ein freies Open Source Projekt &nbsp; &nbsp; -- &nbsp; &nbsp; Feel free to use it. 
+         </p> 
+
+         <p align='center' id="freeProjectEN" style="display:block">
+            &copy; gNeandr  &nbsp; &nbsp; --  &nbsp; &nbsp; 
+            <strong><em>piSchedule</em></strong> is a free Open Source Project &nbsp; &nbsp; -- &nbsp; &nbsp; Feel free to use it. 
+         </p> 
+
+
+         <p align="center" id="$$$donationDE" style="display:none">
+              <b><a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=N3HLSJP5CVLSS' 
+              title='Danke für ihre Spende an piScheduler und die Benutzung von Paypal'> 
+              <img alt='Donate button' src='https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/Donate-40g.png' />
+              &nbsp; &nbsp; Spende was <i>piSchedule</i> Dir wert ist.</a></b>
+            <br>
+            <a href="https://groups.google.com/forum/#!forum/piSchedule7">Kommentare, Fragen und Rückmeldungen im <i>piSchedule</i>  <strong>Forum</strong></a>
+         </p>
+
+         <p align='center' id="donationEN" style="display:block">
+             <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=N3HLSJP5CVLSS'
+             title='Thanks for your donation for piScheduler and using Paypal'> 
+             <img alt='Donate button' src='https://dl.dropboxusercontent.com/u/35444930/piSchedule7/pict/Donate-40g.png' />
+             &nbsp; &nbsp; Donate what <i>piSchedule</i> is worth for you. </a></b>
+            <br>
+            <a href="https://groups.google.com/forum/#!forum/piSchedule7">For Comments, Questions and Feedback please use <i>piSchedule</i>  <strong>Forum</strong></a>
+         </p>
+
+
+
+      </div>
+   </body>
+</html>
+
