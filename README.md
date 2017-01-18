@@ -11,6 +11,7 @@ Only running a browser is required for setup, operation, logging and documentati
 For detailed *Use and Installation* see the documentation, please visit     
 
  * [Overview / Use and Setup](https://neandr.github.io/piSchedule/en.overview75.html)
+ * [Job Setup](https://neandr.github.io/piSchedule/en.scheduleEdit.html)
  * [Timeline](https://neandr.github.io/piSchedule/en.timeline.html)
  * [Scheduling Examples](https://neandr.github.io/piSchedule/en.scheduleExamples.html)
  * [Scheduling Features](https://neandr.github.io/piSchedule/en.scheduleFeatures.html)
