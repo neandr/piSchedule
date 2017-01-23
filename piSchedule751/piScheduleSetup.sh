@@ -322,8 +322,8 @@ echo "
          using the 'piSchedule {server}:{port}' as prompted above
 
      *** For more detailed information see also
-         DE:   $DBOXurl/DE/piScheduleOverview.html
-         EN:   $DBOXurl/EN/piScheduleOverview.html
+         DE:   $DBOXurl/de.overview75.html
+         EN:   $DBOXurl/en.overview75.html
      "
 sudo service piSchedule status
 exit 0

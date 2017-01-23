@@ -5,15 +5,20 @@
 # Required-Start:    $remote_fs $syslog $all
 # Required-Stop:     $remote_fs $syslog
 # Should-Start:      pilight
-# Default-Start:     2 3 4 5
+# Default-Start:     3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: Start|Stop service for piSchedule
 # Description:       Start|Stop service for piSchedule
 ### END INIT INFO
 
+# 17-01-23_20
+
 set -e
 
-# Change the next 3 lines to suit where you install your script and what you want to call it
+#  
+#  The next line should have been updated by the installing process so 
+#  the correct DIR and piSchedule version can be started!
+#  
 DIR=--DIR--
 cd $DIR
 
@@ -65,6 +70,7 @@ case "$1" in
     status)
         $DIR/piPrefs.py
         status_of_proc "$DAEMON_NAME" "$DAEMON"
+        ps ax|grep piSchedule|grep python
         exit 0 || exit $?
         ;;
 
