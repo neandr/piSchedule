@@ -65,51 +65,53 @@ style="width: 400px; cursor:pointer; font-weight: bold; color: #3A69A6;" onclick
 <em><strong> Hinweis</strong> &nbsp;&nbsp;&nbsp; Es werden keine <strong>INI</strong> Dateien geladen/überschrieben.</em> 
 </div>
 Das Setup beginnt mit einer Konsolen Ausgabe wie folgt (Beispiel:)
-<pre><code> ** piSchedule Setup -- Loading [version] list! 
-      1:  piSchedule75
-      2:  piSchedule751
-    0: Python  - Libraries loading/updating only
-    9: pilight - Download and install vers.7
+<pre><code> ___piSchedule Setup        vers.2017-02   __  
+ ** piSchedule Setup -- Loading [version] list! 
+      0: Update Python Libraries only
+      1:  piSchedule751
+    Select installation option: 1
 </code></pre>
 
 <p>Dieses Auswahlmenü bietet unterschiedliche Versionen an, hier</p>
 <ul>
 <li>
-<p><tt> 1:</tt> und <tt> 2:</tt> -- Zwei unterschiedliche Versionen von <strong><em>piSchedule</em></strong>.<br> <small><em>(Das aktuelle Menü kann andere Versionen beinhalten)</em></small></p>
-</li>
-<li>
 <p><tt>0: <strong>Python</strong>  - Libraries loading/updating only</tt> -- Es erfolgt nur die Installation der Python Module, kein <em><strong>piSchedule</strong></em> Setup.</p>
 </li>
 <li>
-<p><tt>9: <strong>pilight</strong> - Download and install vers.7 </tt> -- Hiermit kann direkt 'pilight' vers.7 installiert werden. 'pilight' wird auch automatisch gestartet, so kann auf der pilight web Gui Seite kontrolliert werden ob die Installation erfolgreich war. Dann ist noch die individuelle 'pilight' Konfiguration einzurichten, Anweisung hierzu auf der Konsole.</p>
+<p><tt> 1:</tt>  -- Die jeweils aktuelle Version von <strong><em>piSchedule</em></strong>.<br> <small><em>
+ (Das aktuelle Menü kann weitere Versionen beinhalten)</em></small></p>
 </li>
+
 </ul>
 <p>Hier ein Beispiel Setup mit der Auswahl "1" der o.g. Liste, sie beginnt automatisch und schließt ab mit:</p>
-<pre><code> ** pilight  {server}:{port}=192.168.178.12:5001
- ** pilight  version=7.0  &gt;&gt;OK&lt;&lt;
-piDiscover pilight ['192.168.178.12', 5001, '7.0', '']
+<pre><code>
+     *** piSchedule - ready to start     ***
+     *** Use                             ***
+           $  sudo service piSchedule start
 
-     *** piSchedule - Check Setup ***
-         Only with a valid pilight/piSchedule {server}:{port} notation and
-         'version=xx &gt;&gt;OK&lt;&lt;' the piSchedule setup was successful.
+     *** Check with                      ***
+           $  sudo service piSchedule status
 
+         The listing needs a line with a valid
+         addressing for server:port
+            ** piSchedule  {server}:{port} : >>192.0.10.1.5001<<
+                     ('192.0.10.1.5001' is an example only!)
          If failed, check with the following commands:
-            cd ~/piSchedule73
-            sudo service pilight restart
-            sudo service piSchedule restart
-            sudo service piSchedule status
+           $  cd ~/piSchedule751
+                     ('piSchedule751' is an example only!) 
+           $  sudo service piSchedule restart
+           $  sudo service piSchedule status
+           $  sudo  /home/pi/piSchedule751/piPrefs.py
 
-     *** Move over to your browser and start the 'piSchedule' home page
-         using the 'piSchedule {server}:{port}' as prompted above
 
-     *** For more detailed information see also
-         DE:   https://neandr.github.io/piSchedule/de.overview75.html
-         EN:   https://neandr.github.io/piSchedule/en.overview75.html
-
-[ ok ] /home/pi/piSchedule73/piSchedule.py is running.
-piSchedule  {server}:{port}  &gt;&gt;192.168.178.12:5005&lt;&lt;
+     *** With valid results move over to your browser  ***
+     *** and start the 'piSchedule' home page using    ***
+     *** the prompted {server}:{port}                  ***
 pi@RPI2 ~ $ 
 </code></pre>
+<p><br>
+Nun kann <em><strong>piSchedule</strong></em> gestartet werden mit den oben angegeben Befehlen. 
+</p>
 
 <p><br>
 Mit der Eingabe der gezeigten {server}:{port} Adresse in der Adresszeile des Browsers wird <em><strong>piSchedule</strong></em> geöffnet:
