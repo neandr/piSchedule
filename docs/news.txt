@@ -1,0 +1,48 @@
+                                               2017-02-09
+** Wheezy and Jessie Support
+   Due to some Raspian version changes the setup 
+   procedure had to be changed.
+   The current stable piSchedule version is piSchedule751,
+   a preview for the next version (piSchedule76) has been
+   added, for that follow the normal setup, see below.
+   
+   Coming features with .76:
+   -- new navigation with 'Hamburger'
+   -- Timeline has planned and actual view
+
+                                               2017-01-05
+** Change from DBox to gitdoc 
+   New location of piSchedule for code and documentation
+   is   https://neandr.github.io/piSchedule/
+   Please make sure to select 'piSchedule751' for updating
+   the piSchedule installation!
+   See also more details on 
+   [Forum](https://groups.google.com/forum/#!forum/pischedule7)
+
+                                               2016-08-09
+** Updates (see also on Forum)
+   Calculation of sunrise/sunset could fail due to :60 sec
+   result. (System failure 500)
+
+   piSystem. log
+   Restarting piSchedule with improved date setting
+
+                                               2016-08-08
+** pilight ssdp setup
+   To solve ssdp problems an additional setting was
+   recommended and has been added to the piSchedule
+   installation.
+   See https://forum.pilight.org/Thread-solved-another-pilight-ssdp-missed-connection-on-RPI
+
+                                               2016-02-19
+** Preview piSchedule 0.7.5 -- Timeline
+
+	Timeline is under development, please use
+	with care and report back any issue or 
+	required improvements.
+
+
+===
+__ For piSchedule Setup (and update) use
+
+||  cd ~  &&  wget https://neandr.github.io/piSchedule/piScheduleSetup.sh -O piScheduleSetup.sh && bash piScheduleSetup.sh
