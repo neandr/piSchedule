@@ -1,41 +1,66 @@
 #!/bin/bash
-cd ~
-T=" ___piSchedule Setup        vers.2017-02   __  "
+T=" ___ piSchedule Setup  #2.2      vers.2017-02-08 ___"
 H="
     SYNOPSIS 
        piScheduleSetup.sh [ARGUMENT] 
 
     DESCRIPTION
-       The 'piSchedule' code is stored on a Dropbox account. 
+       The 'piSchedule' code is stored on a Github. 
        This script helps to select a specific version, download and install 
        it on a Raspberry/pilight installation.
 
-       Copy the following string and execute it at the RPI prompt:
+
+       piSchedule support script for set on a Raspberry/pilight installation.
+
+       piSchedule version code is provided as a ZIP file and is normally 
+       available from Github but can also be located locally.
+
+       To setup from Github copy the following string and execute it at 
+       the RPI prompt:
           cd ~  &&  wget https://neandr.github.io/piSchedule/piScheduleSetup.sh -O piScheduleSetup.sh && bash piScheduleSetup.sh
 
-    ARGUMENT
-          no argument   will prompt with available versions.
-          'version'     is the 'name' of the piSchedule ZIP file containing the code.
-                        The 'name' will be used also to make a dir with that name to hold the code.
-                      Note: Multiple installations can be stored on the RPI. However changing
-                            between revisions should be done only with:
-                               sudo service piSchedule stop
-          '--update'    Only load 'piSchedule' code, no Python Libraries
-          '--help'      print this help text
+       To setup from local storage call this script with --local.
+          Note:   For 'local setup' have the 'version.dir' and the ZIP file(s) 
+                  stored at ~/ directory.
 
+    ARGUMENT
+       no argument  Will prompt with available versions from Github.
+
+       '--local'    Install with local version detail file  (~/version.dir)
+       '--update'   Only load 'piSchedule' code, no Python Libraries
+
+       '--init'     Call after version change to run the 
+                    correct 'service' for the version in use
+
+       '--help'     print this help text
 "
 echo "$T"
 
-DBOXurl='https://neandr.github.io/piSchedule/'
-versions='versions.zip.dir'
+   GHurl='https://neandr.github.io/piSchedule'
 
-#set -e
-chmod 755 piScheduleSetup.sh
+   versions='versions.dir'
+   #versions='versions.zip.dir'
+   xurl=$GHurl/$versions
+
+   xDIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+   sourceDIR="$(basename $xDIR)"
+   baseDIR="$(dirname $xDIR)"
+   ## echo "    baseDIR: " $baseDIR
+   ## echo "       xDir: " $xDIR
+   ## echo "  sourceDIR: " $sourceDIR
+
+cd ~
+
+   #  -- help --
+   if  [ "$1" == --help ] ; then 
+       echo "$H"; 
+       exit 0;
+   fi
 
 
 load_piSchedule_Libs ()
 {
-   echo  " ** piSchedule -- Python supporting libraries loading."
+   echo -e " ** piSchedule loading Python libraries. **\n"
 
    sudo apt-get install python-pip
 
@@ -50,162 +75,218 @@ load_piSchedule_Libs ()
    sudo pip install bottle
 }
 
+init_piSchedule () 
+{
+   echo -e "\n ** Set piSchedule.sh for 'service' with   VERSION >>$VERSION<<  SCHEDULE7 >>$SCHEDULE7<<  \n" 
 
-LIBload=1
-if  [ "$1" == --update ] ; then 
-    echo " ** UPDATE 'piSchedule' code only; *NO* library load! "
-    let LIBload=0
-    shift
-fi
+   if [ -f $xDIR/$VERSION/piSchedule.sh.X ] ; then
+      sudo service piSchedule stop   # make sure NO piSchedule isn't running!
 
-if [ -z "$1" ] ; then
-   xurl=$DBOXurl/$versions
+      R='s#--DIR--#'$xDIR/$VERSION'#g'
+      sed  $R $xDIR/$VERSION/piSchedule.sh.X > $xDIR/$VERSION/piSchedule.sh
 
-   echo -e " ** piSchedule Setup -- Loading [version] list! " #\n   "$xurl
-   sudo wget --output-file=wget.log $xurl -O $versions
-   if  grep '404 Not Found'  wget.log ; then
-      echo "                     - Missing [version] argument OR '$versions' from remote system !"
-      echo "    ...  For more details type  piScheduleSetup.sh --help" 
-      exit 1
+   else
+      echo -e "\n   ?????  NOTE   Missing piSchedule components!  ?????"
+      echo -e   "   ?????         Check the directory for         ?????\n"
+      echo -e   "               >>$VERSION/piSchedule.sh.X<<  \n"
+      exit 9
    fi
 
-   echo "      0: Update Python Libraries only" 
+     sudo cp $xDIR/$VERSION/piSchedule.sh /etc/init.d/piSchedule
+     sudo update-rc.d piSchedule defaults
+
+     echo -e "\n  ** Using  'service piSchedule start|stop|status' with"
+     echo -e   "     setup directory   >>$VERSION<<\n"
+}
+
+
+
+
+## ----------- ---- ----------------------------------
+
+   #  -- init --
+   if  [ "$1" == --init ] ; then 
+       init_piSchedule 
+       exit 0;
+   fi
+
+
+   LIBload=1
+   if  [ "$1" == --update ] ; then 
+       echo -e "    ---  UPDATE 'piSchedule' code only; *NO* library load! "
+       let LIBload=0
+       shift
+   fi
+
+
+   if  [ "$1" == --local ] ; then
+      GHurl=''
+      versions=$xDIR/$versions
+
+      echo "    ---  Use local 'versions'  >>$versions<< "
+
+      if [ -f $versions ] ; then
+         echo "    "
+      else 
+         echo "    ---  NO such local 'versions'  >>$versions<< "
+         exit 88
+      fi
+
+   else 
+      echo "    ---  Use remote '$xurl'"
+      sudo wget --output-file=wget.log $xurl -O $versions
+      #cat  wget.log
+
+      if  grep '404 Not Found'  wget.log ; then
+         echo -e "\n    ---  Missing '$versions' from remote system !"
+         echo      "    ---  For more details type  piScheduleSetup.sh --help" 
+         exit 1
+      fi
+   fi
+
+
+# --- Build the selection list --- 
+   echo "   0: Update Python Libraries only" 
 
    N=1
-   while read line
-      do if [ $line ] ; then 
-         export "$line"
-         echo "     " $N": " ${line:3}
-         ((N++))
-      fi
+   while read -r line
+      do
+        if [ -n "$line" ] ; then
+           export "$line"
+           echo "     " $N": " ${line:3}
+           ((N++))
+        fi
    done < $versions ;
 
-   read -n 1 -p "    Select installation option: " No ; 
-   echo -e "\n"
+   read -n 1 -p "    Select installation option: " No ;
+   echo -e  "\n"
 
+   x=Z$No ; set junk ${!x} ; shift
+
+   #  ---Only lib loading ---
    if [ $No == 0 ] ; then
       load_piSchedule_Libs
       exit 0
    fi
 
+
    x=Z$No;  VERSION=${!x}
-   sudo rm wget.log
-   
-else
-   #  cmd was --help  or a version was entered
-   if  [ "$1" == --help ] ; then 
-       echo "$H"; exit 0; fi
-
    VERSION=$1
-fi
-
-if [ -z $VERSION ] ; then
-      echo -e "\n ** piSchedule -- Missing [version] argument OR '$versions' from remote system!\n"
-      echo "$H"; exit 0
-fi
-
-echo -e "\n ** piSchedule Setup -- Version  >>"$VERSION"<<  " 
 
 
-if [ $LIBload = 1 ] ; then
-    load_piSchedule_Libs
-fi
+   if [ -z $VERSION ] ; then
+         echo -e "\n ** piSchedule -- Missing [version] argument OR '$versions' from remote system!\n"
+         echo "$H"; exit 0
+   fi
 
-# only use first part to identify 'version'
-set junk $VERSION
-shift
-VERSION=$1
-
-SCHEDULE7=$HOME/$VERSION
-
-if [ -d $SCHEDULE7/ ] ;  then
-     echo "                      - "$SCHEDULE7/" exists already."
-  else
-     echo "                      - "$SCHEDULE7/" does NOT EXISTS!"
-     echo "                      - "$SCHEDULE7/" will be created."
-     mkdir $SCHEDULE7/
-fi
-cd $SCHEDULE7/
+   echo -e "\n ** piSchedule Setup for Version  >>"$VERSION"<<  Load Libs: " $LIBload 
 
 
-DBOXzip=$DBOXurl/$VERSION'.zip -O piScheduleX.zip'
+   SCHEDULE7=$HOME/$VERSION
 
-echo " ** piSchedule Setup -- Get ZIP >>"$DBOXzip"<<" 
+# --- build the setup directory if not exist ---
+   if [ -d $SCHEDULE7/ ] ;  then
 
-
-sudo wget --output-file=wget.log $DBOXzip
-#cat wget.log
-
-if  grep '404 Not Found'  wget.log ; then
-   echo "   ERROR  404  : can't get ZIP" 
-   exit 1
-fi
-
-if  grep ' saved ' wget.log ; then
-   echo " ** piSchedule Setup -- ZIP OK"
-fi
-sudo rm wget.log
+        echo -e "\n    ---  $SCHEDULE7/ exists already.\n"
+     else
+        echo -e "\n    ---  $SCHEDULE7/ does NOT EXISTS! Will be created.\n"
+        mkdir $SCHEDULE7/
+   fi
 
 
-# setup files and service
-unzip -o piScheduleX.zip -d $SCHEDULE7/ 
+# --- Setup  piSchedule zip --------
+
+   if [ "$GHurl" == "" ]; then
+      echo -e "\n ** piSchedule Setup -- Get LOCAL zip  >>$VERSION.zip<<"
+
+      if [ -f $VERSION.zip ] ; then
+         echo "   "
+      else 
+         echo -e "    ---  NO such LOCAL zip! \n"
+         exit 88
+      fi
+
+      cp $VERSION.zip piScheduleX.zip
+
+   else
+      GHzip=$GHurl/$VERSION'.zip -O piScheduleX.zip'
+
+      echo -e "\n ** piSchedule Setup -- Get REMOTE zip  >>"$GHzip"<<" 
+      sudo wget --output-file=wget.log $GHzip
+
+      if  grep '404 Not Found'  wget.log ; then
+         echo -e "  *** ERROR  404  : can't get ZIP   *** \n" 
+         exit 1
+      fi
+
+      if  grep ' saved ' wget.log ; then
+         echo "  *** piSchedule Setup -- ZIP OK ***"
+      fi
+      sudo rm wget.log
+   fi
 
 
-echo -e "\n    ...  Check if 'piSchedule.sh.X' exists."
-if [ -a $SCHEDULE7/piSchedule.sh.X ] ; then
-   R='s#--DIR--#'$SCHEDULE7'#g'
-   sed  $R $SCHEDULE7/piSchedule.sh.X > $SCHEDULE7/piSchedule.sh
-else
-   echo -e "\n    ...  NOTE   Make sure piSchedule.sh has the correct directory setting!\n"
-fi
+# --- setup files and service ---
 
+   unzip -o piScheduleX.zip -d $SCHEDULE7  
 
-chmod 755 $SCHEDULE7/piSchedule.sh
+   chmod 755 $SCHEDULE7/piSchedule.sh
 
-chmod 755 $SCHEDULE7/piSchedule.py
-chmod 755 $SCHEDULE7/piDiscover.py
-chmod 755 $SCHEDULE7/piPrefs.py
-chmod 755 $SCHEDULE7/sunrise_sunset.py
-chmod 755 $SCHEDULE7/setScheduleService.sh
+   chmod 755 $SCHEDULE7/piSchedule.py
+   chmod 755 $SCHEDULE7/piDiscover.py
+   chmod 755 $SCHEDULE7/piPrefs.py
+   chmod 755 $SCHEDULE7/sunrise_sunset.py
+   chmod 755 $SCHEDULE7/setScheduleService.sh
+   chmod 755 $SCHEDULE7/piScheduleSetup.sh
 
-sudo rm piSchedule.prefs.json
+   sudo rm $SCHEDULE7/piSchedule.prefs.json
 
+# --- Setup selected lib  --------
+   if [ $LIBload == 1 ] ; then
+      load_piSchedule_Libs
+      ## echo -e "\n &&&&&&  load_piSchedule_Libs &&&&&&&& "
+   fi
 
+   #  --- setup and start installed version ---
+      init_piSchedule
 
-   echo -e "\n ** set piSchedule  for 'service' "
-      sudo cp $SCHEDULE7/piSchedule.sh /etc/init.d/piSchedule
-	   sudo update-rc.d piSchedule defaults
+      cd $SCHEDULE7
+      sudo   ./piDiscover.py
 
-      var=$(grep "DIR=" /etc/init.d/piSchedule) ; 
-      echo -e "    ...  Using  'service piSchedule start|stop|status' with: "$var"\n"
+# ------------ START & HELP DETAILS-----------------------
+  fg='\033[48;5;120m***'
+  fw='\033[48;5;123m***'
+  ef='***\033[0m'
 
-# sudo service piSchedule status
 
 echo -e "\n
-     *** piSchedule - ready to start     ***
-     *** Use                             ***
-           $  sudo service piSchedule start
+     $fg  piSchedule - HOW to START !                   $ef
+     $fg                                                $ef
+     $fg  Check above 'piDiscover pilight'              $ef
+     $fg  ['server', 'port', 'pilight', 'sspd status']  $ef
+     $fg                                                $ef
+     $fg  Start piSchedule with                         $ef
+     $fg    $  sudo service piSchedule start            $ef
+     $fg                                                $ef
+     $fg                                                $ef
+     $fg  If failed, check with the following commands  $ef
+            $  cd ~/$VERSION  
 
-     *** Check with                      ***
-           $  sudo service piSchedule status
-
-         The listing needs a line with a valid
-         addressing for server:port
-            ** piSchedule  {server}:{port} : >><<
- 
-         If failed, check with the following commands:
-           $  cd ~/$VERSION
-
-           $  sudo service piSchedule restart
-           $  sudo service piSchedule status
-           $  sudo  $SCHEDULE7/piPrefs.py
-
-
-     *** With valid results move over to your browser  ***
-     *** and start the 'piSchedule' home page using    ***
-     *** the prompted {server}:{port}                  ***
+            $  sudo  service piSchedule status
+            $  sudo  $SCHEDULE7/piPrefs.py
+     $fg                                                $ef
+     $fg    See also log-file:                          $ef
+              $  cat ~/$VERSION/logs/piInfo.log 
+     $fg                                                $ef
+     $fw                                                $ef
+     $fw  With valid results move over to your browser  $ef
+     $fw  and start the 'piSchedule' home page using    $ef
+     $fw  the prompted {server}:{port}                  $ef
+     $fw                                                $ef
 
      "
 
-exit 0
+     sudo service piSchedule start
+     sudo service piSchedule status
 
+exit 0
