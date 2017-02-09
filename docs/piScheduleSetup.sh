@@ -1,5 +1,7 @@
 #!/bin/bash
-T=" ___ piSchedule Setup  #2.2      vers.2017-02-08 ___"
+T=" ___ piSchedule Setup  #2.3      vers.2017-02-12_23
+
+s ___"
 H="
     SYNOPSIS 
        piScheduleSetup.sh [ARGUMENT] 
@@ -29,11 +31,9 @@ H="
        '--local'    Install with local version detail file  (~/version.dir)
        '--update'   Only load 'piSchedule' code, no Python Libraries
 
-       '--init'     Call after version change to run the 
-                    correct 'service' for the version in use
-
        '--help'     print this help text
 "
+
 echo "$T"
 
    GHurl='https://neandr.github.io/piSchedule'
@@ -45,14 +45,20 @@ echo "$T"
    xDIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
    sourceDIR="$(basename $xDIR)"
    baseDIR="$(dirname $xDIR)"
+
    ## echo "    baseDIR: " $baseDIR
    ## echo "       xDir: " $xDIR
    ## echo "  sourceDIR: " $sourceDIR
 
+   fg=$'\033[48;5;120m';
+   fw=$'\033[48;5;123m';
+   fr=$'\033[48;5;196m';
+   ef=$'\033[0m'
+
 cd ~
 
    #  -- help --
-   if  [ "$1" == --help ] ; then 
+   if  [ "$1" == "--help" ] ; then 
        echo "$H"; 
        exit 0;
    fi
@@ -75,40 +81,8 @@ load_piSchedule_Libs ()
    sudo pip install bottle
 }
 
-init_piSchedule () 
-{
-   echo -e "\n ** Set piSchedule.sh for 'service' with   VERSION >>$VERSION<<  SCHEDULE7 >>$SCHEDULE7<<  \n" 
-
-   if [ -f $xDIR/$VERSION/piSchedule.sh.X ] ; then
-      sudo service piSchedule stop   # make sure NO piSchedule isn't running!
-
-      R='s#--DIR--#'$xDIR/$VERSION'#g'
-      sed  $R $xDIR/$VERSION/piSchedule.sh.X > $xDIR/$VERSION/piSchedule.sh
-
-   else
-      echo -e "\n   ?????  NOTE   Missing piSchedule components!  ?????"
-      echo -e   "   ?????         Check the directory for         ?????\n"
-      echo -e   "               >>$VERSION/piSchedule.sh.X<<  \n"
-      exit 9
-   fi
-
-     sudo cp $xDIR/$VERSION/piSchedule.sh /etc/init.d/piSchedule
-     sudo update-rc.d piSchedule defaults
-
-     echo -e "\n  ** Using  'service piSchedule start|stop|status' with"
-     echo -e   "     setup directory   >>$VERSION<<\n"
-}
-
-
-
 
 ## ----------- ---- ----------------------------------
-
-   #  -- init --
-   if  [ "$1" == --init ] ; then 
-       init_piSchedule 
-       exit 0;
-   fi
 
 
    LIBload=1
@@ -186,7 +160,6 @@ init_piSchedule ()
 
 # --- build the setup directory if not exist ---
    if [ -d $SCHEDULE7/ ] ;  then
-
         echo -e "\n    ---  $SCHEDULE7/ exists already.\n"
      else
         echo -e "\n    ---  $SCHEDULE7/ does NOT EXISTS! Will be created.\n"
@@ -244,20 +217,59 @@ init_piSchedule ()
 # --- Setup selected lib  --------
    if [ $LIBload == 1 ] ; then
       load_piSchedule_Libs
-      ## echo -e "\n &&&&&&  load_piSchedule_Libs &&&&&&&& "
    fi
 
-   #  --- setup and start installed version ---
-      init_piSchedule
+   #  --- service setup for installed version ---
 
-      cd $SCHEDULE7
-      sudo   ./piDiscover.py
+   if [ -f $xDIR/$VERSION/piSchedule.sh.X ] ; then
+      sudo service piSchedule stop      # make sure NO piSchedule isn't running!
+
+      R='s#--DIR--#'$xDIR/$VERSION'#g'
+      sed  $R $xDIR/$VERSION/piSchedule.sh.X > $xDIR/$VERSION/piSchedule.sh
+
+   else
+       echo -e "\n
+     $fr                                                       $ef
+     $fr    NOTE   Missing piSchedule components!              $ef
+     $fr           Check the directory for                     $ef
+            >>$VERSION/piSchedule.sh.X<<
+     \n"
+      exit 9
+
+   fi
+
+   sudo cp $xDIR/$VERSION/piSchedule.sh /etc/init.d/piSchedule
+   sudo update-rc.d piSchedule defaults
+
 
 # ------------ START & HELP DETAILS-----------------------
-  fg='\033[48;5;120m***'
-  fw='\033[48;5;123m***'
-  ef='***\033[0m'
 
+   service pilight status > status.log
+   rv=$?
+   if ! [ "$rv" == "0" ] ; then
+      echo -e "
+     $fr                                                       $ef
+     $fr  pilight  *** NOT working correctly! ***              $ef
+     $fr                                                       $ef
+     $fr  pilight needs to be running for piSchedule!          $ef
+     $fr                                                       $ef
+      \n"
+      #cat status.log
+
+      read -n 1 -p "           $fw    Start pilight ?  (Y/n)   ${ef} " A
+      echo -e  "\n"
+
+      if ! [ $A == 'Y' ] ; then
+         exit 8
+      fi
+
+      sudo service pilight start
+   fi
+
+   rm status.log
+
+   cd ~/$VERSION
+   ./piDiscover.py
 
 echo -e "\n
      $fg  piSchedule - HOW to START !                   $ef
@@ -265,26 +277,29 @@ echo -e "\n
      $fg  Check above 'piDiscover pilight'              $ef
      $fg  ['server', 'port', 'pilight', 'sspd status']  $ef
      $fg                                                $ef
-     $fg  Start piSchedule with                         $ef
-     $fg    $  sudo service piSchedule start            $ef
+     $fw  Start piSchedule with                         $ef
+     $fw    $  sudo service piSchedule start            $ef
+     $fw                                                $ef
      $fg                                                $ef
-     $fg                                                $ef
-     $fg  If failed, check with the following commands  $ef
+     $fg  If failed, check with the following commands, $ef
+     $fg  IMPORTANT: change to current piSchedule dirc  $ef
             $  cd ~/$VERSION  
 
-            $  sudo  service piSchedule status
-            $  sudo  $SCHEDULE7/piPrefs.py
+     $fg    $  service piSchedule status                $ef
+     $fg    $  ./piPrefs.py                             $ef
+     $fg    $  ./piDiscover.py                          $ef
+     $fg    $  ps ax|grep piSchedule|grep python        $ef
      $fg                                                $ef
-     $fg    See also log-file:                          $ef
-              $  cat ~/$VERSION/logs/piInfo.log 
+     $fg  See also log-file:                            $ef
+     $fg    $  cat logs/piInfo.log                      $ef
+     $fg    $  cat logs/piSystem.log                    $ef
      $fg                                                $ef
      $fw                                                $ef
      $fw  With valid results move over to your browser  $ef
      $fw  and start the 'piSchedule' home page using    $ef
      $fw  the prompted {server}:{port}                  $ef
      $fw                                                $ef
-
-     "
+     \n"
 
      sudo service piSchedule start
      sudo service piSchedule status
