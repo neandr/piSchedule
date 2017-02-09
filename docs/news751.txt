@@ -1,3 +1,15 @@
+                                               2017-02-09
+** Wheezy and Jessie Support
+   Due to some Raspian version changes the setup 
+   procedure had to be changed.
+   The current stable piSchedule version is piSchedule751,
+   a preview for the next version (piSchedule76) has been
+   added, for that follow the normal setup, see below.
+   
+   Coming features with .76:
+   -- new navigation with 'Hamburger'
+   -- Timeline has planned and actual view
+
                                                2017-01-05
 ** Change from DBox to gitdoc 
    New location of piSchedule for code and documentation
@@ -31,6 +43,6 @@
 
 
 ===
-__ For 'standard' piSchedule Setup (and update) use
+__ For piSchedule Setup (and update) use
 
 ||  cd ~  &&  wget https://neandr.github.io/piSchedule/piScheduleSetup.sh -O piScheduleSetup.sh && bash piScheduleSetup.sh
