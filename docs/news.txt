@@ -1,3 +1,16 @@
+                                               2017-02-25
+** piSchedule 0.7.6 supports Nightly API
+   Already with pilight v7.0 nightly an api change has
+   been implemented for controlling the switches.
+   Now the current piSchedule 0.7.6 supports automatically
+   the 'stable' and the 'nightly' api for switching.
+
+** Jessie Light -- A how-to-do-for Setup/Networking
+   Follow a detailed installation instruction for the new
+   networking concept with Jessie:
+   https://neandr.github.io/piSchedule/jessieInstallation.txt
+
+
                                                2017-02-12
 ** Wheezy and Jessie Support
    Due to some Raspian version changes the setup 
@@ -5,7 +18,7 @@
    The current stable piSchedule version is piSchedule751,
    a preview for the next version (piSchedule76) has been
    added, for that follow the normal setup, see below.
-   
+
    Coming features with .76:
    -- new navigation with 'Hamburger'
    -- Timeline has planned and actual view
