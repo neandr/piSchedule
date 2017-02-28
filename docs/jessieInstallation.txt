@@ -1,6 +1,6 @@
 
-Installation of Raspian -- Jessie Light
-===============================================
+Installation of Raspian/Jessie Light for pilight/piSchedule
+=====================================================================
 A short description how to setup a new SDcard for running pilight
 with some important aspects for Jessie and it's changed networking
   See also 
@@ -11,7 +11,7 @@ with some important aspects for Jessie and it's changed networking
 >>> Write unzipped ZIP to the SDCard
 
 
- $ sudo dd bs=4M if=/home/path/to/yourraspberryImages/2017-01-11-raspbian-jessie-lite.img of=/dev/sdb
+ $ sudo dd bs=4M if=/home/gn/MORE/raspberryPI/img_zip/2017-01-11-raspbian-jessie-lite.img of=/dev/sdb
 234+0 records in
 234+0 records out
 981467136 bytes (981 MB) copied, 36,3931 s, 27,0 MB/s
@@ -31,26 +31,25 @@ with some important aspects for Jessie and it's changed networking
 /dev/sdb2       1,2G  741M  389M  66% /media/0aed834e-8c8f-412d-a276-a265dc676112
 
 
->>> Network Setup:
+>>> Netzwork Setup:
 --------------------
 >>> With Jessie Light NOT to use /etc/network/interfaces to configure IPs
 >>> instead   /etc/dhcpcd.conf
->>> See above mentioned article!
 
 /etc/network/interfaces -- Reset to initial values
 ...................................................
-      auto lo
-      iface lo inet loopback
-      iface eth0 inet manual
-      allow-hotplug wlan0
-      iface wlan0 inet manual
+auto lo
+iface lo inet loopback
+iface eth0 inet manual
+allow-hotplug wlan0
+iface wlan0 inet manual
 
 >>>   Add the WLAN Config like this ( .. or use wpa_supplicant.conf):
 
-      wpa-ap-scan 1
-      wpa-scan-ssid 1
-      wpa-ssid "{nameOfWLAN}"
-      wpa-psk "{secretCodeofWLAN}"
+wpa-ap-scan 1
+wpa-scan-ssid 1
+wpa-ssid "{nameOfWLAN}"
+wpa-psk "{secretCodeofWLAN}"
 
 
 /etc/dhcpcd.conf  -- add at the end of the file 
@@ -70,10 +69,10 @@ with some important aspects for Jessie and it's changed networking
       --- {IP}     an IP which is NOT part of the pool of the routers/DHCP!
 
 
+
 >>> SSH ::    Attention for Jessie Light !
 -----------------------------------------
    SSH Actiation needs an empty file with the name 'SSH' store on the boot partition!
-
       $ cd /media/boot
       $ sudo nano ssh     (build file)
       $ cd ~
@@ -83,33 +82,45 @@ with some important aspects for Jessie and it's changed networking
 
 >>> On RPI do UPDATES !!
 
-     $ sudo apt-get update
-     $ sudo apt-get upgrade
+   $ sudo apt-get update
+   $ sudo apt-get upgrade
 
 
 RPI Config starting
 ================================
-   pi@raspberrypi ~ $ sudo raspi-config
+pi@raspberrypi ~ $ sudo raspi-config
 
-Go for the following steps:
-   1. Expand Filesystem
-   2. PW change
-   4. Set Language and keyboard
+>>>  recommend to set the following points:
+  1. Expand Filesystem
+  2. PW change  
+  4. Locale Settings
 
-│ X   1 Expand Filesystem              Ensures that all of the SD card s 
-│ X   2 Change User Password           Change password for the default
-│    3 Enable Boot to Desktop/Scratch Choose whether to boot into a des
-│ X   4 Internationalisation Options   Set up language and regional sett
-          Language / Keyboard
-│    5 Enable Camera                  Enable this Pi to work with the R
-│    6 Add to Rastrack                Add this Pi to the online Raspber
-│    7 Overclock                      Configure overclocking for your P
-│    8 Advanced Options               Configure advanced settings  
-          Host : sterupPI    
-│    9 About raspi-config             Information about this configurat
+   Raspberry Pi Software Configuration Tool (raspi-config) 
+   ├──────────────────────────────────────────────
+ X │  1 Change User Password Change password for the default user (pi)
+ X │  2 Hostname             Set the visible name for this Pi on a network
+   │  3 Boot Options         Configure options for start-up
+ X │  4 Localisation Options Set up language and regional settings to match your location
+   │  5 Interfacing Options  Configure connections to peripherals
+   │  6 Overclock            Configure overclocking for your Pi
+   │  7 Advanced Options     Configure advanced settings
+ X │  8 Update               Update this tool to the latest version
+   │  9 About raspi-config   Information about this configuration tool
+
 
 >>> reboot
-   pi@raspberrypi ~ $ sudo shutdown -r 0
+
+   $ sudo shutdown -r 0
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!
+!!!  NOTE / Before installing pilight/piSchedule backup SDcard
+!!!  =========================================================
+!!!  See separate instructions:
+!!!
+!!!       https://neandr.github.io/piSchedule/rpi_backupRestore.txt
+!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 pilight Installation
@@ -121,30 +132,38 @@ Install pilight by using the apt repository in Debian / Ubuntu based distributio
 2. Make sure you are running as root. Run the following command and use your own password.
 
 pi@pilight:~# sudo su
-Password:�
+Password:
 
 3. Add the apt repository to the apt sources list:
-   root@pilight:~# echo "deb http://apt.pilight.org/ stable main" > /etc/apt/sources.list.d/pilight.list
+    ~# echo "deb http://apt.pilight.org/ stable main" > /etc/apt/sources.list.d/pilight.list
 
 If you want to install the nightly version of pilight then also add:
 
-   root@pilight:~# echo "deb http://apt.pilight.org/ nightly main" >> /etc/apt/sources.list.d/pilight.list
+    ~# echo "deb http://apt.pilight.org/ nightly main" >> /etc/apt/sources.list.d/pilight.list
 
 4. pilight uses a signed repository. This means packages get validated before installation. So, to safely download and install pilight packages the pilight key needs to be installed.
 
-   root@pilight:~# wget -O - http://apt.pilight.org/pilight.key | apt-key add -
+    ~# wget -O - http://apt.pilight.org/pilight.key | apt-key add -
 
 5. Now update the apt package list:
-   root@pilight:~# apt-get update
+    ~# apt-get update
 
 6. And install pilight
-   root@pilight:~# apt-get install pilight
+    ~# apt-get install pilight
+
+
+!!! >>>  Before starting as described with the pilight Manual instructions,
+!!! >>>  follow the instructions below "pilight -- Checking/Setting after installation" 
+
 
 7. When no errors are shown, pilight will be installed and automatically started at boot time. To manually start pilight:
-   root@pilight:~# service pilight start
+    ~# service pilight start
 
 8. And to stop pilight
-   root@pilight:~# service pilight stop
+    ~# service pilight stop
+
+Exit to normal prompt
+    ~# exit
 
 
 pilight -- Checking/Setting after installation
@@ -152,7 +171,8 @@ pilight -- Checking/Setting after installation
 
 1. Runlevel
 ................................
-To get a successful pilight operation it's required to have correct startup. For that make sure the runlevel is set correctly.
+To get a successful pilight operation it's required to have correct startup. 
+For that make sure the runlevel is set correctly.
 Check it with the following command:
 
     pi@raspberrypi ~ $ cat /etc/init.d/pilight |grep Default-Start
@@ -168,16 +188,16 @@ Check it with the following command:
 ............................
 If using the development version check the config.json file.
 For upcoming features the file may have a line like this:
-    pi@raspberrypi ~/piSchedule76 $ cat /etc/pilight/config.json |grep webserver-http
+    pi@raspberrypi ~ $ cat /etc/pilight/config.json |grep webserver-http
                 "webserver-https-port": 5002,
 
-Make sure NOT to include that line with https-port!
+>>> Make sure NOT to include that line with https-port!
 
 
 
 piSchedule Installation
 =============================
-See detailed instaruction at
+See detailed instruction at
 Deutsch:  https://neandr.github.io/piSchedule/index.html or 
 English:  https://neandr.github.io/piSchedule/en.index.html
 
