@@ -1,6 +1,14 @@
 
 Installation of Raspian/Jessie Light for pilight/piSchedule
 =====================================================================
+
+UPDATE  2017-03-11:
+    See also pilight forum with 
+       https://forum.pilight.org/Thread-pilight-piSchedule-on-Jessie-Light-A-how-to-do-for-Setup-Networking
+    For a save boot process a modification of the script /etc/init.d/pilight was 
+    necessary. More details below
+
+
 A short description how to setup a new SDcard for running pilight
 with some important aspects for Jessie and it's changed networking
   See also 
@@ -11,7 +19,7 @@ with some important aspects for Jessie and it's changed networking
 >>> Write unzipped ZIP to the SDCard
 
 
- $ sudo dd bs=4M if=/home/gn/MORE/raspberryPI/img_zip/2017-01-11-raspbian-jessie-lite.img of=/dev/sdb
+   ~ $ sudo dd bs=4M if=/home/gn/MORE/raspberryPI/img_zip/2017-01-11-raspbian-jessie-lite.img of=/dev/sdb
 234+0 records in
 234+0 records out
 981467136 bytes (981 MB) copied, 36,3931 s, 27,0 MB/s
@@ -21,11 +29,11 @@ with some important aspects for Jessie and it's changed networking
 
 >>> after prompted back .. sync
 
- $ sudo sync
+   ~ $ sudo sync
 
 >>> SDCard remove / insert --> to get now 2 Partitions
 
- $ sudo df -h
+   ~ $ sudo df -h
 
 /dev/sdb1        63M   21M   42M  33% /media/boot
 /dev/sdb2       1,2G  741M  389M  66% /media/0aed834e-8c8f-412d-a276-a265dc676112
@@ -73,17 +81,17 @@ wpa-psk "{secretCodeofWLAN}"
 >>> SSH ::    Attention for Jessie Light !
 -----------------------------------------
    SSH Actiation needs an empty file with the name 'SSH' store on the boot partition!
-      $ cd /media/boot
-      $ sudo nano ssh     (build file)
-      $ cd ~
+     ~ $ cd /media/boot
+     ~ $ sudo nano ssh     (build file)
+     ~ $ cd ~
 
 
 >>> Ready .. remove card from PC, install it to the RPI and boot it
 
 >>> On RPI do UPDATES !!
 
-   $ sudo apt-get update
-   $ sudo apt-get upgrade
+   ~ $ sudo apt-get update
+   ~ $ sudo apt-get upgrade
 
 
 RPI Config starting
@@ -110,7 +118,7 @@ pi@raspberrypi ~ $ sudo raspi-config
 
 >>> reboot
 
-   $ sudo shutdown -r 0
+   ~ $ sudo shutdown -r 0
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!
@@ -157,26 +165,57 @@ If you want to install the nightly version of pilight then also add:
 
 
 7. When no errors are shown, pilight will be installed and automatically started at boot time. To manually start pilight:
-    ~# service pilight start
+   ~# service pilight start
 
 8. And to stop pilight
-    ~# service pilight stop
+   ~# service pilight stop
 
 Exit to normal prompt
-    ~# exit
+   ~# exit
 
 
 pilight -- Checking/Setting after installation
 ================================================
 
-1. Runlevel
+1. Boot sequence 
+Booting pilight gives a server/port setting. But for some operation also 
+a Simple Service Discovery Protocol (SSDP) connection is required. 
+With the older Raspian Wheezy it was not a problem, at boottime pilight 
+got a ssdp connection.
+With Jessie Light it is! At least with the (current) standard pilight setup.
+
+To fix this the script /etc/init.d/pilight has to be modified with the first 
+lines to get the following, edit with : 
+
+~ $ sudo nano /etc/init.d/pilight
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          pilight-daemon
+# Required-Start:    $local_fs $network $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Starts pilight-daemon
+# Description:       Starts pilight-daemon
+#
+### END INIT INFO
+
+
+2. Runlevel
 ................................
+There are comments on the pilight Forum the Runlevel with the standard 
+installation isn't correct. Tests with Raspberry/Jessie Light didn't proved 
+such complains. The following lines describe how to change the Runlevel. Also
+not to change didn't gave failures for the setup or operation.
+So the description is only for completeness.
+
+Changing the Runlevel:
 To get a successful pilight operation it's required to have correct startup. 
 For that make sure the runlevel is set correctly.
 Check it with the following command:
 
-    pi@raspberrypi ~ $ cat /etc/init.d/pilight |grep Default-Start
-     
+  pi@raspberrypi ~ $ cat /etc/init.d/pilight |grep Default-Start
+
 >>>  Check to get only    
     # Default-Start:     3 4 5
 >>>   If you have        2 3 4 5
@@ -184,7 +223,7 @@ Check it with the following command:
     pi@raspberrypi ~ $ sudo nano /etc/init.d/pilight
 
 
-2. Development version
+3. Development version
 ............................
 If using the development version check the config.json file.
 For upcoming features the file may have a line like this:
