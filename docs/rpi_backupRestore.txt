@@ -16,8 +16,8 @@
 !!!      formated with ext4, labled 'RPIbackup'
 !!!   -- SDcard plugged into the RPI slot
 !!!
-!!!   Logging of the Backup process:
-!!!   -- Installing raspiBackup.sh
+!!!   On the Raspberry
+!!!   Install the backupRestore script: raspiBackup.sh
 !!!
 pi@rpi4:~ $ curl -s -L -O https://www.linux-tips-and-tricks.de/raspiBackupInstall.sh && sudo bash raspiBackupInstall.sh
 --- RBI0001I: raspiBackupInstall.sh 0.3.2, 2016-11-08/20:59:34 - 408aaf2
