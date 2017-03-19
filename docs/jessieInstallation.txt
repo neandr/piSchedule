@@ -2,7 +2,7 @@
 Installation of Raspian/Jessie Light for pilight/piSchedule
 =====================================================================
 
-UPDATE  2017-03-11:
+UPDATE  2017-03-14:
     See also pilight forum with 
        https://forum.pilight.org/Thread-pilight-piSchedule-on-Jessie-Light-A-how-to-do-for-Setup-Networking
     For a save boot process a modification of the script /etc/init.d/pilight was 
@@ -16,10 +16,12 @@ with some important aspects for Jessie and it's changed networking
      https://www.jeffgeerling.com/blog/2016/setting-static-ip-address-raspbian-jessie-lite-on-raspberry-pi
 
 >>> Download the Jessie Light version and unzip it on your computer
->>> Write unzipped ZIP to the SDCard
+>>> Write unzipped ZIP to the formatted (fat32 is required!) SDCard.
+>>> Use a command like this with your individual dir/file settings
+>>> and make sure you select the right destination device .. the SDCard:
 
+   ~ $ sudo dd bs=4M if=/home/raspberryPI/img_zip/2017-03-02-raspbian-jessie-lite.img of=/dev/sdb
 
-   ~ $ sudo dd bs=4M if=/home/gn/MORE/raspberryPI/img_zip/2017-01-11-raspbian-jessie-lite.img of=/dev/sdb
 234+0 records in
 234+0 records out
 981467136 bytes (981 MB) copied, 36,3931 s, 27,0 MB/s
@@ -59,6 +61,7 @@ wpa-scan-ssid 1
 wpa-ssid "{nameOfWLAN}"
 wpa-psk "{secretCodeofWLAN}"
 
+>>>  Edit the new networking setup with
 
 /etc/dhcpcd.conf  -- add at the end of the file 
 ......................................................
@@ -81,18 +84,20 @@ static domain_name_servers=8.8.8.8 8.8.4.4
 >>> SSH ::    Attention for Jessie Light !
 -----------------------------------------
    SSH Actiation needs an empty file with the name 'SSH' store on the boot partition!
-     ~ $ cd /media/boot
-     ~ $ sudo nano ssh     (build file)
+     ~ $ sudo touch /media/boot/ssh
+     ~ $ ls -lt /media/boot/ssh
      ~ $ cd ~
 
 
 >>> Ready .. remove card from PC, install it to the RPI and boot it
+>>> First boot takes a while ... 
 
->>> On RPI do UPDATES !!
+>>> Booting the RPI with ssh will prompt this message:
 
-   ~ $ sudo apt-get update
-   ~ $ sudo apt-get upgrade
+   SSH is enabled and the default password for the 'pi' user has not been changed.
+   This is a security risk - please login as the 'pi' user and type 'passwd' to set a new password.
 
+>>> So next start the RPI Config
 
 RPI Config starting
 ================================
@@ -101,19 +106,25 @@ pi@raspberrypi ~ $ sudo raspi-config
 >>>  recommend to set the following points:
   1. Expand Filesystem
   2. PW change  
-  4. Locale Settings
+  4. Locale Settings (location, language, keyboard)
+  7. Advance Options (change the name of RPI on the network)
 
    Raspberry Pi Software Configuration Tool (raspi-config) 
    ├──────────────────────────────────────────────
- X │  1 Change User Password Change password for the default user (pi)
- X │  2 Hostname             Set the visible name for this Pi on a network
-   │  3 Boot Options         Configure options for start-up
- X │  4 Localisation Options Set up language and regional settings to match your location
-   │  5 Interfacing Options  Configure connections to peripherals
-   │  6 Overclock            Configure overclocking for your Pi
-   │  7 Advanced Options     Configure advanced settings
- X │  8 Update               Update this tool to the latest version
-   │  9 About raspi-config   Information about this configuration tool
+ X |  1 Expand Filesystem            Ensures that all of the SD card storage is available to the OS
+ X │  2 Change User Password         Change password for the default user (pi)
+   │  3 Boot Options                 Configure options for start-up
+ X │  4 Localisation Options         Set up language and regional settings to match your location
+   │  5 Enable Camera                Enable this Pi to work with the Raspberry Pi Camera 
+   │  6 Overclock                    Configure overclocking for your Pi 
+ X │  7 Advanced Options             Configure advanced settings
+   │  8 About raspi-config  
+
+>>> Finishing will allow to reboot the RPI, then 
+>>> on RPI do UPDATES !!
+
+   ~ $ sudo apt-get update
+   ~ $ sudo apt-get upgrade
 
 
 >>> reboot
