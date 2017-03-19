@@ -1,45 +1,36 @@
 #!/bin/bash
-T=" ___ piSchedule Setup  #2.3      vers.2017-02-12_23
-
-s ___"
+T=" ___ piSchedule Setup  #2.4      vers.2017-03-14_17  ___"
 H="
     SYNOPSIS 
        piScheduleSetup.sh [ARGUMENT] 
 
     DESCRIPTION
-       The 'piSchedule' code is stored on a Github. 
-       This script helps to select a specific version, download and install 
-       it on a Raspberry/pilight installation.
+       Script for setup 'piSchedule' on a Raspberry/pilight installation.
+       The 'piSchedule' code is provide as ZIP and can be stored on Github or locally. 
 
-
-       piSchedule support script for set on a Raspberry/pilight installation.
-
-       piSchedule version code is provided as a ZIP file and is normally 
-       available from Github but can also be located locally.
+       This script helps to select a specific version, download and install it.
 
        To setup from Github copy the following string and execute it at 
        the RPI prompt:
           cd ~  &&  wget https://neandr.github.io/piSchedule/piScheduleSetup.sh -O piScheduleSetup.sh && bash piScheduleSetup.sh
 
        To setup from local storage call this script with --local.
-          Note:   For 'local setup' have the 'version.dir' and the ZIP file(s) 
-                  stored at ~/ directory.
+          Note:   For 'local setup' call this script from ~/ directory which has
+                  to hold also the 'version.dir' and the ZIP file(s) 
 
     ARGUMENT
-       no argument  Will prompt with available versions from Github.
+       no argument   Will prompt for setup with available versions from Github.
 
-       '--local'    Install with local version detail file  (~/version.dir)
-       '--update'   Only load 'piSchedule' code, no Python Libraries
+       '--local'     Install with local version detail file  (~/version.dir)
+       '--update'    Only load 'piSchedule' code, no Python Libraries
 
-       '--help'     print this help text
+       '--help'      Print this help text
 "
-
 echo "$T"
 
    GHurl='https://neandr.github.io/piSchedule'
 
    versions='versions.dir'
-   #versions='versions.zip.dir'
    xurl=$GHurl/$versions
 
    xDIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -55,7 +46,8 @@ echo "$T"
    fr=$'\033[48;5;196m';
    ef=$'\033[0m'
 
-cd ~
+#cd ~
+#ls -lt
 
    #  -- help --
    if  [ "$1" == "--help" ] ; then 
@@ -83,7 +75,6 @@ load_piSchedule_Libs ()
 
 
 ## ----------- ---- ----------------------------------
-
 
    LIBload=1
    if  [ "$1" == --update ] ; then 
@@ -166,42 +157,9 @@ load_piSchedule_Libs ()
         mkdir $SCHEDULE7/
    fi
 
-
-# --- Setup  piSchedule zip --------
-
-   if [ "$GHurl" == "" ]; then
-      echo -e "\n ** piSchedule Setup -- Get LOCAL zip  >>$VERSION.zip<<"
-
-      if [ -f $VERSION.zip ] ; then
-         echo "   "
-      else 
-         echo -e "    ---  NO such LOCAL zip! \n"
-         exit 88
-      fi
-
-      cp $VERSION.zip piScheduleX.zip
-
-   else
-      GHzip=$GHurl/$VERSION'.zip -O piScheduleX.zip'
-
-      echo -e "\n ** piSchedule Setup -- Get REMOTE zip  >>"$GHzip"<<" 
-      sudo wget --output-file=wget.log $GHzip
-
-      if  grep '404 Not Found'  wget.log ; then
-         echo -e "  *** ERROR  404  : can't get ZIP   *** \n" 
-         exit 1
-      fi
-
-      if  grep ' saved ' wget.log ; then
-         echo "  *** piSchedule Setup -- ZIP OK ***"
-      fi
-      sudo rm wget.log
-   fi
-
-
 # --- setup files and service ---
 
-   unzip -o piScheduleX.zip -d $SCHEDULE7  
+   unzip -o $VERSION.zip -d $SCHEDULE7  
 
    chmod 755 $SCHEDULE7/piSchedule.sh
 
@@ -254,19 +212,17 @@ load_piSchedule_Libs ()
      $fr  pilight needs to be running for piSchedule!          $ef
      $fr                                                       $ef
       \n"
-      #cat status.log
 
       read -n 1 -p "           $fw    Start pilight ?  (Y/n)   ${ef} " A
       echo -e  "\n"
 
-      if ! [ $A == 'Y' ] ; then
-         exit 8
+      if [ $A == 'Y' ] ; then
+         sudo service pilight start
       fi
 
-      sudo service pilight start
    fi
 
-   rm status.log
+   # rm status.log
 
    cd ~/$VERSION
    ./piDiscover.py
@@ -286,9 +242,9 @@ echo -e "\n
             $  cd ~/$VERSION  
 
      $fg    $  service piSchedule status                $ef
-     $fg    $  ./piPrefs.py                             $ef
+     $fg    $  sudo ./piPrefs.py                        $ef
      $fg    $  ./piDiscover.py                          $ef
-     $fg    $  ps ax|grep piSchedule|grep python        $ef
+     $fg    $  ps ax|grep piSchedule                    $ef
      $fg                                                $ef
      $fg  See also log-file:                            $ef
      $fg    $  cat logs/piInfo.log                      $ef

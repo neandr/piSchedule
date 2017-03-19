@@ -62,15 +62,15 @@ wpa-psk "{secretCodeofWLAN}"
 
 /etc/dhcpcd.conf  -- add at the end of the file 
 ......................................................
-      interface eth0
-      static ip_address=192.xxx.yyy.{IP1}/24
-      static routers=192.xxx.yyy.1
-      static domain_name_servers=8.8.8.8 8.8.4.4
+interface eth0
+static ip_address=192.xxx.yyy.{IP1}/24
+static routers=192.xxx.yyy.1
+static domain_name_servers=8.8.8.8 8.8.4.4
 
-      interface wlan0
-      static ip_address=192.xxx.yyy.{IP2}/24
-      static routers=192.xxx.yyy.1
-      static domain_name_servers=8.8.8.8 8.8.4.4
+interface wlan0
+static ip_address=192.xxx.yyy.{IP2}/24
+static routers=192.xxx.yyy.1
+static domain_name_servers=8.8.8.8 8.8.4.4
 
    Note:  
       --- xxx.yyy  set it for your own net
@@ -177,17 +177,34 @@ Exit to normal prompt
 pilight -- Checking/Setting after installation
 ================================================
 
-1. Boot sequence 
-Booting pilight gives a server/port setting. But for some operation also 
+1. Boot sequence
+...............................................
+Booting pilight gives a server/port setting. But also 
 a Simple Service Discovery Protocol (SSDP) connection is required. 
 With the older Raspian Wheezy it was not a problem, at boottime pilight 
 got a ssdp connection.
 With Jessie Light it is! At least with the (current) standard pilight setup.
 
-To fix this the script /etc/init.d/pilight has to be modified with the first 
-lines to get the following, edit with : 
+To fix this the script /etc/init.d/pilight has to be modified,
+see below. 
 
-~ $ sudo nano /etc/init.d/pilight
+
+2. Runlevel
+...............................................
+There are comments on the pilight Forum the Runlevel with the standard 
+installation isn't correct, the runlevel for starting should not include 2. 
+
+With some installations **not** to change didn't gave failures for the 
+setup or operation. So this description is only for completeness.
+
+
+3. Change the script /etc/init.d/pilight
+...............................................
+Edit the script with
+    pi@raspberrypi ~ $ sudo nano /etc/init.d/pilight
+
+The first lines have to be:
+
 #! /bin/sh
 ### BEGIN INIT INFO
 # Provides:          pilight-daemon
@@ -201,29 +218,7 @@ lines to get the following, edit with :
 ### END INIT INFO
 
 
-2. Runlevel
-................................
-There are comments on the pilight Forum the Runlevel with the standard 
-installation isn't correct. Tests with Raspberry/Jessie Light didn't proved 
-such complains. The following lines describe how to change the Runlevel. Also
-not to change didn't gave failures for the setup or operation.
-So the description is only for completeness.
-
-Changing the Runlevel:
-To get a successful pilight operation it's required to have correct startup. 
-For that make sure the runlevel is set correctly.
-Check it with the following command:
-
-  pi@raspberrypi ~ $ cat /etc/init.d/pilight |grep Default-Start
-
->>>  Check to get only    
-    # Default-Start:     3 4 5
->>>   If you have        2 3 4 5
->>>   You need to edit and delete runlevel 2 from the file!
-    pi@raspberrypi ~ $ sudo nano /etc/init.d/pilight
-
-
-3. Development version
+4. Development version
 ............................
 If using the development version check the config.json file.
 For upcoming features the file may have a line like this:
