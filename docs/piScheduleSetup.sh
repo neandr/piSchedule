@@ -146,7 +146,17 @@ load_piSchedule_Libs ()
 
    if ! [ -f $VERSION.zip ] ; then
          echo -e "\n ** piSchedule -- Missing ZIP  '$VERSION.zip'!\n"
-         echo "$H"; exit 0
+
+      echo "    ---  Loading '$VERSION'.zip from remote!"
+      sudo wget --output-file=wget.log $xzip/$VERSION.zip -O $VERSION.zip
+      #cat  wget.log
+
+      if  grep '404 Not Found'  wget.log ; then
+         echo -e "\n    ---  Missing '$versions' from remote system !"
+         echo      "    ---  For more details type  piScheduleSetup.sh --help" 
+         exit 1
+      fi
+
    fi
 
    echo -e "\n ** piSchedule Setup for Version  >>"$VERSION"<<  Load Libs: " $LIBload 
