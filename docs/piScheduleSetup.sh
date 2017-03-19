@@ -143,6 +143,11 @@ load_piSchedule_Libs ()
          echo "$H"; exit 0
    fi
 
+   if ! [ -f $VERSION.zip ] ; then
+         echo -e "\n ** piSchedule -- Missing ZIP  '$VERSION.zip'!\n"
+         echo "$H"; exit 0
+   fi
+
    echo -e "\n ** piSchedule Setup for Version  >>"$VERSION"<<  Load Libs: " $LIBload 
 
 
