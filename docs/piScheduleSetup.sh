@@ -1,5 +1,5 @@
 #!/bin/bash
-T=" ___ piSchedule Setup  #2.4      vers.2017-03-14_17  ___"
+T=" ___ piSchedule Setup  #2.4      vers.2017-03-19_20  ___"
 H="
     SYNOPSIS 
        piScheduleSetup.sh [ARGUMENT] 
