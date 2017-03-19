@@ -139,7 +139,7 @@ load_piSchedule_Libs ()
    VERSION=$1
 
 
-   if [ -z $VERSION.zip ] ; then
+   if ! [ -f $VERSION.zip ] ; then
          echo -e "\n ** piSchedule -- Missing [version] argument OR '$versions' from remote system!\n"
          echo "$H"; exit 0
    fi
