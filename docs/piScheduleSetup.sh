@@ -144,18 +144,18 @@ load_piSchedule_Libs ()
          echo "$H"; exit 0
    fi
 
-   if ! [ -f $VERSION.zip ] ; then
+   if  [ -f $VERSION.zip ] ; then
+      sudo rm $VERSION.zip
+   fi
 
-      echo "    ---  Loading $GHurl/$VERSION.zip from remote!"
-      sudo wget --output-file=wget.log $GHurl/$VERSION.zip -O $VERSION.zip
-      cat  wget.log
+   echo "    ---  Loading $GHurl/$VERSION.zip from remote!"
+   sudo wget --output-file=wget.log $GHurl/$VERSION.zip -O $VERSION.zip
+   cat  wget.log
 
-      if  grep '404 Not Found'  wget.log ; then
+   if  grep '404 Not Found'  wget.log ; then
          echo -e "\n    ---  Missing '$versions' from remote system !"
          echo      "    ---  For more details type  piScheduleSetup.sh --help" 
          exit 1
-      fi
-
    fi
 
    echo -e "\n ** piSchedule Setup for Version  >>"$VERSION"<<  Load Libs: " $LIBload 
