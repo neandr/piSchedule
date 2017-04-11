@@ -1,3 +1,8 @@
+                                               2017-04-11
+** piSchedule 0.7.6
+   Fix for weekday selection
+
+
                                                2017-02-25
 ** piSchedule 0.7.6 supports Nightly API
    Already with pilight v7.0 nightly an api change has
@@ -9,7 +14,6 @@
    Follow a detailed installation instruction for the new
    networking concept with Jessie:
    https://neandr.github.io/piSchedule/jessieInstallation.txt
-
 
                                                2017-02-12
 ** Wheezy and Jessie Support

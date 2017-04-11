@@ -1,3 +1,17 @@
+                                               2017-04-11
+** Version 0.7.6
+   Users of all old versions are asked to upgrade
+   to piSchedule76
+
+** piSchedule 0.7.6 New Features
+   -- New Menu concept
+   -- new Timeline with Plan and Schedule display
+   -- Supports Nightly API
+   Already with pilight v7.0 nightly an api change has
+   been implemented for controlling the switches.
+   Now the current piSchedule 0.7.6 supports automatically
+   the 'stable' and the 'nightly' api for switching.
+
                                                2017-02-09
 ** Wheezy and Jessie Support
    Due to some Raspian version changes the setup 
