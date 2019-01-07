@@ -1,0 +1,15 @@
+                                               2019-01-06
+** piSchedule plus
+   piSchedule wurde umgestellt für den Einsatz mit WLAN
+   basierenden Schaltgeräten. Die bisher unterstützten
+   RF-433MHz Funkgeräte werden nicht mehr unterstützt.
+   piSchedule benötigt pilight nicht mehr.
+
+   Der Einsatz on WLAN Geräten (z.B. der Sonoff Reihe)
+   bieten einige Vorteile, u.a.: bessere Stabilität und 
+   Raumabdeckung, direktes manuelles Schalten.
+   
+   Die bisherigen piSchedule Funktionen ist weitgehendst
+   unverändert. Die Installation wurde angepasst, hierzu
+   bitte die Dokumentation beachten.
+
