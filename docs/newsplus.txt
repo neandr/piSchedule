@@ -6,10 +6,12 @@
    piSchedule benötigt pilight nicht mehr.
 
    Der Einsatz on WLAN Geräten (z.B. der Sonoff Reihe)
-   bieten einige Vorteile, u.a.: bessere Stabilität und 
-   Raumabdeckung, direktes manuelles Schalten.
+   bietet einige Vorteile, u.a.: bessere Stabilität und 
+   Raumabdeckung, direktes manuelles Schalten an den 
+   Geräten.
    
-   Die bisherigen piSchedule Funktionen ist weitgehendst
-   unverändert. Die Installation wurde angepasst, hierzu
-   bitte die Dokumentation beachten.
+   Die bisherigen piSchedule Funktionen sind weitgehendst
+   unverändert. 
+   Die Installation wurde angepasst, hierzu bitte 
+   die Dokumentation beachten.
 
