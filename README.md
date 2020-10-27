@@ -1,12 +1,12 @@
-## *piSchedule*   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *An extension* for __[pilight](http://www.pilight.org/)__
+## *piSchedule*   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *An extension* __
 
-<a href="https://neandr.github.io/piSchedule/index.html">[Deutsche Beschreibung]</a></small></h2>
+<a href="https://neandr.github.io/piSchedule/de.index.html">[Deutsche Beschreibung]</a></small></h2>
 
 Time scheduled switching of devices made easy with a menu driven approach on a web interface using your smartphone, tablet or PC. 
 
 Only running a browser is required for setup, operation, logging and documentation. 
 
-***piSchedule*** is an excellent tool to control home lightning also while absence. That way it simulates activities at your home. A day plan can vary with sunrise/sunset or with random offset time.
+***piSchedule*** is an excellent tool to control the lighting in the house even when you are away. In this way it simulates activities in your home. A daily schedule can vary with sunrise/sunset or with a random time offset.
 
 For detailed *Use and Installation* see the documentation, please visit     
 
@@ -16,7 +16,7 @@ For detailed *Use and Installation* see the documentation, please visit
  * [Scheduling Examples](https://neandr.github.io/piSchedule/en.scheduleExamples.html)
  * [Scheduling Features](https://neandr.github.io/piSchedule/en.scheduleFeatures.html)
 
-To start installing *piSchedule* just follow [this step](https://neandr.github.io/piSchedule/en.schedule7Setup.html)
+To start installing *piSchedule* just follow [this step](https://neandr.github.io/piSchedule/en.schedulePlus3Setup.html)
 <br/>
 <hr>
 <p align='center' id="$$$donationEN" style="display:block">
