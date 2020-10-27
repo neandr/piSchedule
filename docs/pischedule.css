@@ -1,0 +1,54 @@
+/*
+ *  gW  /cVersion/2018-12-30/  css for piSchedule main
+ */
+
+   *,
+   *::after,
+   *::before {
+      font-family:
+         /*Verdana,*/
+         Arial, sans-serif;
+   }
+
+   body {
+      font-size: 1.6em;
+      line-height: 1.4em;
+      color: #000040;
+   }
+
+   p {
+      margin-left:20px
+   }
+
+   h2, h3, h4, h5 {
+      margin-top:2em;
+      font-weight: bold;
+   }
+
+   hr {
+      height: 1px;
+      color: #5050ff
+   }
+
+   html,
+   body {
+      min-height: 100vh
+   }
+
+   #hLine2{
+      position: absolute;
+      right: 5em;
+      margin-top:-.5em;
+   }
+
+   #pFooter {
+      font-size: .8em;
+      line-height: .7em;
+   }
+
+   #google_translate_element {
+      position: absolute;
+      right: 0px;
+      top: .2em;
+      z-index: 2000
+   }
